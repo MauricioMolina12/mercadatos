@@ -103,12 +103,16 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/app/shared/styles/custom-properties.scss"
             ],
             "scripts": []
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "f08ae245-343c-4567-8ec3-d38ced5a470d"
   }
 }

@@ -1,0 +1,35 @@
+<nav role="navigation" aria-label="Main Navigation">
+    <div class="container">
+        <a href="#" class="logo" aria-label="Ir al inicio">
+            <img src="assets/logo-mercadatos.png" alt="Logo del sitio">
+        </a>
+        <ul class="nav-list">
+            <li>
+                <a href="#home" aria-label="Ir a la página principal" [routerLinkActive]="'active'" [routerLink]="['']">Inicio</a>
+            </li>
+            <li>
+                <a href="#about" aria-label="Ir a la sección sobre nosotros">Nosotros</a>
+            </li>
+            <li>
+                <a href="#services" aria-label="Ir a la sección de servicios">Servicios</a>
+            </li>
+            <li>
+                <a href="#contact" aria-label="Ir a la sección de actualidad">Actualidad</a>
+            </li>
+            <li>
+                <a href="#contact" aria-label="Ir a la sección de clientes">Clientes</a>
+            </li>
+            <li>
+                <a href="#contact" aria-label="Ir a la sección de contacto">Contacto</a>
+            </li>
+            <li>
+                <a href="#contact" aria-label="Ir a la sección de a la mano">A la mano</a>
+            </li>
+        </ul>
+        <button class="menu-toggle" aria-label="Abrir menú" (click)="toggleMenu()" [ngClass]="{'active': menuActive}">
+            <div class="burger-bar"></div>
+            <div class="burger-bar"></div>
+        </button>
+
+    </div>
+</nav>
