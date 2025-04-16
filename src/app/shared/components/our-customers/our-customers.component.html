@@ -1,0 +1,17 @@
+<section class="customers">
+    <h1 class="customers__title" [ngClass]="{'isDark' : isDark}" #elementsParallax>
+        Nuestros clientes
+    </h1>
+    <span class="customers__description" #elementsParallax>
+        Contamos con 120 clientes del sector publico y 70 del sector privado
+    </span>
+    <div class="slider-container" #elementsParallax (mouseover)="pauseSlider()" (mouseout)="resumeSlider()">
+        <div class="slider" [ngStyle]="{'animation-play-state': isPaused ? 'paused' : 'running',}">
+            <div class="slide" *ngFor="let customer of customers">
+                <span>{{customer}}</span>
+            </div>
+        </div>
+    </div>
+
+
+</section>

@@ -104,7 +104,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/app/shared/styles/custom-properties.scss"
+              "src/app/shared/styles/custom-properties.scss",
+              "src/app/shared/styles/animations.scss"
             ],
             "scripts": []
           }

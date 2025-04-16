@@ -1,0 +1,13 @@
+<div class="faq-container">
+    <h2 class="faq-title" [ngClass]="{'initial' : isDark == true}">Preguntas Frecuentes</h2>
+
+    <div *ngFor="let faq of faqs" class="faq-item">
+        <button class="faq-question" (click)="toggleAnswer(faq)">
+            {{ faq.question }}
+        </button>
+
+        <div *ngIf="faq.isOpen" class="faq-answer">
+            <p>{{ faq.answer }}</p>
+        </div>
+    </div>
+</div>

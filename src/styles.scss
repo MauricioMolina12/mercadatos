@@ -1,10 +1,22 @@
-@import url('app/shared/styles/custom-properties.scss');
+@import url("app/shared/styles/custom-properties.scss");
 
-body{
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100vh;
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-    box-sizing: border-box;
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+*{
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
 }

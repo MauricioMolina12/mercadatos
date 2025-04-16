@@ -1,0 +1,130 @@
+@import url("../../styles/animations.scss");
+
+.customers {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  .customers__title {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 1.8rem;
+    animation: topToBottom 1.2s ease-in-out;
+
+    &.isDark {
+      color: white;
+    }
+
+    &.visible {
+      transform: translateY(-50px);
+      opacity: 1;
+      transition: transform 1s ease, opacity 1s ease;
+    }
+  }
+
+  .customers__description {
+    color: var(--color-gray);
+    text-align: center;
+    max-width: 80%;
+
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: transform 1s ease, opacity 1s ease;
+    }
+  }
+
+  .slider-container {
+    margin: 70px auto 0;
+    -webkit-mask-image: linear-gradient(90deg, #0000, #000 20% 80%, #0000);
+    mask-image: linear-gradient(90deg, #0000, #000 20% 80%, #0000);
+    max-width: 1200px;
+    overflow: hidden;
+    width: 90vw;
+
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: transform 1s ease, opacity 1s ease;
+    }
+
+    .slider {
+      animation: slide-animation 200s infinite linear 1s;
+      display: flex;
+      width: 500%;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 20px;
+
+      .slide {
+        width: auto;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 40px;
+        padding: 10px;
+        text-align: center;
+
+        span {
+          text-wrap: nowrap;
+          font-weight: 700;
+          font-size: 1.2rem;
+          color: var(--color-gray);
+          font-style: italic;
+          cursor: pointer;
+          user-select: none;
+
+          &:hover {
+            color: var(--color-primary);
+          }
+        }
+      }
+    }
+  }
+
+  @keyframes slide-animation {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-600%);
+    }
+  }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+}
+
+/* Small laptops */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .customers {
+    .customers__title {
+      font-size: 2.8rem;
+    }
+
+    .customers__description {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+/* Medium screens */
+@media (min-width: 1280px) {
+  .customers {
+    .slider-container {
+      width: 50vw;
+    }
+  }
+}
+
+/* Big screens */
+@media (min-width: 1920px) {
+}

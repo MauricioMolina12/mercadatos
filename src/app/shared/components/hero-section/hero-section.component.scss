@@ -1,0 +1,222 @@
+@import url('../../styles/animations.scss');
+
+.hero {
+  width: 100%;
+  height: 80vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 40px 40px;
+
+  background: linear-gradient(var(--color-primary), var(--color-secondary)),
+    url("../../../../../public/assets/back-section.avif");
+
+  background-blend-mode: multiply;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  .hero__image,
+  .hero__description {
+    display: flex;
+    width: 100%;
+    height: 50%;
+  }
+
+  .hero__image {
+    align-items: center;
+    justify-content: center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      animation: topToBottom 0.8s ease-in-out;
+    }
+  }
+
+  .hero__description {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    text-align: center;
+    color: var(--color-white);
+
+    animation: topToBottom 1.2s ease-in-out;
+
+    .hero__description-title {
+      max-width: 80%;
+      font-size: 1.8rem;
+    }
+
+    .hero__description-paragraph {
+      font-weight: 300;
+      max-width: 80%;
+      font-size: .8rem;
+    }
+
+    .hero__description-callAction {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      border-radius: 10px;
+      padding: 5px;
+      width: 40%;
+      height: 12%;
+      color: var(--color-white);
+      background: linear-gradient(var(--color-primary), var(--color-secondary));
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+
+  .points{
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    width: 60px;
+    height: 50px;
+    padding: 4px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(4,1fr);
+
+    .point{
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background-color: var(--color-gray);
+    }
+  }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero {
+    .hero__image {
+      align-items: end;
+
+      img {
+        max-width: 60%;
+      }
+    }
+
+    .hero__description {
+      .hero__description-title {
+        max-width: 60%;
+        font-size: 2.4rem;
+      }
+
+      .hero__description-paragraph {
+        font-size: 1.3rem;
+        max-width: 70%;
+      }
+
+      .hero__description-callAction {
+        width: 30%;
+        height: 14%;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+/* Small laptops */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .hero {
+    .hero__image {
+      align-items: end;
+
+      img {
+        max-width: 60%;
+      }
+    }
+
+    .hero__description {
+      .hero__description-title {
+        font-size: 2.8rem;
+      }
+
+      .hero__description-paragraph {
+        max-width: 70%;
+        font-size: 1.6rem;
+      }
+
+      .hero__description-callAction {
+        width: 30%;
+        height: 14%;
+        font-size: 1.4rem;
+      }
+    }
+  }
+}
+
+/* Medium screens */
+@media (min-width: 1280px) {
+  .hero {
+    flex-direction: row-reverse;
+    .hero__image {
+      align-items: end;
+
+      img {
+        max-width: 60%;
+      }
+    }
+
+    .hero__description {
+      align-items: start;
+      margin-left: 4%;
+
+      gap: 20px;
+
+      text-align: start;
+      .hero__description-title {
+        font-size: 3.2rem;
+        max-width: 75%;
+      }
+
+      .hero__description-paragraph {
+        max-width: 60%;
+        font-size: 0.9rem;
+      }
+
+      .hero__description-callAction {
+        width: 20%;
+        height: 14%;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+/* Big screens */
+@media (min-width: 1920px) {
+  .hero {
+    .hero__image {
+      img {
+        max-width: 100%;
+      }
+    }
+
+    .hero__description {
+      gap: 15px;
+      .hero__description-title {
+        font-size: 4rem;
+        max-width: 80%;
+      }
+
+      .hero__description-paragraph {
+        font-size: 1.2rem;
+      }
+
+      .hero__description-callAction {
+        width: 25%;
+        height: 14%;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}

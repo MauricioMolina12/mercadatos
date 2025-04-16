@@ -1,0 +1,158 @@
+.footer {
+  width: 100%;
+  min-height: 55vh;
+  box-sizing: border-box;
+  background: var(--gradient-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-evenly;
+  gap: 0;
+  padding: 15px;
+
+  .footer__image {
+    width: 65%;
+    margin: 0;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  .footer__description {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .footer__title {
+      font-size: 1.2rem;
+      color: var(--color-white);
+    }
+
+    span,
+    h4 {
+      font-size: 0.85rem;
+      color: var(--color-white);
+      font-weight: 300;
+    }
+
+    h4 span {
+      font-weight: 500;
+    }
+
+    hr {
+      width: 100%;
+      background-color: var(--color-medium);
+    }
+
+    .footer__email {
+      margin-top: 15px;
+      h4 {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .footer__all-rights-reserved {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    span {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--color-white);
+      font-weight: 300;
+    }
+  }
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+  .footer {
+    min-height: 25vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 2fr, 1fr;
+    grid-template-areas:
+      "description image"
+      "all-rights all-rights";
+
+    hr {
+      display: none;
+    }
+
+    .footer__image,
+    .footer__description,
+    .footer__all-rights-reserved {
+      width: 100%;
+      height: 100%;
+    }
+
+    .footer__image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      grid-area: image;
+
+      img {
+        max-width: 80%;
+      }
+    }
+
+    .footer__description {
+      justify-content: center;
+    }
+
+    .footer__all-rights-reserved {
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+      grid-area: all-rights;
+    }
+  }
+}
+
+/* Small laptops */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .footer {
+    .footer__description {
+      .footer__title {
+        font-size: 2rem;
+      }
+
+      span,
+      h4 {
+        font-size: 1.2rem;
+      }
+    }
+
+    .footer__all-rights-reserved {
+      span {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+/* Medium screens */
+@media (min-width: 1280px) {
+  .footer {
+    grid-template-areas:
+      "image description"
+      "all-rights all-rights";
+
+      .footer__image{
+        justify-content: start;
+        img{
+          max-width: 40%;
+        }
+      }
+  }
+}
+
+/* Big screens */
+@media (min-width: 1920px) {
+}

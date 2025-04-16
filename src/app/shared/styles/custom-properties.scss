@@ -4,6 +4,11 @@
   --font-family: "Montserrat", sans-serif;
   --background-color: #fbfbfb;
 
+  --gradient-primary: linear-gradient(
+    var(--color-primary),
+    var(--color-secondary)
+  );
+
   /** primary **/
   --color-primary: #04e5b4;
   --color-primary-rgb: 4, 229, 180;
@@ -17,7 +22,7 @@
   --color-secondary: #13869b;
   --color-secondary-rgb: 19, 134, 155;
   --color-secondary-contrast: #000000;
-  --color-secondary-contrast-rgb: 0,0,0;
+  --color-secondary-contrast-rgb: 0, 0, 0;
   --color-secondary-shade: #117688;
   --color-secondary-tint: #2b92a5;
 
@@ -249,18 +254,22 @@
   --font-family: "Montserrat", sans-serif;
   --background-color: #222525;
 
+  --gradient-primary: linear-gradient(
+    var(--color-primary),
+    var(--color-secondary)
+  );
+
   /** primary **/
-  --color-primary: #07362C;
-  --color-primary-rgb:  7,54,44;
+  --color-primary: #07362c;
+  --color-primary-rgb: 7, 54, 44;
   --color-primary-contrast: #ffffff;
   --color-primary-contrast-rgb: 255, 255, 255;
   --color-primary-shade: #063027;
   --color-primary-tint: #204a41;
 
-
   /** secondary **/
   --color-secondary: #021215;
-  --color-secondary-rgb: 2,18,21;
+  --color-secondary-rgb: 2, 18, 21;
   --color-secondary-contrast: #ffffff;
   --color-secondary-contrast-rgb: 255, 255, 255;
   --color-secondary-shade: #021012;

@@ -1,11 +1,15 @@
-<nav role="navigation" aria-label="Main Navigation">
+<nav role="navigation" aria-label="Main Navigation" [ngClass]="{'dark' : isDarkTheme}">
+
     <div class="container">
         <a href="#" class="logo" aria-label="Ir al inicio">
-            <img src="assets/logo-mercadatos.png" alt="Logo del sitio">
+            <img [src]="isDarkTheme ? 'assets/logo-mercadatos-white.png' : 'assets/logo-mercadatos.png'"
+                alt="Logo del sitio">
         </a>
-        <ul class="nav-list">
+
+        <ul class="nav-list" [ngClass]="{'active': menuActive, 'dark': isDarkTheme}">
             <li>
-                <a href="#home" aria-label="Ir a la página principal" [routerLinkActive]="'active'" [routerLink]="['']">Inicio</a>
+                <a href="#home" aria-label="Ir a la página principal" [routerLinkActive]="'active'"
+                    [routerLink]="['']">Inicio</a>
             </li>
             <li>
                 <a href="#about" aria-label="Ir a la sección sobre nosotros">Nosotros</a>
@@ -23,10 +27,27 @@
                 <a href="#contact" aria-label="Ir a la sección de contacto">Contacto</a>
             </li>
             <li>
-                <a href="#contact" aria-label="Ir a la sección de a la mano">A la mano</a>
+                <a href="#contact" aria-label="Ir a la sección de a la mano" [ngClass]="{'last-item-active' : !isDarkTheme}">A la mano</a>
             </li>
+            <li>
+                <div class="toggle-container">
+                    <span class="material-icons light" [ngClass]="{'size-large' : !isDarkTheme}" [style.color]="isDarkTheme ? 'white' : 'black'">light_mode</span>
+                    <label class="switch">
+                        <input type="checkbox" (change)="toggleTheme()" [checked]="isDarkTheme" />
+                        <span class="slider"></span>
+                    </label>
+                    <span class="material-icons dark" [ngClass]="{'size-large' : isDarkTheme}" [style.color]="isDarkTheme ? 'white' : 'black'">dark_mode</span>
+                </div>
+            </li>
+
         </ul>
-        <button class="menu-toggle" aria-label="Abrir menú" (click)="toggleMenu()" [ngClass]="{'active': menuActive}">
+
+
+
+
+
+        <button class="menu-toggle" aria-label="Abrir menú" (click)="toggleMenu()"
+            [ngClass]="{'active': menuActive, 'dark' : isDarkTheme}">
             <div class="burger-bar"></div>
             <div class="burger-bar"></div>
         </button>
