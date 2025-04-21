@@ -8,6 +8,22 @@ body {
   box-sizing: border-box;
 }
 
+
+.layer{
+  position: relative;
+  &::after{
+    content: "";
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    
+  }
+}
+
 *{
     font-family: "Montserrat", Arial, Helvetica, sans-serif;
 }

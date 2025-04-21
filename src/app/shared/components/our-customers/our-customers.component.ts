@@ -23,7 +23,7 @@ export class OurCustomersComponent implements OnInit, OnDestroy {
     'CONSEJO MUNICIPAL DE PUERTO COLOMBIA',
     'ESE HOSPITAL NIÑO JESÚS DE BARRANQUILLA (EN LIQUIDACIÓN)',
     'CORPORACION REGIONAL AUTONOMA DEL ATLANTICO “CRA”',
-    'ESE HOSPITAL DEPARTAMENTAL DE SABALANARGA (EN LIQUIDACIÓN)',
+    'ESE HOSPITAL DEPARTAMENTAL DE SABANALARGA (EN LIQUIDACIÓN)',
     'SERVICIO NACIONAL DE APRENDIZAJE – SENA REGIONAL ATLANTICO',
     'ALCALDIA DE SOLEDAD – SECRETARIA DE EDUCACION',
     'INSTITUTO MUNICIPAL TRANSPORTE Y TRANSITO DE SOLEDAD',
@@ -83,10 +83,10 @@ export class OurCustomersComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.observer = this.utilsService.parallaxEffect(
-      this.elementsParallax,
-      0.05
-    );
+    // this.observer = this.utilsService.parallaxEffect(
+    //   this.elementsParallax,
+    //   0.05
+    // );
   }
 
   ngOnDestroy(): void {

@@ -1,0 +1,129 @@
+.container-wrapper {
+  width: 100%;
+  min-height: 70vh;
+  max-height: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-block: 2rem;
+
+  .section__title {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 1.8rem;
+    animation: topToBottom 1.2s ease-in-out;
+
+    &.dark {
+      color: white;
+    }
+  }
+
+  .section__subtitle {
+    color: var(--color-dark-gray);
+    max-width: 70%;
+    text-align: center;
+  }
+
+  .section__grid {
+    width: 100%;
+    min-height: 50vh;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+
+    .item {
+      width: 80%;
+      height: 30vh;
+      min-height: 30vh;
+      max-height: max-content;
+      border-radius: 10px;
+      background-color: var(--color-white);
+      position: relative;
+      display: flex;
+      align-items: end;
+
+      .item__icon {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        span {
+          color: white;
+        }
+      }
+
+      .item__content {
+        width: 90%;
+        height: 70%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .item__title {
+          color: var(--color-dark);
+          font-size: 1.2rem;
+          font-weight: 600;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+        }
+
+        .item__description {
+          color: var(--color-dark-gray);
+          font-size: 0.9rem;
+          line-height: 1.5rem;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+}
+
+/* Small laptops */
+@media (min-width: 1024px) and (max-width: 1279px) {
+}
+
+/* Medium screens */
+@media (min-width: 1280px) {
+  .container-wrapper {
+    margin-block: 3rem;
+    .section__grid {
+      width: 80%;
+      min-height: 50vh;
+      display: grid;
+      justify-items: center;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+
+      .item {
+        .item__content {
+          .item__title {
+            font-size: .9rem;
+          }
+
+          .item__description {
+            font-size: 0.7rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Big screens */
+@media (min-width: 1920px) {
+}

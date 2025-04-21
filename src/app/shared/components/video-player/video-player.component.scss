@@ -1,0 +1,168 @@
+$top: 43%;
+
+.video-container {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  width: 80%;
+  transform: scale(1.1);
+  min-height: max-content;
+  margin: 0 auto;
+  padding: 10px;
+  margin-top: 40px;
+
+  .arrow-btn-left,
+  .arrow-btn-right {
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    color: var(--color-white);
+    font-weight: 500;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    cursor: pointer;
+
+    &.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+  }
+
+  .arrow-btn-left {
+    position: absolute;
+    top: $top;
+    left: 25px;
+  }
+
+  .arrow-btn-right {
+    top: $top;
+    position: absolute;
+    right: 25px;
+  }
+
+  video {
+    width: 100%;
+    height: 220px;
+    border-radius: inherit;
+    object-fit: cover;
+    aspect-ratio: 16 / 9;
+    z-index: -1 ;
+  }
+
+  .video-btn {
+    position: absolute;
+    top: $top;
+    left: 45%;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    z-index: 10;
+    cursor: pointer;
+
+    &.active {
+      display: none;
+    }
+  }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  $top: 45%;
+
+  .video-container {
+    .arrow-btn-left,
+    .arrow-btn-right {
+      top: $top;
+      transform: scale(1.4);
+    }
+
+    video {
+      height: 400px;
+    }
+
+    .video-btn {
+      top: $top;
+      left: 47%;
+      transform: scale(1.4);
+    }
+  }
+}
+
+/* Small laptops */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  $top: 46%;
+
+  .video-container {
+    .arrow-btn-left,
+    .arrow-btn-right {
+      top: $top;
+    }
+
+    .video-btn {
+      top: $top;
+      left: 48%;
+      transform: scale(1.8);
+    }
+
+    video{
+      height: 400px;
+    }
+  }
+}
+
+/* Medium screens */
+@media (min-width: 1280px) {
+  $top: 45%;
+
+  .video-container {
+    width: 550px;
+    padding: 0;
+    margin: 0;
+    border-radius: 20px;
+    transform: scale(.95);
+
+    &:hover {
+      .arrow-btn-left,
+      .arrow-btn-right,
+      .video-btn {
+        opacity: 1;
+        pointer-events: auto;
+        display: block;
+      }
+    }
+
+    .arrow-btn-left,
+    .arrow-btn-right {
+      top: $top;
+    }
+
+    video {
+      height: 320px;
+      // object-fit: contain;
+    }
+
+    .video-btn {
+      top: $top;
+      left: 48%;
+      transform: scale(1.8);
+    }
+  }
+}
+
+/* Big screens */
+@media (min-width: 1920px) {
+}

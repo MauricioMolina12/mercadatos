@@ -10,8 +10,17 @@
             <div class="slide" *ngFor="let customer of customers">
                 <span>{{customer}}</span>
             </div>
+            <div class="slide" *ngFor="let customer of customers">
+                <span>{{customer}}</span>
+            </div>
         </div>
     </div>
+    <button class="customers__call-action" [ngClass]="{'isDark' : isDark}">
+        <span class="view-all-customers">Ver todos los clientes</span>
+        <span class="material-icons">
+            arrow_forward
+        </span>
+    </button>
 
 
 </section>

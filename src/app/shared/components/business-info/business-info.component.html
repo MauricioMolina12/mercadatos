@@ -1,0 +1,17 @@
+<section class="section container-wrapper">
+    <h1 class="section__title" [ngClass]="{'dark': isDark}">¿Que nos separa?</h1>
+    <p class="section__subtitle">Descubre lo que nos hace únicos y diferentes.</p>
+    <div class="section__grid">
+        <div class="item" *ngFor="let item of whatSetsUsApart">
+            <div class="item__icon" [ngStyle]="{'background-color': item.hexColor}">
+                <span class="material-icons">
+                    {{ item.icon }}
+                </span>
+            </div>
+            <div class="item__content">
+                <h1 class="item__title">{{ item.title }}</h1>
+                <p class="item__description">{{item.subtitle}}</p>
+            </div>
+        </div>
+    </div>
+</section>

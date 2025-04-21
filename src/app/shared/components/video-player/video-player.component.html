@@ -1,0 +1,19 @@
+<div class="video-container">
+    <button class="arrow-btn-left" (click)="moveTime($event,'back')" [class.visible]="isViewButtons">-10s</button>
+    <video #videoPlayer width="100%" (click)="togglePlay($event)" [attr.poster]="poster">
+        <source [src]="videoSrc" type="video/mp4" />
+        Tu navegador no soporta videos.
+    </video>
+    <button 
+        class="video-btn" 
+        (click)="togglePlay($event)" 
+        [ngClass]="{'active': isPlaying}">
+        <span class="material-icons">{{ isPlaying ? 'pause' : 'play_arrow'}}</span>
+    </button>
+    <button 
+        class="arrow-btn-right" 
+        (click)="moveTime($event,'pass')"
+        [class.visible]="isViewButtons"
+        >+10s</button>
+
+</div>

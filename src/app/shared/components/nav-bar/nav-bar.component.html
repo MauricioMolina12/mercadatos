@@ -7,43 +7,56 @@
         </a>
 
         <ul class="nav-list" [ngClass]="{'active': menuActive, 'dark': isDarkTheme}">
-            <li>
-                <a href="#home" aria-label="Ir a la página principal" [routerLinkActive]="'active'"
-                    [routerLink]="['']">Inicio</a>
+
+            <li class="nav-list__item" *ngFor="let item of navItems" (click)="clicItemNav(item.label)">
+
+                <a  
+                    [attr.href]="item.href" 
+                    [attr.aria-label]="item.ariaLabel" 
+                    [routerLink]="item.routerLink"
+                    [routerLinkActive]="item.routerLinkActive ? item.routerLinkActive : ''" [ngClass]="item.ngClass"
+                    [ngClass]="item.extraClasses" 
+                    [ngClass]="{'dark': isDarkTheme, 'notAfter': item.isDropdown}">
+                    
+                    {{ item.label }}
+                    
+                    <span class="material-icons arrow-dropdown" [ngClass]="{'isDark': isDarkTheme, 'isActive': activeDropdown === item.label}"
+                        *ngIf="item.isDropdown">
+                        keyboard_arrow_down
+                    </span>
+                
+                </a>
+
+                <div class="nav-dropdown" 
+                    *ngIf="item.isDropdown"
+                    [ngClass]="{'isDark': isDarkTheme}"
+                    [class.visible]="activeDropdown === item.label"
+                    [class.hidden]="activeDropdown !== item.label">
+                    
+                    <ul class="dropdown-list">
+                        <li *ngFor="let item of contentDropdown">
+                            <a  [ngClass]="{'dark' : isDarkTheme}" [attr.aria-label]="item.ariaLabel">{{item.label}}</a>
+                        </li>
+                    </ul>
+                </div>
+
+
             </li>
-            <li>
-                <a href="#about" aria-label="Ir a la sección sobre nosotros">Nosotros</a>
-            </li>
-            <li>
-                <a href="#services" aria-label="Ir a la sección de servicios">Servicios</a>
-            </li>
-            <li>
-                <a href="#contact" aria-label="Ir a la sección de actualidad">Actualidad</a>
-            </li>
-            <li>
-                <a href="#contact" aria-label="Ir a la sección de clientes">Clientes</a>
-            </li>
-            <li>
-                <a href="#contact" aria-label="Ir a la sección de contacto">Contacto</a>
-            </li>
-            <li>
-                <a href="#contact" aria-label="Ir a la sección de a la mano" [ngClass]="{'last-item-active' : !isDarkTheme}">A la mano</a>
-            </li>
+
             <li>
                 <div class="toggle-container">
-                    <span class="material-icons light" [ngClass]="{'size-large' : !isDarkTheme}" [style.color]="isDarkTheme ? 'white' : 'black'">light_mode</span>
+                    <span class="material-icons light" [ngClass]="{'size-large' : !isDarkTheme}"
+                        [style.color]="isDarkTheme ? 'white' : 'black'">light_mode</span>
                     <label class="switch">
                         <input type="checkbox" (change)="toggleTheme()" [checked]="isDarkTheme" />
                         <span class="slider"></span>
                     </label>
-                    <span class="material-icons dark" [ngClass]="{'size-large' : isDarkTheme}" [style.color]="isDarkTheme ? 'white' : 'black'">dark_mode</span>
+                    <span class="material-icons dark" [ngClass]="{'size-large' : isDarkTheme}"
+                        [style.color]="isDarkTheme ? 'white' : 'black'">dark_mode</span>
                 </div>
             </li>
 
         </ul>
-
-
-
 
 
         <button class="menu-toggle" aria-label="Abrir menú" (click)="toggleMenu()"

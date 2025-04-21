@@ -7,6 +7,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { HeroSectionComponent } from './shared/components/hero-section/hero-section.component';
 import { OurCustomersComponent } from './shared/components/our-customers/our-customers.component';
 import { FaqComponent } from './shared/components/faq/faq.component';
+import { WhyChooseUsComponentComponent } from './shared/components/why-choose-us-component/why-choose-us-component.component';
+import { VideoPlayerComponent } from "./shared/components/video-player/video-player.component";
+import { BusinessInfoComponent } from './shared/components/business-info/business-info.component';
 
 @NgModule({
   declarations: [
@@ -15,11 +18,14 @@ import { FaqComponent } from './shared/components/faq/faq.component';
     HeroSectionComponent,
     OurCustomersComponent,
     FaqComponent,
+    WhyChooseUsComponentComponent,
+    BusinessInfoComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
-  ],
+    AppRoutingModule,
+    VideoPlayerComponent
+],
   providers: [
     provideClientHydration(withEventReplay())
   ],

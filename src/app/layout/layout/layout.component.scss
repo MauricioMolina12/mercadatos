@@ -1,4 +1,4 @@
-@import "../../shared/styles/custom-properties.scss";
+@use "../../shared/styles/custom-properties" as *;
 
 .layout-wrapper {
   width: 100%;

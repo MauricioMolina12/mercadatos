@@ -4,48 +4,96 @@
   margin: 0 auto;
   padding: 20px;
   box-sizing: border-box;
+  margin-block: 20px;
 
   .faq-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
     text-align: center;
     margin-bottom: 20px;
+    font-weight: 600;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    color: transparent;
 
-    &.initial {
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      color: transparent;
+    &.isDark {
+      color: white;
     }
+
   }
 
   .faq-item {
     margin-bottom: 15px;
     padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: var(--gradient-primary);
+    position: relative;
+    transition: all 1s ease;
+
+    .toggle-button {
+      position: absolute;
+      right: 5px;
+      top: 22%;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      font-size: 1.8rem;
+      color: var(--color-gray);
+      cursor: pointer;
+      
+      &.open {
+        top: 7%;
+        
+        .arrow-dropdown{
+          transition: all 0.5s ease;
+          transform: rotate(180deg);
+        }
+      }
+    }
+
 
     .faq-question {
       width: 100%;
       padding: 10px;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
+      font-weight: 500;
       background-color: transparent;
-      color: var(--color-dark);
+      color: var(--color-font-gray);
       border: none;
       text-align: left;
       border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: all .5s ease;
     }
-
+    
     .faq-answer {
       margin-top: 10px;
       font-size: 1rem;
-      color: var(--color-light);
+      font-weight: 300;
+      color: var(--color-font-gray);
       line-height: 1.5;
       padding: 10px;
       border-radius: 5px;
       margin-top: 10px;
-      color: var(--color-white);
+      transition: all .5s ease;
     }
   }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .faq-container {
+    max-width: 600px;
+  }
+}
+/* Small laptops */
+@media (min-width: 1024px) and (max-width: 1279px) {
+}
+
+/* Medium screens */
+@media (min-width: 1280px) {
+}
+
+/* Big screens */
+@media (min-width: 1920px) {
 }
