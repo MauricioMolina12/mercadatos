@@ -10,6 +10,8 @@ import { FaqComponent } from './shared/components/faq/faq.component';
 import { WhyChooseUsComponentComponent } from './shared/components/why-choose-us-component/why-choose-us-component.component';
 import { VideoPlayerComponent } from "./shared/components/video-player/video-player.component";
 import { BusinessInfoComponent } from './shared/components/business-info/business-info.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+
 
 @NgModule({
   declarations: [
@@ -20,11 +22,12 @@ import { BusinessInfoComponent } from './shared/components/business-info/busines
     FaqComponent,
     WhyChooseUsComponentComponent,
     BusinessInfoComponent,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    VideoPlayerComponent
+    VideoPlayerComponent,
 ],
   providers: [
     provideClientHydration(withEventReplay())

@@ -17,7 +17,7 @@ import { SplashPageComponent } from '../../shared/components/splash-page/splash-
     LayoutRoutingModule,
     NavBarComponent,
     FooterComponent,
-    SplashPageComponent
+    SplashPageComponent,
   ]
 })
 export class LayoutModule { }

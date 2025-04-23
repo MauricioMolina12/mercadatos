@@ -1,10 +1,12 @@
 <section class="container">
-    <h1 class="container__title" [ngClass]="{'isDark': isDark}">
+    <h1 class="container__title" #elementsParallax [ngClass]="{'isDark': isDark}">
         ¿POR QUÉ BUSCAR SOLUCIÓN CON NOSOTROS?
     </h1>
     <main class="content">
-        <app-video-player [videoSrc]="'assets/video.mp4'" [poster]="'assets/mercadatos.jpeg'"></app-video-player>
-        <div class="list-items">
+        <div class="content-video" #elementsParallax>
+            <app-video-player [videoSrc]="'assets/video.mp4'" [poster]="'assets/mercadatos.jpeg'"></app-video-player>
+        </div>
+        <div class="list-items" #elementsParallax>
 
             <div class="item" *ngFor="let item of visibleItems; let i = index;">
 

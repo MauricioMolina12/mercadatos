@@ -1,0 +1,69 @@
+<div class="about-us__wrapper">
+  <header class="about-us__header">
+    <div class="about-us__header-description">
+      <span class="about-us__header-description-subtitle">QUIENES SOMOS</span>
+      <h1 class="about-us__header-description-title" [ngClass]="{'dark': isDark}">NOSOTROS</h1>
+      <p class="about-us__header-description-text" [ngClass]="{'dark': isDark}"><span>MERCADATOS S.A.S BIC,</span>
+        empresa fundada en Barranquilla en 1986, es líder en ofrecer Soluciones Integrales en Gestión Documental y
+        asesoría jurídica. Brinda servicios seguros, rápidos y de alta calidad, apoyados en herramientas y modelos
+        innovadores. Se especializa en la implementación de la Ley General de Archivos y la Ley de Transparencia,
+        elaboración de Tablas de Retención Documental, y desarrollo de sistemas de información adaptados a procesos
+        organizacionales. Además, cuenta con experiencia en consultorías jurídicas en derecho civil, laboral,
+        empresarial y administrativo, con resultados exitosos certificados por la Norma ISO-9001-2000.</p>
+    </div>
+    <div class="about-us__header-image">
+      <figure class="about-us__header-image-figure">
+      </figure>
+    </div>
+  </header>
+  <!-- Only in phone or tablets -->
+  <section class="about-us__description">
+    <p class="about-us__description-text" [ngClass]="{'dark': isDark}"><span>MERCADATOS S.A.S BIC,</span> empresa
+      fundada en Barranquilla en 1986, es líder en ofrecer Soluciones Integrales en Gestión Documental y asesoría
+      jurídica. Brinda servicios seguros, rápidos y de alta calidad, apoyados en herramientas y modelos innovadores. Se
+      especializa en la implementación de la Ley General de Archivos y la Ley de Transparencia, elaboración de Tablas de
+      Retención Documental, y desarrollo de sistemas de información adaptados a procesos organizacionales. Además,
+      cuenta con experiencia en consultorías jurídicas en derecho civil, laboral, empresarial y administrativo, con
+      resultados exitosos certificados por la Norma ISO-9001-2000.</p>
+  </section>
+
+  <section class="about-us__mission">
+    <h1 class="about-us__mission-title" [ngClass]="{'dark': isDark}">MISIÓN</h1>
+    <div class="about-us__mission-grid">
+      <div class="about-us__mission-grid-item"></div>
+      <div class="about-us__mission-grid-item"></div>
+      <div class="about-us__mission-grid-item"></div>
+    </div>
+    <p>Es una empresa líder en Colombia, especialmente en la Región Caribe, en la prestación de servicios en gestión
+      documental, superando las expectativas de nuestros clientes, de manera eficiente, innovadora y responsable.
+      Conformada por un equipo de trabajo multidisciplinario ampliamente calificado y un alto nivel técnico, logrando la
+      satisfacción de los clientes internos y externos.
+    </p>
+  </section>
+
+
+  <section class="about-us__vision">
+    <h1 class="about-us__vision-title" [ngClass]="{'dark': isDark}">VISIÓN</h1>
+    <figure class="about-us-vision-figure"></figure>
+    <p>Es una empresa líder en Colombia, especialmente en la Región Caribe, en la prestación de servicios en gestión
+      documental, superando las expectativas de nuestros clientes, de manera eficiente, innovadora y responsable.
+      Conformada por un equipo de trabajo multidisciplinario ampliamente calificado y un alto nivel técnico, logrando la
+      satisfacción de los clientes internos y externos.
+    </p>
+  </section>
+
+  <!-- <div class="slider">
+    <div class="slider__content">
+      <div class="slider__item" *ngIf="currentSlide !== null" [@slideInOut]>
+        <h3>{{ bicResults[currentSlide].title }}</h3>
+        <p>{{ bicResults[currentSlide].description }}</p>
+      </div>
+    </div>
+
+    <div class="slider__controls">
+      <button (click)="prevSlide()" [disabled]="currentSlide === 0">‹</button>
+      <span>{{ currentSlide + 1 }} / {{ bicResults.length }}</span>
+      <button (click)="nextSlide()" [disabled]="currentSlide === bicResults.length - 1">›</button>
+    </div>
+  </div> -->
+</div>

@@ -24,7 +24,7 @@ export class UtilsService {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible'); // Add the 'visible' class
+            entry.target.classList.add('visible'); 
           }
         });
       },

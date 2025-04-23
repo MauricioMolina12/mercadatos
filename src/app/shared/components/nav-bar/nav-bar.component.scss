@@ -132,6 +132,8 @@ nav {
             }
           }
 
+          // Class
+
           &::after {
             content: "";
             position: absolute;
@@ -172,7 +174,7 @@ nav {
             }
           }
 
-          &.notAfter {
+          &.notLinkDecoration {
             &::after {
               content: none;
             }
@@ -203,7 +205,7 @@ nav {
           width: 300px;
           height: 0;
           max-height: 0;
-          background-color: var(--color-blue-light);
+          background-color: var(--color-white-tint);
           border-radius: 8px;
           max-height: 0;
           overflow: hidden;
@@ -244,7 +246,7 @@ nav {
               position: relative;
               gap: 4px;
               user-select: none;
-              font-size: 0.7rem;
+              font-size: 0.68rem;
 
               &.dark {
                 color: var(--color-white);

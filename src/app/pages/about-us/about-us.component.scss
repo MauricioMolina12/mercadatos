@@ -1,0 +1,295 @@
+.about-us__wrapper {
+  width: 100%;
+  min-height: 100vh;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+
+  .about-us__header {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../../../../public/assets/foto-cofounders.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .about-us__header-description {
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .about-us__header-description-subtitle {
+        color: var(--color-gray);
+        font-size: 1.5rem;
+      }
+
+      .about-us__header-description-title {
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        color: transparent;
+        font-size: 3rem;
+        animation: topToBottom 1.2s ease-in-out;
+
+        &.dark {
+          color: var(--color-white);
+        }
+      }
+
+      .about-us__header-description-text {
+        display: none;
+      }
+    }
+
+    .about-us__header-image {
+      display: none;
+    }
+  }
+
+  .about-us__description {
+    text-align: justify;
+    max-width: 95%;
+    max-height: max-content;
+    margin: 0 auto;
+    color: var(--color-gray);
+    margin-block: 30px;
+  }
+
+  .about-us__mission {
+    width: 100%;
+    height: 100vh;
+    max-height: fit-content;
+    padding-block: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .about-us__mission-title {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      color: transparent;
+      font-size: 3rem;
+      animation: topToBottom 1.2s ease-in-out;
+
+      &.dark {
+        color: var(--color-white);
+      }
+    }
+
+    .about-us__mission-grid {
+      width: 100%;
+      height: 50%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-areas:
+        "mission1 mission2"
+        "mission3 mission3";
+      gap: 10px;
+      padding: 10px;
+      box-sizing: border-box;
+
+      .about-us__mission-grid-item {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        background-image: url("../../../../public/assets/foto-mission.jpg");
+        background-size: cover;
+        background-position: center;
+
+        &:first-of-type {
+          grid-area: mission1;
+        }
+
+        &:nth-of-type(2) {
+          grid-area: mission2;
+        }
+
+        &:nth-of-type(3) {
+          grid-area: mission3;
+        }
+      }
+    }
+
+    p {
+      text-align: justify;
+      max-width: 95%;
+      max-height: max-content;
+      margin: 0 auto;
+      color: var(--color-gray);
+    }
+  }
+
+  .about-us__vision {
+    height: 100vh;
+    width: 100%;
+    max-height: fit-content;
+    padding-block: 30px;
+
+    .about-us__vision-title {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      color: transparent;
+      font-size: 3rem;
+      animation: topToBottom 1.2s ease-in-out;
+
+      &.dark {
+        color: var(--color-white);
+      }
+    }
+  }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .about-us__wrapper {
+    .about-us__header {
+      .about-us__header-image {
+        display: none;
+      }
+    }
+  }
+}
+
+/* Small laptops */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .about-us__wrapper {
+    .about-us__header {
+      .about-us__header-description {
+        .about-us__header-description-subtitle {
+          font-size: 2rem;
+        }
+
+        .about-us__header-description-title {
+          font-size: 4.5rem;
+        }
+
+        .about-us__header-description-text {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+/* Medium screens */
+@media (min-width: 1280px) {
+  .about-us__wrapper {
+    .about-us__header {
+      height: 100vh;
+      background-image: none;
+      display: flex;
+      flex-direction: row;
+
+      &::after {
+        content: none;
+      }
+
+      .about-us__header-description,
+      .about-us__header-image {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .about-us__header-description-subtitle {
+          color: var(--color-gray);
+          font-size: 1.5rem;
+        }
+
+        .about-us__header-description-title {
+          background: var(--gradient-primary);
+          -webkit-background-clip: text;
+          color: transparent;
+          font-size: 3rem;
+          animation: topToBottom 1.2s ease-in-out;
+        }
+
+        .about-us__header-description-text {
+          display: block;
+          max-width: 80%;
+          text-align: justify;
+          color: var(--color-gray);
+          line-height: 28px;
+
+          span {
+            font-weight: 600;
+          }
+        }
+      }
+
+      .about-us__header-image {
+        .about-us__header-image-figure {
+          background-image: url("../../../../public/assets/foto-cofounders.jpg");
+          clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+          margin: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    .about-us__description {
+      display: none;
+    }
+  }
+}
+
+/* Big screens */
+@media (min-width: 1920px) {
+}
+
+.slider {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+
+  &__content {
+    min-height: 120px;
+    position: relative;
+  }
+
+  &__item {
+    transition: all 0.3s ease;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+
+    button {
+      background: #333;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+
+      &:disabled {
+        background: #aaa;
+        cursor: not-allowed;
+      }
+    }
+
+    span {
+      font-weight: bold;
+    }
+  }
+}

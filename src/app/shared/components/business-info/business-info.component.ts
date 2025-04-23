@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, QueryList, Renderer2, ViewChildren } from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
+import { UtilsService } from '../../services/utils.service';
 
 @Component({
   selector: 'app-business-info',
@@ -9,14 +10,14 @@ import { ThemeService } from '../../services/theme.service';
 })
 export class BusinessInfoComponent {
   isDark: boolean = false;
-
+  @ViewChildren('elementsParallax') elementsParallax!: QueryList<ElementRef>;
   whatSetsUsApart = [
     {
       icon: 'history',
       title: '+10 años de experiencia',
       subtitle:
         'Hemos acompañado a empresas y organizaciones por más de una década, brindando soluciones con resultados reales.',
-      hexColor: '#00BCD4', 
+      hexColor: '#00BCD4',
     },
     {
       icon: 'build',
@@ -44,20 +45,34 @@ export class BusinessInfoComponent {
       title: 'Compromiso con la excelencia',
       subtitle:
         'No solo cumplimos, buscamos superar tus expectativas en cada proyecto.',
-      hexColor: '#FFC107', 
+      hexColor: '#FFC107',
     },
     {
       icon: 'eco',
       title: 'Responsabilidad social y ambiental',
       subtitle:
         'Implementamos prácticas sostenibles y apoyamos iniciativas que generan impacto positivo en la comunidad.',
-      hexColor: '#8BC34A', 
+      hexColor: '#8BC34A',
     },
   ];
 
-  constructor(private themeService: ThemeService) {
+  constructor(
+    private themeService: ThemeService,
+    private utilsService: UtilsService,
+    private renderer: Renderer2
+  ) {
     this.themeService.darkMode$.subscribe((isDark) => {
       this.isDark = isDark;
     });
+  }
+
+  ngAfterViewInit(): void {
+    if (this.elementsParallax.length) {
+      this.utilsService.parallaxEffect(this.elementsParallax, 0.2);
+    } else {
+      this.elementsParallax.toArray().forEach((elementRef: ElementRef) => {
+        this.renderer.addClass(elementRef.nativeElement, 'active');
+      });
+    }
   }
 }

@@ -42,6 +42,8 @@ export class NavBarComponent implements OnInit {
     {
       label: 'Nosotros',
       href: '#about',
+      routerLink: ['/about'],
+      routerLinkActive: 'active',
       ariaLabel: 'Ir a la sección sobre nosotros',
     },
     {
@@ -114,11 +116,11 @@ export class NavBarComponent implements OnInit {
       this.activeDropdown = isSameDropdown ? null : label;
 
       // Manejo del layer visual
-      if (!isSameDropdown) {
-        document.body.classList.add('layer');
-      } else {
-        document.body.classList.remove('layer');
-      }
+      // if (!isSameDropdown) {
+      //   document.body.classList.add('layer');
+      // } else {
+      //   document.body.classList.remove('layer');
+      // }
 
       // Contenido dinámico
       this.contentDropdown =
@@ -184,6 +186,6 @@ export class NavBarComponent implements OnInit {
 
   toggleMenu() {
     this.menuActive = !this.menuActive;
-    this.document.body.style.overflowY = this.menuActive === true ? 'hidden' : 'auto';
+    // this.document.body.style.overflowY = this.menuActive === true ? 'hidden' : 'auto';
   }
 }

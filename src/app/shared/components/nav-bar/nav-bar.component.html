@@ -14,9 +14,9 @@
                     [attr.href]="item.href" 
                     [attr.aria-label]="item.ariaLabel" 
                     [routerLink]="item.routerLink"
-                    [routerLinkActive]="item.routerLinkActive ? item.routerLinkActive : ''" [ngClass]="item.ngClass"
-                    [ngClass]="item.extraClasses" 
-                    [ngClass]="{'dark': isDarkTheme, 'notAfter': item.isDropdown}">
+                    [routerLinkActive]="['active']"
+                    [routerLinkActiveOptions]="{exact: true}"
+                    [ngClass]="{'dark': isDarkTheme, 'notLinkDecoration': item.isDropdown}">
                     
                     {{ item.label }}
                     

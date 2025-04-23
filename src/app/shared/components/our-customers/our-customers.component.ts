@@ -4,6 +4,7 @@ import {
   OnDestroy,
   OnInit,
   QueryList,
+  Renderer2,
   ViewChildren,
 } from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
@@ -75,19 +76,25 @@ export class OurCustomersComponent implements OnInit, OnDestroy {
 
   constructor(
     private themeService: ThemeService,
-    private utilsService: UtilsService
+    private utilsService: UtilsService,
+    private renderer: Renderer2
   ) {
     this.themeService.darkMode$.subscribe((isDark) => {
       this.isDark = isDark;
     });
   }
 
-  ngOnInit(): void {
-    // this.observer = this.utilsService.parallaxEffect(
-    //   this.elementsParallax,
-    //   0.05
-    // );
+  ngAfterViewInit(): void {
+    if (this.elementsParallax.length) {
+      this.utilsService.parallaxEffect(this.elementsParallax, 0.2);
+    } else {
+      this.elementsParallax.toArray().forEach((elementRef: ElementRef) => {
+        this.renderer.addClass(elementRef.nativeElement, 'active');
+      });
+    }
   }
+
+  ngOnInit(): void {}
 
   ngOnDestroy(): void {
     if (this.observer) {

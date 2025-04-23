@@ -1,5 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  QueryList,
+  Renderer2,
+  ViewChildren,
+} from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
+import { UtilsService } from '../../services/utils.service';
 
 @Component({
   selector: 'app-why-choose-us-component',
@@ -9,11 +17,26 @@ import { ThemeService } from '../../services/theme.service';
 })
 export class WhyChooseUsComponentComponent implements OnInit {
   isDark: boolean = false;
+  @ViewChildren('elementsParallax') elementsParallax!: QueryList<ElementRef>;
 
-  constructor(private themeService: ThemeService) {
+  constructor(
+    private themeService: ThemeService,
+    private utilsService: UtilsService,
+    private renderer: Renderer2
+  ) {
     this.themeService.darkMode$.subscribe((isDark) => {
       this.isDark = isDark;
     });
+  }
+
+  ngAfterViewInit(): void {
+    if (this.elementsParallax.length) {
+      this.utilsService.parallaxEffect(this.elementsParallax, 0.5);
+    } else {
+      this.elementsParallax.toArray().forEach((elementRef: ElementRef) => {
+        this.renderer.addClass(elementRef.nativeElement, 'active');
+      });
+    }
   }
 
   ngOnInit(): void {
@@ -31,7 +54,6 @@ export class WhyChooseUsComponentComponent implements OnInit {
   visibleItems: string[] = [];
   currentIndex = 0;
   lengthList: number = this.items.length;
-
 
   sliceList(type: 'next' | 'back') {
     if (type === 'next' && this.currentIndex < this.items.length - 1) {
