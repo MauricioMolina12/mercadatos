@@ -11,6 +11,7 @@ import { WhyChooseUsComponentComponent } from './shared/components/why-choose-us
 import { VideoPlayerComponent } from "./shared/components/video-player/video-player.component";
 import { BusinessInfoComponent } from './shared/components/business-info/business-info.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { ServicesListComponent } from './shared/components/services-list/services-list.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
     WhyChooseUsComponentComponent,
     BusinessInfoComponent,
     AboutUsComponent,
+    ServicesListComponent,
   ],
   imports: [
     BrowserModule,

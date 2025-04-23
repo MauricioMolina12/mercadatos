@@ -171,6 +171,13 @@
 
 /* Small laptops */
 @media (min-width: 1024px) and (max-width: 1279px) {
+  .container-wrapper {
+    .section__grid {
+      .item {
+        width: 100%;
+      }
+    }
+  }
 }
 
 /* Medium screens */

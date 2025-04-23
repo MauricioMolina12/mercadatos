@@ -1,0 +1,25 @@
+<section class="services">
+    <h1 class="services-title" [ngClass]="{'isDark' : isDark}" #elementsParallax>
+        Nuestros servicios
+    </h1>
+    <div class="services-grid">
+        <div class="services-grid-item" #elementsParallax *ngFor="let service of services" [ngClass]="{'dark': isDark}">
+            <div class="services-grid-item-inner">
+                <div class="services-grid-item-front">
+                    <div class="services-grid-item-image">
+                        <img [src]="service.image" [alt]="service.label">
+                    </div>
+                    <div class="item__content-front">
+                        <h1 class="item__title-front"  [ngClass]="{'dark': isDark}">{{ service.label }}</h1>
+                    </div>
+                </div>
+                <div class="services-grid-item-back">
+                    <div class="item__content-back">
+                        <p class="item__description-back"  [ngClass]="{'dark': isDark}">{{ service.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
