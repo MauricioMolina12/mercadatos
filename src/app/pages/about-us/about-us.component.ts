@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { ThemeService } from '../../shared/services/theme.service';
 
 @Component({
   selector: 'app-about-us',
   templateUrl: './about-us.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./about-us.component.scss'],
   standalone: false,
 })

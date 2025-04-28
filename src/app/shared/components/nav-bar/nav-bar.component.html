@@ -1,7 +1,7 @@
 <nav role="navigation" aria-label="Main Navigation" [ngClass]="{'dark' : isDarkTheme}">
 
     <div class="container">
-        <a href="#" class="logo" aria-label="Ir al inicio">
+        <a [routerLink]="''" class="logo" aria-label="Ir al inicio">
             <img [src]="isDarkTheme ? 'assets/logo-mercadatos-white.png' : 'assets/logo-mercadatos.png'"
                 alt="Logo del sitio">
         </a>
@@ -43,7 +43,7 @@
 
             </li>
 
-            <li>
+            <!-- <li>
                 <div class="toggle-container">
                     <span class="material-icons light" [ngClass]="{'size-large' : !isDarkTheme}"
                         [style.color]="isDarkTheme ? 'white' : 'black'">light_mode</span>
@@ -54,7 +54,7 @@
                     <span class="material-icons dark" [ngClass]="{'size-large' : isDarkTheme}"
                         [style.color]="isDarkTheme ? 'white' : 'black'">dark_mode</span>
                 </div>
-            </li>
+            </li> -->
 
         </ul>
 

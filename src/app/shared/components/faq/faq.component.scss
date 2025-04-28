@@ -30,6 +30,7 @@
     background-color: var(--gradient-primary);
     position: relative;
     transition: all 1s ease;
+    cursor: pointer;
 
     .toggle-button {
       position: absolute;

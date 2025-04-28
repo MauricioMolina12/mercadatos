@@ -1,19 +1,29 @@
 <div class="video-container">
-    <button class="arrow-btn-left" (click)="moveTime($event,'back')" [class.visible]="isViewButtons">-10s</button>
-    <video #videoPlayer width="100%" (click)="togglePlay($event)" [attr.poster]="poster">
+    <button class="arrow-btn-left" (click)="moveTime($event, 'back')" [class.visible]="isViewButtons">-10s</button>
+
+    <!-- Video Player -->
+    <video #videoPlayer width="100%" (click)="togglePlay($event)" (timeupdate)="updateProgress()"
+        [attr.poster]="poster">
         <source [src]="videoSrc" type="video/mp4" />
         Tu navegador no soporta videos.
     </video>
-    <button 
-        class="video-btn" 
-        (click)="togglePlay($event)" 
-        [ngClass]="{'active': isPlaying}">
+
+    <!-- Play/Pause Button -->
+    <button class="video-btn" (click)="togglePlay($event)" [ngClass]="{'active': isPlaying}">
         <span class="material-icons">{{ isPlaying ? 'pause' : 'play_arrow'}}</span>
     </button>
-    <button 
-        class="arrow-btn-right" 
-        (click)="moveTime($event,'pass')"
-        [class.visible]="isViewButtons"
-        >+10s</button>
 
+    <!-- Skip Forward Button -->
+    <button class="arrow-btn-right" (click)="moveTime($event, 'pass')" [class.visible]="isViewButtons">+10s</button>
+
+    <!-- Progress Bar -->
+    <div class="video-progress-bar" (mousedown)="onProgressMouseDown($event)">
+        <div class="video-progress-bar__line" [style.width.%]="progress"></div>
+    </div>
+
+
+    <!-- Mute/Unmute Button -->
+    <button class="video-btn-sound" (click)="toggleSound($event)">
+        <span class="material-icons">{{ isMuted ? 'volume_off' : 'volume_up'}}</span>
+    </button>
 </div>

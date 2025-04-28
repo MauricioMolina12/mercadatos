@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   OnInit,
@@ -12,6 +13,7 @@ import { UtilsService } from '../../services/utils.service';
 @Component({
   selector: 'app-why-choose-us-component',
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './why-choose-us-component.component.html',
   styleUrl: './why-choose-us-component.component.scss',
 })

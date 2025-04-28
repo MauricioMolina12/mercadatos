@@ -12,6 +12,9 @@ import { VideoPlayerComponent } from "./shared/components/video-player/video-pla
 import { BusinessInfoComponent } from './shared/components/business-info/business-info.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ServicesListComponent } from './shared/components/services-list/services-list.component';
+import { CustomersComponent } from './pages/customers/customers.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -25,11 +28,13 @@ import { ServicesListComponent } from './shared/components/services-list/service
     BusinessInfoComponent,
     AboutUsComponent,
     ServicesListComponent,
+    CustomersComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     VideoPlayerComponent,
+    ReactiveFormsModule
 ],
   providers: [
     provideClientHydration(withEventReplay())

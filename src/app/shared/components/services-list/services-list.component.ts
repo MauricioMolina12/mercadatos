@@ -1,10 +1,11 @@
-import { Component, ElementRef, QueryList, Renderer2, ViewChildren } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, QueryList, Renderer2, ViewChildren } from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
 import { UtilsService } from '../../services/utils.service';
 
 @Component({
   selector: 'app-services-list',
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './services-list.component.html',
   styleUrl: './services-list.component.scss',
 })

@@ -2,13 +2,12 @@ $top: 43%;
 
 .video-container {
   position: relative;
-  border-radius: 16px;
+  border-radius: 16px 16px 0 0;
   overflow: hidden;
   width: 80%;
   transform: scale(1.1);
   min-height: max-content;
   margin: 0 auto;
-  padding: 10px;
   margin-top: 40px;
 
   .arrow-btn-left,
@@ -49,10 +48,10 @@ $top: 43%;
   video {
     width: 100%;
     height: 220px;
-    border-radius: inherit;
+    max-height: 100%;
     object-fit: cover;
     aspect-ratio: 16 / 9;
-    z-index: -1 ;
+    z-index: -1;
   }
 
   .video-btn {
@@ -75,6 +74,69 @@ $top: 43%;
 
     &.active {
       display: none;
+    }
+  }
+
+  .video-progress-bar {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 12px;
+    background-color: var(--color-white);
+    box-sizing: border-box;
+    transition: width 0.2s linear;
+
+    &__line {
+      // width: 20%;
+      height: 100%;
+      background-color: var(--color-dark);
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        right: -10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        background-color: var(--color-dark);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+    }
+
+    &.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+  }
+
+  .video-btn-sound {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    border: 1px solid white;
+    cursor: pointer;
+    background-color: transparent;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    box-sizing: border-box;
+    padding: 15px;
+    font-size: 100%;
+
+    &.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
     }
   }
 }
@@ -118,7 +180,7 @@ $top: 43%;
       transform: scale(1.8);
     }
 
-    video{
+    video {
       height: 400px;
     }
   }
@@ -132,13 +194,15 @@ $top: 43%;
     width: 550px;
     padding: 0;
     margin: 0;
-    border-radius: 20px;
-    transform: scale(.95);
+    border-radius: 20px 20px 0 0;
+    transform: scale(0.95);
 
     &:hover {
       .arrow-btn-left,
       .arrow-btn-right,
-      .video-btn {
+      .video-btn,
+      .video-progress-bar,
+      .video-btn-sound {
         opacity: 1;
         pointer-events: auto;
         display: block;

@@ -1,5 +1,5 @@
 <section class="customers">
-    <h1 class="customers__title" [ngClass]="{'isDark' : isDark}" #elementsParallax>
+    <h1 class="customers__title" [ngClass]="{'dark' : isDark}" #elementsParallax>
         Nuestros clientes
     </h1>
     <span class="customers__description" #elementsParallax>
@@ -16,7 +16,7 @@
         </div>
     </div>
     <button class="customers__call-action" [ngClass]="{'isDark' : isDark}">
-        <span class="view-all-customers">Ver todos los clientes</span>
+        <span class="view-all-customers" [routerLink]="'/customers'">Ver todos los clientes</span>
         <span class="material-icons">
             arrow_forward
         </span>

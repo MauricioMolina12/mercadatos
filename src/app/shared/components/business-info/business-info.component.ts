@@ -1,10 +1,18 @@
-import { Component, ElementRef, QueryList, Renderer2, ViewChildren } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  QueryList,
+  Renderer2,
+  ViewChildren,
+} from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
 import { UtilsService } from '../../services/utils.service';
 
 @Component({
   selector: 'app-business-info',
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './business-info.component.html',
   styleUrl: './business-info.component.scss',
 })
@@ -14,7 +22,7 @@ export class BusinessInfoComponent {
   whatSetsUsApart = [
     {
       icon: 'history',
-      title: '+10 años de experiencia',
+      title: '+39 años de experiencia',
       subtitle:
         'Hemos acompañado a empresas y organizaciones por más de una década, brindando soluciones con resultados reales.',
       hexColor: '#00BCD4',
@@ -64,6 +72,7 @@ export class BusinessInfoComponent {
     this.themeService.darkMode$.subscribe((isDark) => {
       this.isDark = isDark;
     });
+    this.updateExperienceYears();
   }
 
   ngAfterViewInit(): void {
@@ -73,6 +82,27 @@ export class BusinessInfoComponent {
       this.elementsParallax.toArray().forEach((elementRef: ElementRef) => {
         this.renderer.addClass(elementRef.nativeElement, 'active');
       });
+    }
+  }
+
+  private updateExperienceYears(): void {
+    const today = new Date();
+    const baseYear = 1986; 
+
+    let yearsDiff = today.getFullYear() - baseYear;
+
+    const jan20 = new Date(today.getFullYear(), 0, 20); 
+    if (today < jan20) {
+      yearsDiff -= 1;
+    }
+
+    const totalExperience = yearsDiff;
+
+    const historyItem = this.whatSetsUsApart.find(
+      (item) => item.icon === 'history'
+    );
+    if (historyItem) {
+      historyItem.title = `+${totalExperience} años de experiencia`;
     }
   }
 }

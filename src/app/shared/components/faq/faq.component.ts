@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-faq',
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './faq.component.html',
   styleUrls: ['./faq.component.scss']
 })

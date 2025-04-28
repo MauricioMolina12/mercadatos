@@ -57,8 +57,8 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.1),
-        -4px -4px 20px rgba(255, 255, 255, 0.1);
+      // box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.1),
+        // -4px -4px 20px rgba(255, 255, 255, 0.1);
 
       .item__icon {
         width: 25%;
@@ -230,8 +230,13 @@
 
     .section__grid {
       .item {
-        height: 20vh;
-        min-height: 20vh;
+        height: 35vh;
+        min-height: 35vh;
+
+        .item__icon{
+          width: 15%;
+        }
+
         .item__content {
           .item__title {
             font-size: 1.4rem;

@@ -24,7 +24,7 @@ nav {
       width: 50%;
 
       img {
-        max-width: 100%;
+        max-width: 50%;
         height: auto;
       }
     }
@@ -182,7 +182,7 @@ nav {
         }
 
         // Button 'a la mano'
-        &:nth-last-of-type(2) {
+        &:nth-last-of-type(1) {
           width: auto;
           border-radius: 10px;
           justify-content: start;
@@ -429,11 +429,11 @@ nav {
     padding: 0;
     .container {
       .logo {
-        width: 40%;
+        width: 50%;
         margin-left: 10px;
 
         img {
-          width: 80%;
+          width: 60%;
         }
       }
 
@@ -444,12 +444,13 @@ nav {
       .nav-list {
         transform: translateY(0);
         width: auto;
-        min-width: 85%;
+        min-width: 75%;
         min-height: auto;
         height: auto;
         position: static;
         flex-direction: row;
         align-items: center;
+        gap: 0px;
         z-index: 100;
         transition: none;
         background-color: transparent;
@@ -471,7 +472,7 @@ nav {
             z-index: 20;
           }
 
-          &:nth-last-of-type(2) {
+          &:nth-last-of-type(1) {
             padding: 10px;
             background: var(--gradient-primary);
 

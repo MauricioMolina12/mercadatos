@@ -5,6 +5,7 @@ import {
   PLATFORM_ID,
   OnInit,
   HostListener,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ThemeService } from '../../services/theme.service';
@@ -23,6 +24,7 @@ interface NavItem {
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, RouterLinkActive, RouterLink],
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss'],
@@ -61,6 +63,8 @@ export class NavBarComponent implements OnInit {
     {
       label: 'Clientes',
       href: '#contact',
+      routerLink: ['/customers'],
+      routerLinkActive: 'active',
       ariaLabel: 'Ir a la sección de clientes',
     },
     {
@@ -166,10 +170,7 @@ export class NavBarComponent implements OnInit {
       return;
     }
 
-    // Si no es un dropdown, cerrar el menú normalmente
-    setTimeout(() => {
-      this.menuActive = false;
-    }, 200);
+    this.menuActive = false;
   }
 
   @HostListener('window:scroll', ['$event'])

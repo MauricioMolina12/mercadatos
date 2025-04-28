@@ -2,16 +2,16 @@
 
 .hero {
   width: 100%;
-  height: 80vh;
+  height: 100vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 0 0 40px 40px;
+  // border-radius: 0 0 40px 40px;
 
   background: linear-gradient(var(--color-primary), var(--color-secondary)),
-    url("../../../../../public/assets/back-section.avif");
+    url("../../../../../public/assets/back-section.jpg");
 
   background-blend-mode: multiply;
   background-repeat: no-repeat;
@@ -34,8 +34,8 @@
     img {
       max-width: 100%;
       height: auto;
-      animation: topToBottom 0.8s ease-in-out;
       user-select: none;
+      filter: drop-shadow(-30px 30px 40px var(--color-dark));
     }
   }
 
@@ -142,7 +142,7 @@
       align-items: end;
 
       img {
-        max-width: 60%;
+        max-width: 50%;
       }
     }
 
@@ -155,7 +155,7 @@
       .hero-description__paragraph {
         font-size: 1.3rem;
         max-width: 70%;
-        line-height: 40px;
+        line-height: 30px;
       }
 
       .hero-description__button-callaction {
@@ -203,10 +203,11 @@
   .hero {
     flex-direction: row-reverse;
     .hero-image {
-      align-items: end;
+      align-items: center;
+      justify-content: center;
 
       img {
-        max-width: 60%;
+        max-width: 80%;
       }
     }
 
