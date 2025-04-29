@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { trigger, transition, style, animate } from '@angular/animations';
 import { ThemeService } from '../../shared/services/theme.service';
 
 @Component({

@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
 import { HomeComponent } from '../../pages/home/home.component';
-import { AboutUsComponent } from '../../pages/about-us/about-us.component';
 import { ServicesListComponent } from '../../shared/components/services-list/services-list.component';
-import { CustomersComponent } from '../../pages/customers/customers.component';
 
 const routes: Routes = [
   {
@@ -17,7 +15,7 @@ const routes: Routes = [
       },
       {
         path: 'about',
-        component: AboutUsComponent
+        loadChildren: ()=> import('../../pages/about-us/about-us.module').then(m => m.AboutUsModule)
       },
       {
         path: 'services',
@@ -25,7 +23,8 @@ const routes: Routes = [
       },
       {
         path: 'customers',
-        component: CustomersComponent
+        loadChildren: ()=> import('../../pages/customers/customers.module').then(m => m.CustomersModule)
+
       }
     ]
   }
