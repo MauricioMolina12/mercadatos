@@ -1,0 +1,47 @@
+<section class="contact">
+    <header class="contact-header">
+        <h1 class="contact-header__title">Contactanos</h1>
+        <!-- <figure class="contact-header__figure"> -->
+        <!-- <img src="assets/logo-mercadatos.png" alt="logo-mercadatos" loading="lazy"> -->
+        <!-- </figure> -->
+        <form class="contact-header__form">
+            <div class="contact-header__form-user">
+                <div class="contact-header__form-user-name">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name">
+                </div>
+                <div class="contact-header__form-user-lastname">
+                    <label for="lastname">Apellido</label>
+                    <input type="text" id="lastname">
+                </div>
+            </div>
+            <div class="contact-header__form-email">
+                <label for="email">Correo</label>
+                <input type="text" id="email">
+            </div>
+            <div class="contact-header__form-message">
+                <label for="message">Comentario o mensaje</label>
+                <textarea id="message"></textarea>
+            </div>
+            <div class="contact-header__form-submit">
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
+        <figure class="contact-header__figure"></figure>
+    </header>
+    <h2 class="contact-title">Información acerca de nosotros</h2>
+    <div class="contact-information">
+        <div class="contact-information__card" *ngFor="let card of cards">
+            <button class="contact-information__card-button-copy">📋 Copiar</button>
+            <div class="contact-information__card-icon" [ngStyle]="{'background-color' : card.hexColor}">
+                <span class="material-icons">
+                    {{ card.icon }}
+                </span>
+            </div>
+            <div class="contact-information__card-content">
+                <h1 class="contact-information__card-content-title">{{card.title}}</h1>
+                <h1 class="contact-information__card-content-description">{{card.content}}</h1>
+            </div>
+        </div>
+    </div>
+</section>
