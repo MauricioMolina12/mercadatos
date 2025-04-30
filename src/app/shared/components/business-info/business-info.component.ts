@@ -91,7 +91,7 @@ export class BusinessInfoComponent {
 
     let yearsDiff = today.getFullYear() - baseYear;
 
-    const jan20 = new Date(today.getFullYear(), 0, 20); 
+    const jan20 = new Date(today.getFullYear(), 0, 10); 
     if (today < jan20) {
       yearsDiff -= 1;
     }

@@ -3,7 +3,7 @@
     <div class="container">
         <a [routerLink]="''" class="logo" aria-label="Ir al inicio">
             <img [src]="isDarkTheme ? 'assets/logo-mercadatos-white.png' : 'assets/logo-mercadatos.png'"
-                alt="Logo del sitio">
+                alt="Logo del sitio" loading="lazy">
         </a>
 
         <ul class="nav-list" [ngClass]="{'active': menuActive, 'dark': isDarkTheme}">

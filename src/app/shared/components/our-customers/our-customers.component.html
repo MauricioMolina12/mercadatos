@@ -8,15 +8,15 @@
     <div class="slider-container" #elementsParallax (mouseover)="pauseSlider()" (mouseout)="resumeSlider()">
         <div class="slider" [ngStyle]="{'animation-play-state': isPaused ? 'paused' : 'running',}">
             <div class="slide" *ngFor="let customer of customers">
-                <span>{{customer}}</span>
+                <span>{{customer.name}}</span>
             </div>
             <div class="slide" *ngFor="let customer of customers">
-                <span>{{customer}}</span>
+                <span>{{customer.name}}</span>
             </div>
         </div>
     </div>
-    <button class="customers__call-action" [ngClass]="{'isDark' : isDark}">
-        <span class="view-all-customers" [routerLink]="'/customers'">Ver todos los clientes</span>
+    <button class="customers__call-action" [routerLink]="'/customers'" [ngClass]="{'isDark' : isDark}">
+        <span class="view-all-customers">Ver todos los clientes</span>
         <span class="material-icons">
             arrow_forward
         </span>

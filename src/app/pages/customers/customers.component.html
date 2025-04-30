@@ -2,43 +2,80 @@
     <h1 class="customers-title">Ellos Confían en Nosotros</h1>
     <h4 class="customers-subtitle">Tú también puedes</h4>
 
-    <input class="customers-input__search" [formControl]="searchCustomer" placeholder="Buscar cliente por nombre"
-        (input)="searchCustomers()" type="text">
+    <!-- <input class="customers-input__search" [formControl]="searchCustomer" placeholder="Buscar cliente por nombre"
+        (input)="searchCustomers()" type="text"> -->
     <span class="customers-filter-text">Filtrar por</span>
 
-    <div class="customers-category__items">
-        <div class="customers-category__item" [ngClass]="{'active' : activeCategory === 'all'}"
-            (click)="filterCategory('all')">
-            <span>TODAS</span>
-        </div>
 
-        <div class="customers-category__item" [ngClass]="{'active' : category.name === activeCategory}"
-            (click)="filterCategory(category.name)" *ngFor="let category of categoriesCustomers">
-            <span>{{category.name}}</span>
-        </div>
+    <div class="customers-filter-type">
+        <button class="customers-filter-type__category" (click)="switchfilter = 1"
+            [ngClass]="{'active' : switchfilter === 1}">Tipo de
+            entidad</button>
+        <button class="customers-filter-type__department" (click)="switchfilter = 2"
+            [ngClass]="{'active' : switchfilter === 2}">Departamentos</button>
     </div>
 
 
+    <ng-container *ngIf="switchfilter === 1">
+        <div class="customers-category__items">
+            <div class="customers-category__item" [ngClass]="{'active' : activeCategory === 'all'}"
+                (click)="filterCategory('all')">
+                <span>TODAS</span>
+            </div>
 
-    <div class="customers-category__list-grid" *ngIf="activeCategory === 'all'">
-        <div class="customers-category-group" *ngFor="let group of groupedCustomers">
-            <h2 class="letter-title">{{ group.letter }}</h2> 
+            <div class="customers-category__item" [ngClass]="{'active' : category.name === activeCategory}"
+                (click)="filterCategory(category.name)" *ngFor="let category of categoriesCustomers">
+                <span>{{category.name}}</span>
+            </div>
+        </div>
+
+
+
+        <div class="customers-category__list-grid" *ngIf="activeCategory === 'all'">
+            <div class="customers-category-group" *ngFor="let group of groupedCustomers">
+                <h2 class="letter-title">{{ group.letter }}</h2>
+                <ul class="customers-category__list">
+                    <li class="customers-category__list-grid__item" *ngFor="let customer of group.customers">
+                        <span>{{ customer | uppercase }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="customers-category__list-grid" *ngIf="activeCategory !== 'all'">
             <ul class="customers-category__list">
-                <li class="customers-category__list-grid__item" *ngFor="let customer of group.customers">
-                    <span>{{ customer | uppercase }}</span>
+                <li class="customers-category__list-grid__item" *ngFor="let customer of currentPageItems">
+                    <span>{{ customer.name | uppercase }}</span>
                 </li>
             </ul>
         </div>
-    </div>
 
-    <div class="customers-category__list-grid" *ngIf="activeCategory !== 'all'">
-        <ul class="customers-category__list">
-            <li class="customers-category__list-grid__item" *ngFor="let customer of currentPageItems">
-                <span>{{ customer | uppercase }}</span>
+    </ng-container>
+
+    <ng-container *ngIf="switchfilter === 2">
+        <div class="customers-filter-department">
+            <select id="select-departments" (change)="filterEntityByDepartment($event)">
+                <option [value]="department.name" *ngFor="let department of customersService.departments">{{department.name}}
+                </option>
+            </select>
+        </div>
+
+        <figure class="customers-filter-department__image">
+            <img [src]="departmentSelected[nameDepartmentSelected].image" [alt]="departmentSelected[nameDepartmentSelected].name">
+        </figure>
+
+        <ul class="customers-filter-departments__grid" *ngIf="activeCategory === 'all'">
+            <li class="customers-filter-departments__grid-item" *ngFor="let customer of customersByDepartments">
+                <span *ngFor="let entity of customer.customers">
+                    <small [ngStyle]="{'background-color': entity.type === 'PÚBLICA' ? '#28a745' : '#6c757d'}">
+                        <span class="material-icons">{{ entity.type === 'PÚBLICA' ? 'public' : 'lock' }}</span>
+                        {{entity.type}}
+                    </small>
+                    {{ entity.name | uppercase }}
+                </span>
             </li>
         </ul>
-    </div>
-
+    </ng-container>
 
 
     <span class="search-notfound" *ngIf="currentPageItems.length === 0"><span class="material-icons">warning</span> No

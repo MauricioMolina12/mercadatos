@@ -70,6 +70,7 @@ export class NavBarComponent implements OnInit {
     {
       label: 'Contacto',
       href: '#contact',
+      routerLink: ['/contact'],
       ariaLabel: 'Ir a la sección de contacto',
     },
     {

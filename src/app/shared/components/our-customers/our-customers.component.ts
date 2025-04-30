@@ -11,6 +11,7 @@ import {
 import { ThemeService } from '../../services/theme.service';
 import { UtilsService } from '../../services/utils.service';
 import { CustomersService } from '../../services/customers.service';
+import { Entity } from '../../models/customers';
 
 @Component({
   selector: 'app-our-customers',
@@ -24,7 +25,7 @@ export class OurCustomersComponent implements OnInit, OnDestroy {
   isPaused = false;
   isDark: boolean = false;
   private observer!: any;
-  customers: String[] = [];
+  customers: Entity[] = [];
   @ViewChildren('elementsParallax') elementsParallax!: QueryList<ElementRef>;
 
   constructor(

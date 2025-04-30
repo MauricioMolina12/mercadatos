@@ -3,6 +3,8 @@ import { CustomersService } from '../../shared/services/customers.service';
 import { ThemeService } from '../../shared/services/theme.service';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs';
+import { Entity } from '../../shared/models/customers';
+
 
 @Component({
   selector: 'app-customers',
@@ -13,11 +15,12 @@ import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs';
 })
 export class CustomersComponent implements OnInit {
   constructor(
-    private customersService: CustomersService,
+    public customersService: CustomersService,
     private themeService: ThemeService
   ) {}
 
-  categoriesCustomers: { name: string; customers: string[] }[] = [];
+  categoriesCustomers: { name: string; customers: Entity[] }[] = [];
+  customersByDepartments: { name: string; image: string; customers: Entity[] }[] = [];
   activeCategory: string = '';
   currentPage: number = 0;
   itemsPerPage: number = 5;
@@ -26,6 +29,9 @@ export class CustomersComponent implements OnInit {
 
   isDark: boolean = false;
   searchCustomer = new FormControl('');
+  switchfilter: number = 1;
+  departmentSelected: { [key: string]: { name: string, image: string } } = {};
+  nameDepartmentSelected: string = ''
 
   ngOnInit(): void {
     this.activeCategory = 'all';
@@ -48,11 +54,13 @@ export class CustomersComponent implements OnInit {
       }
     });
 
-    console.log(this.categoriesCustomers);
+    this.filterEntityByDepartment('ATLÁNTICO')
 
+    // Set the theme
     this.themeService.darkMode$.subscribe((theme) => {
       this.isDark = theme;
     });
+
   }
 
   filterCategory(key: string) {
@@ -61,6 +69,10 @@ export class CustomersComponent implements OnInit {
     const categoryFound = this.categoriesCustomers.find(
       (category) => category.name === key
     );
+
+    console.log(key);
+    console.log(categoryFound);
+    
 
     if (key === 'all') {
       this.updatePagination();
@@ -71,59 +83,91 @@ export class CustomersComponent implements OnInit {
     }
   }
 
+  filterEntityByDepartment(e: Event | string = '') {
+    this.nameDepartmentSelected = typeof e === 'string' ? e : (e.target as HTMLSelectElement)?.value;
+  
+    if (!this.nameDepartmentSelected) {
+      console.error('No se seleccionó un departamento.');
+      return; 
+    }
+    
+    this.customersService.getEntityByDepartment(this.nameDepartmentSelected).subscribe((result) => {
+      if (result) {
+        this.customersByDepartments = Object.entries(result).map(([name, { image, customers }]) => ({
+          name,
+          image,
+          customers,
+        }));
+        const selectedDepartmentData = this.customersByDepartments.find(
+          (dept) => dept.name === this.nameDepartmentSelected
+        );
+  
+        if (selectedDepartmentData) {
+          this.departmentSelected[this.nameDepartmentSelected] = {
+            name: selectedDepartmentData.name,
+            image: selectedDepartmentData.image,
+          };
+        }
+      }
+    });
+  
+  }
+  
+  
+  
   searchCustomers() {
-
     const allCustomers = this.categoriesCustomers.flatMap(
       (category) => category.customers
     );
-  
+
     this.searchCustomer.valueChanges
       .pipe(
         // startWith(''),
         debounceTime(200),
         distinctUntilChanged(),
-        map(query => query?.trim() || '') 
+        map((query) => query?.trim() || '')
       )
       .subscribe((query) => {
         if (query === '') {
-          this.filterCategory('all'); 
+          this.filterCategory('all');
         } else {
           this.activeCategory = '';
           this.currentPageItems = allCustomers.filter((customer) =>
-            customer.toLowerCase().includes(query.toLowerCase())
+            customer.name.toLowerCase().includes(query.toLowerCase())
           );
         }
       });
   }
-  
-  groupedCustomers: { letter: string, customers: string[] }[] = [];
+
+  groupedCustomers: { letter: string; customers: string[] }[] = [];
 
   updatePagination() {
     const allCustomers = this.categoriesCustomers.flatMap(
       (category) => category.customers
     );
-  
+
     const grouped = allCustomers.reduce((acc, customer) => {
-      const letter = customer.charAt(0).toUpperCase();
+      const letter = customer.name.charAt(0).toUpperCase();
       if (!acc[letter]) {
         acc[letter] = [];
       }
-      acc[letter].push(customer);
+      acc[letter].push(customer.name);
       return acc;
     }, {} as Record<string, string[]>);
-  
+
     this.groupedCustomers = Object.keys(grouped)
       .sort()
       .map((letter) => ({
         letter,
         customers: grouped[letter],
       }));
-  
+
     this.currentPageItems = allCustomers;
     this.totalPages = Math.ceil(allCustomers.length / this.itemsPerPage);
     this.changePage(0);
   }
-  
+
+
 
   changePage(direction: number) {
     const newPage = this.currentPage + direction;
