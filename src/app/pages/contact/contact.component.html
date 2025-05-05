@@ -1,6 +1,6 @@
 <section class="contact">
+    <h1 class="contact-header__title">Contactanos</h1>
     <header class="contact-header">
-        <h1 class="contact-header__title">Contactanos</h1>
         <!-- <figure class="contact-header__figure"> -->
         <!-- <img src="assets/logo-mercadatos.png" alt="logo-mercadatos" loading="lazy"> -->
         <!-- </figure> -->
@@ -27,12 +27,17 @@
                 <button type="submit">Enviar</button>
             </div>
         </form>
-        <figure class="contact-header__figure"></figure>
+        <figure class="contact-header__figure">
+            <img src="assets/contact.png" alt="">
+        </figure>
     </header>
     <h2 class="contact-title">Información acerca de nosotros</h2>
     <div class="contact-information">
         <div class="contact-information__card" *ngFor="let card of cards">
-            <button class="contact-information__card-button-copy">📋 Copiar</button>
+            <button class="contact-information__card-button-copy" (click)="copyToClipboard(card.content)">
+                <span class="material-icons">
+                    content_copy
+                </span> </button>
             <div class="contact-information__card-icon" [ngStyle]="{'background-color' : card.hexColor}">
                 <span class="material-icons">
                     {{ card.icon }}
@@ -43,5 +48,32 @@
                 <h1 class="contact-information__card-content-description">{{card.content}}</h1>
             </div>
         </div>
+    </div>
+    <h2 class="contact-title emails-title">Correos eléctronicos por área</h2>
+    <select class="select-emails-filter" (change)="filterByEmail($event)">
+        <option *ngFor="let email of emailsFlattened" [value]="email" [selected]="email === defaultEmail">
+          {{ email }}
+        </option>
+      </select>
+      
+    <div class="contact-information emails">
+        <div class="contact-information__card" *ngFor="let email of emailsForArea">
+            <button class="contact-information__card-button-copy" (click)="copyToClipboard(email.value)">
+                <span class="material-icons">
+                    content_copy
+                </span> </button>
+            <div class="contact-information__card-icon icon-emails">
+                <span class="material-icons">
+                    {{ email.icon }}
+                </span>
+            </div>
+            <div class="contact-information__card-content">
+                <h1 class="contact-information__card-content-title">{{email.area}}</h1>
+                <h1 class="contact-information__card-content-description">{{email.value}}</h1>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="isTextCopied">
+        <app-modal-confirmation [message]="'Texto copiado: ' + `${textCopied}`" (newItemEvent)="isTextCopied = false"></app-modal-confirmation>
     </div>
 </section>

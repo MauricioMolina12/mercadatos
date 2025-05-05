@@ -60,11 +60,16 @@
             </select>
         </div>
 
+
+        
         <figure class="customers-filter-department__image">
             <img [src]="departmentSelected[nameDepartmentSelected].image" [alt]="departmentSelected[nameDepartmentSelected].name">
         </figure>
+        
 
-        <ul class="customers-filter-departments__grid" *ngIf="activeCategory === 'all'">
+        <h2 class="customers-filter-department__name">Clientes en {{ departmentSelected[nameDepartmentSelected].name }}</h2>
+        
+        <ul class="customers-filter-departments__grid">
             <li class="customers-filter-departments__grid-item" *ngFor="let customer of customersByDepartments">
                 <span *ngFor="let entity of customer.customers">
                     <small [ngStyle]="{'background-color': entity.type === 'PÚBLICA' ? '#28a745' : '#6c757d'}">
@@ -76,10 +81,6 @@
             </li>
         </ul>
     </ng-container>
-
-
-    <span class="search-notfound" *ngIf="currentPageItems.length === 0"><span class="material-icons">warning</span> No
-        se encuentran resultados con el término</span>
 
 
 </section>

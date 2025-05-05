@@ -28,40 +28,74 @@
   </section>
 
   <section class="about-us__mission">
-    <h1 class="about-us__mission-title" [ngClass]="{'dark': isDark}">MISIÓN</h1>
-    <p class="about-us__mission-description">Es una empresa líder en Colombia, especialmente en la Región Caribe, en la prestación de servicios en gestión
-      documental, superando las expectativas de nuestros clientes, de manera eficiente, innovadora y responsable.
-      Conformada por un equipo de trabajo multidisciplinario ampliamente calificado y un alto nivel técnico, logrando la
-      satisfacción de los clientes internos y externos.
-    </p>
-    <figure class="about-us-mission-figure">
-      <img src="assets/foto-mission.jpg" alt="foto-mission" loading="lazy">
+    <div class="about-us__mission-content">
+      <h2 class="about-us__mission-content-title">Misión</h2>
+      <p class="about-us__mission-content-description">
+        Es una empresa líder en Colombia, especialmente en la Región Caribe, en la prestación de servicios en gestión
+        documental, superando las expectativas de nuestros clientes, de manera eficiente, innovadora y responsable.
+        Conformada por un equipo de trabajo multidisciplinario ampliamente calificado y un alto nivel técnico, logrando
+        la satisfacción de los clientes internos y externos.
+      </p>
+    </div>
+    <figure class="about-us__mission-figure">
+      <img src="assets/foto-mission.jpg" alt="mission">
     </figure>
   </section>
 
+  <hr>
 
   <section class="about-us__vision">
-    <h1 class="about-us__vision-title" [ngClass]="{'dark': isDark}">VISIÓN</h1>
-    <figure class="about-us-vision-figure"></figure>
-    <p>Es una empresa líder en Colombia, especialmente en la Región Caribe, en la prestación de servicios en gestión
-      documental, superando las expectativas de nuestros clientes, de manera eficiente, innovadora y responsable.
-      Conformada por un equipo de trabajo multidisciplinario ampliamente calificado y un alto nivel técnico, logrando la
-      satisfacción de los clientes internos y externos.
-    </p>
+    <div class="about-us__vision-content">
+      <h2 class="about-us__vision-content-title">Visión </h2>
+      <p class="about-us__vision-content-description">
+        Ser una empresa reconocida a nivel nacional en los servicios de Gestión Documental, con altos estándares de
+        calidad y seguridad de la información a través de nuestros ejes de acción innovación, transparencia y
+        tecnología.
+
+      </p>
+    </div>
+    <figure class="about-us__vision-figure">
+      <img src="assets/foto-vission.jpg" alt="mission">
+    </figure>
   </section>
 
-  <!-- <div class="slider">
-    <div class="slider__content">
-      <div class="slider__item" *ngIf="currentSlide !== null" [@slideInOut]>
-        <h3>{{ bicResults[currentSlide].title }}</h3>
-        <p>{{ bicResults[currentSlide].description }}</p>
+  <section class="about-us__beginning">
+    <div class="about-us__beginning-content">
+      <h2 class="about-us__beginning-content-title">Principios institucionales</h2>
+      <p class="about-us__beginning-content-description">MERCADATOS S.A.S BIC es una empresa basada en principios
+        organizacionales
+        orientados a dar satisfacción a nuestros clientes internos y externos a partir del trabajo en equipo respetuoso,
+        búsqueda de la excelencia en la calidad del servicio basada en innovación y experiencia. Los más importantes a
+        destacar son:
+      </p>
+    </div>
+    <div class="about-us__beginning-grid">
+      <div class="about-us__beginning-grid__item" *ngFor="let item of beginning">
+        <span class="material-icons">
+          {{ item.icon }}
+        </span> <span>{{item.text}}</span>
       </div>
     </div>
+  </section>
+  <section class="about-us__recognitions">
+    <div class="about-us__recognitions-content">
+      <h2 class="about-us__recognitions-content-title">Resultados y reconocimientos BIC </h2>
+      <p class="about-us__recognitions-content-description">Primera Sociedad de Beneficio e Interés Colectivo en el
+        Sector de los Servicios en Gestión Documental en el Departamento del Atlántico.
 
-    <div class="slider__controls">
-      <button (click)="prevSlide()" [disabled]="currentSlide === 0">‹</button>
-      <span>{{ currentSlide + 1 }} / {{ bicResults.length }}</span>
-      <button (click)="nextSlide()" [disabled]="currentSlide === bicResults.length - 1">›</button>
+      </p>
+      <p class="about-us__recognitions-content-description">En el marco de la Expo BIC, el Gobierno Nacional, en cabeza
+        del Presidente de la República de Colombia, Iván Duque Márquez, nos otorgó Reconocimiento BIC.
+
+      </p>
+      <p class="about-us__recognitions-content-description">En 2023, la Cámara de Comercio de Barranquilla y
+        Confecamaras otorgó reconocimiento a la empresa por el cumplimiento exitoso de los objetivos BIC en la vigencia
+        2022.
+
+      </p>
     </div>
-  </div> -->
+    <div class="about-us__recognitions-slider-wrapper">
+      <app-slider-images [images]="bicResults"></app-slider-images>
+    </div>
+  </section>
 </div>
