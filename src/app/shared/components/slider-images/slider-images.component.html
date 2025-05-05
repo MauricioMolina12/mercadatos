@@ -1,0 +1,28 @@
+<div class="carousel-wrapper">
+  <button
+    tabindex="1"
+    class="slider-button__left"
+    (click)="scrollLeft()"
+    [disabled]="isAtStart"
+    [ngClass]="{'disabled': isAtStart}"
+  >
+    <span class="material-icons">arrow_back</span>
+  </button>
+
+  <div class="carousel" #carousel (scroll)="onScrollCarousel()">
+    <figure class="carousel-item" *ngFor="let img of images; let i = index" (click)="highlightIndexItem(i)">
+      <img [src]="img.image" [alt]="img.name || 'Imagen'" loading="lazy" />
+      <figcaption>{{ img.name }}</figcaption>
+    </figure>
+  </div>
+
+  <button
+    tabindex="2"
+    class="slider-button__right"
+    (click)="scrollRight()"
+    [disabled]="isAtEnd"
+    [ngClass]="{'disabled': isAtEnd}"
+  >
+    <span class="material-icons">arrow_forward</span>
+  </button>
+</div>

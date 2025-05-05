@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-  background-color: var(--color-primary);
+  background: linear-gradient(var(--color-primary),var(--color-secondary));
   // clip-path: polygon(0 11%, 100% 0, 100% 90%, 0 91%);
 
   .container__title,
