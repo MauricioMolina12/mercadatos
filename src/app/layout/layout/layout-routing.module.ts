@@ -18,8 +18,8 @@ const routes: Routes = [
         loadChildren: ()=> import('../../pages/about-us/about-us.module').then(m => m.AboutUsModule)
       },
       {
-        path: 'services',
-        component: ServicesListComponent
+        path: 'services/:id',
+        loadChildren: ()=> import('../../pages/services/services.module').then(m => m.ServicesModule)
       },
       {
         path: 'customers',
@@ -28,7 +28,8 @@ const routes: Routes = [
       {
         path: 'contact',
         loadChildren: ()=> import('../../pages/contact/contact.module').then(m => m.ContactModule)
-      }
+      },
+
 
     ]
   }

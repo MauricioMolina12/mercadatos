@@ -1,4 +1,7 @@
 import { Component, ElementRef } from '@angular/core';
+import { SeoService } from '../../shared/services/seo.service';
+import { ThemeService } from '../../shared/services/theme.service';
+import { SeoData } from '../../shared/models/SEO';
 
 @Component({
   selector: 'app-contact',
@@ -8,6 +11,7 @@ import { Component, ElementRef } from '@angular/core';
 })
 export class ContactComponent {
   isTextCopied: boolean = false;
+  isDark: boolean = false;
   textCopied: string = '';
   emailsFlattened: String[] = [];
 
@@ -51,9 +55,8 @@ export class ContactComponent {
       value: 'mescolarq@mercadatos.com.co',
       area: 'Asistente Administrativo',
       icon: 'person', // asistencia o persona
-    }
+    },
   ];
-  
 
   cards = [
     {
@@ -81,17 +84,33 @@ export class ContactComponent {
       hexColor: '#673AB7',
     },
   ];
-  
 
   defaultEmail = this.emailsForArea[0].value;
   originalEmailsForArea = [...this.emailsForArea];
-  constructor(private el: ElementRef) {
+  constructor(
+    private el: ElementRef,
+    private seoService: SeoService,
+    private themeService: ThemeService
+  ) {
     this.emailsForArea = this.emailsForArea.filter(
       (email) => email.value === this.defaultEmail
     );
     this.emailsFlattened = this.originalEmailsForArea.map(
       (email) => email.area
     );
+
+    this.themeService.darkMode$.subscribe((isDark) => {
+      this.isDark = isDark;
+    });
+  }
+
+
+  ngOnInit(): void {
+    const dataSeo: SeoData = {
+      title: 'CONTACTO - MERCADATOS SAS',
+      description: 'En MERCADATOS S.A.S BIC, estamos comprometidos en brindarte soluciones integrales en gestión documental, investigación de mercados, asesoría jurídica y servicios tecnológicos. Nuestro equipo multidisciplinario está listo para atender tus necesidades con eficiencia y profesionalismo'
+    };
+    this.seoService.updateSeoTags(dataSeo);
   }
 
   copyToClipboard(text: string) {
@@ -119,9 +138,10 @@ export class ContactComponent {
     }, 3000);
   }
 
-filterByEmail(e: Event) {
-  const value = (e.target as HTMLSelectElement)?.value;
-  this.emailsForArea = this.originalEmailsForArea.filter(email => email.area === value);
-}
-
+  filterByEmail(e: Event) {
+    const value = (e.target as HTMLSelectElement)?.value;
+    this.emailsForArea = this.originalEmailsForArea.filter(
+      (email) => email.area === value
+    );
+  }
 }

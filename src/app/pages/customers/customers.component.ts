@@ -4,7 +4,8 @@ import { ThemeService } from '../../shared/services/theme.service';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs';
 import { Entity } from '../../shared/models/customers';
-
+import { SeoService } from '../../shared/services/seo.service';
+import { SeoData } from '../../shared/models/SEO';
 
 @Component({
   selector: 'app-customers',
@@ -16,11 +17,16 @@ import { Entity } from '../../shared/models/customers';
 export class CustomersComponent implements OnInit {
   constructor(
     public customersService: CustomersService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private seoService: SeoService
   ) {}
 
   categoriesCustomers: { name: string; customers: Entity[] }[] = [];
-  customersByDepartments: { name: string; image: string; customers: Entity[] }[] = [];
+  customersByDepartments: {
+    name: string;
+    image: string;
+    customers: Entity[];
+  }[] = [];
   activeCategory: string = '';
   currentPage: number = 0;
   itemsPerPage: number = 5;
@@ -30,10 +36,15 @@ export class CustomersComponent implements OnInit {
   isDark: boolean = false;
   searchCustomer = new FormControl('');
   switchfilter: number = 1;
-  departmentSelected: { [key: string]: { name: string, image: string } } = {};
-  nameDepartmentSelected: string = ''
+  departmentSelected: { [key: string]: { name: string; image: string } } = {};
+  nameDepartmentSelected: string = '';
 
   ngOnInit(): void {
+    const dataSeo: SeoData = {
+      title: 'CLIENTES - MERCADATOS SAS',
+      description:'En MERCADATOS S.A.S BIC trabajamos de la mano con organizaciones públicas, privadas y del sector solidario, ofreciendo soluciones integrales que fortalecen sus procesos y mejoran su toma de decisiones. Nuestro compromiso con la excelencia, la innovación y el cumplimiento nos ha convertido en un aliado estratégico para clientes que buscan calidad, transparencia y resultados medibles. Gracias a nuestro enfoque multidisciplinario y experiencia en investigación de mercados, gestión documental, asesoría jurídica y servicios tecnológicos, aportamos valor real a cada proyecto, adaptándonos a las necesidades específicas de cada cliente.'
+    };
+    this.seoService.updateSeoTags(dataSeo);
     this.activeCategory = 'all';
 
     this.searchCustomers();
@@ -54,13 +65,12 @@ export class CustomersComponent implements OnInit {
       }
     });
 
-    this.filterEntityByDepartment('ATLÁNTICO')
+    this.filterEntityByDepartment('ATLÁNTICO');
 
     // Set the theme
     this.themeService.darkMode$.subscribe((theme) => {
       this.isDark = theme;
     });
-
   }
 
   filterCategory(key: string) {
@@ -72,7 +82,6 @@ export class CustomersComponent implements OnInit {
 
     console.log(key);
     console.log(categoryFound);
-    
 
     if (key === 'all') {
       this.updatePagination();
@@ -84,37 +93,39 @@ export class CustomersComponent implements OnInit {
   }
 
   filterEntityByDepartment(e: Event | string = '') {
-    this.nameDepartmentSelected = typeof e === 'string' ? e : (e.target as HTMLSelectElement)?.value;
-  
+    this.nameDepartmentSelected =
+      typeof e === 'string' ? e : (e.target as HTMLSelectElement)?.value;
+
     if (!this.nameDepartmentSelected) {
       console.error('No se seleccionó un departamento.');
-      return; 
+      return;
     }
-    
-    this.customersService.getEntityByDepartment(this.nameDepartmentSelected).subscribe((result) => {
-      if (result) {
-        this.customersByDepartments = Object.entries(result).map(([name, { image, customers }]) => ({
-          name,
-          image,
-          customers,
-        }));
-        const selectedDepartmentData = this.customersByDepartments.find(
-          (dept) => dept.name === this.nameDepartmentSelected
-        );
-  
-        if (selectedDepartmentData) {
-          this.departmentSelected[this.nameDepartmentSelected] = {
-            name: selectedDepartmentData.name,
-            image: selectedDepartmentData.image,
-          };
+
+    this.customersService
+      .getEntityByDepartment(this.nameDepartmentSelected)
+      .subscribe((result) => {
+        if (result) {
+          this.customersByDepartments = Object.entries(result).map(
+            ([name, { image, customers }]) => ({
+              name,
+              image,
+              customers,
+            })
+          );
+          const selectedDepartmentData = this.customersByDepartments.find(
+            (dept) => dept.name === this.nameDepartmentSelected
+          );
+
+          if (selectedDepartmentData) {
+            this.departmentSelected[this.nameDepartmentSelected] = {
+              name: selectedDepartmentData.name,
+              image: selectedDepartmentData.image,
+            };
+          }
         }
-      }
-    });
-  
+      });
   }
-  
-  
-  
+
   searchCustomers() {
     const allCustomers = this.categoriesCustomers.flatMap(
       (category) => category.customers
@@ -166,8 +177,6 @@ export class CustomersComponent implements OnInit {
     this.totalPages = Math.ceil(allCustomers.length / this.itemsPerPage);
     this.changePage(0);
   }
-
-
 
   changePage(direction: number) {
     const newPage = this.currentPage + direction;

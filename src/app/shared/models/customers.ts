@@ -4,6 +4,12 @@ export interface Entity {
   type: 'PÚBLICA' | 'PRIVADA';
 }
 
+export interface service {
+  name: string;
+  url: string;
+  slug: string;
+}
+
 export interface department{
     name: string;
     image: string;

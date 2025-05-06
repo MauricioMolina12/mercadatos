@@ -1,0 +1,6 @@
+@import url('../../shared/styles/animations.scss');
+
+.main-content{
+    animation: fadeIn 1s ease;
+    overflow-x: hidden;    
+}

@@ -6,9 +6,12 @@ import {
   OnInit,
   HostListener,
   ChangeDetectionStrategy,
+  ElementRef,
+  ViewChild,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ThemeService } from '../../services/theme.service';
+import { SlugPipe } from '../../pipes/slug.pipe';
 
 interface NavItem {
   label: string;
@@ -32,6 +35,7 @@ interface NavItem {
 export class NavBarComponent implements OnInit {
   menuActive = false;
   isDarkTheme!: boolean;
+  @ViewChild('navList') navListRef!: ElementRef;
 
   navItems: NavItem[] = [
     {
@@ -51,8 +55,10 @@ export class NavBarComponent implements OnInit {
     {
       label: 'Servicios',
       href: '#services',
-      ariaLabel: 'Ir a la sección de servicios',
       isDropdown: true,
+      routerLink: ['/services'],
+      routerLinkActive: 'active',
+      ariaLabel: 'Ir a la sección de servicios',
     },
     {
       label: 'Actualidad',
@@ -101,6 +107,17 @@ export class NavBarComponent implements OnInit {
     }
   }
 
+  convertToSlug(text: string): string {
+    return text
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/[^\w\-]+/g, '')
+      .replace(/\-\-+/g, '-')
+      .trim();
+  }
+
   toggleTheme() {
     this.isDarkTheme = !this.isDarkTheme;
     this.themeService.setTheme(this.isDarkTheme);
@@ -108,6 +125,13 @@ export class NavBarComponent implements OnInit {
     setTimeout(() => {
       this.menuActive = false;
     }, 200);
+  }
+
+  @HostListener('document:click', ['$event'])
+  handleClickOutside(event: MouseEvent) {
+    if (!this.navListRef?.nativeElement.contains(event.target)) {
+      this.activeDropdown = null;
+    }
   }
 
   activeDropdown: string | null = null;
@@ -133,23 +157,27 @@ export class NavBarComponent implements OnInit {
           ? [
               {
                 label: 'SERVICIOS EN GESTIÓN DOCUMENTAL',
+                slug: 'gestion-documental',
                 href: '#service1',
                 ariaLabel: 'Ir a la sección de servicios en gestión documental',
               },
               {
                 label: 'INVESTIGACIÓN Y ESTUDIOS DE MERCADO',
+                slug: 'investigacion-y-estudios-de-mercado',
                 href: '#service2',
                 ariaLabel:
                   'Ir a la sección de servicio de investigación y estudios de mercado',
               },
               {
                 label: 'IMPRESOS GRÁFICOS',
+                slug: 'impresos-graficos',
                 href: '#service2',
                 ariaLabel: 'Ir a la sección de servicio de impresos gráficos',
               },
               {
                 label:
                   'REPRESENTACIÓN LEGAL, ASESORÍAS Y CONSULTORÍAS JURÍDICAS',
+                slug: 'representacion-legal-asesorias-y-consultorias-juridicas',
                 href: '#service2',
                 ariaLabel:
                   'Ir a la sección de servicio de representación legal, asesorías y consultorías jurídicas',

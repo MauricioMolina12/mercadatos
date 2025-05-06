@@ -1,10 +1,11 @@
 import { ElementRef, Injectable, QueryList } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UtilsService {
-  constructor() {}
+  constructor(private title: Title, private meta: Meta) {}
 
   /**
    * Function to observe the intersection of elements in the viewport
@@ -24,7 +25,8 @@ export class UtilsService {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible'); 
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
           }
         });
       },
@@ -37,4 +39,9 @@ export class UtilsService {
 
     return observer; // Returns the observer so that it can be disconnected if necessary
   }
+
+  setTitle(title: string) {
+    this.title.setTitle(title);
+  }
+
 }

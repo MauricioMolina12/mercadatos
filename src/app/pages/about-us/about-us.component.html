@@ -27,7 +27,7 @@
       resultados exitosos certificados por la Norma ISO-9001-2000.</p>
   </section>
 
-  <section class="about-us__mission">
+  <section class="about-us__mission" #elementsParallax>
     <div class="about-us__mission-content">
       <h2 class="about-us__mission-content-title">Misión</h2>
       <p class="about-us__mission-content-description">
@@ -44,7 +44,7 @@
 
   <hr>
 
-  <section class="about-us__vision">
+  <section class="about-us__vision" #elementsParallax>
     <div class="about-us__vision-content">
       <h2 class="about-us__vision-content-title">Visión </h2>
       <p class="about-us__vision-content-description">
@@ -59,7 +59,7 @@
     </figure>
   </section>
 
-  <section class="about-us__beginning">
+  <section class="about-us__beginning" #elementsParallax>
     <div class="about-us__beginning-content">
       <h2 class="about-us__beginning-content-title">Principios institucionales</h2>
       <p class="about-us__beginning-content-description">MERCADATOS S.A.S BIC es una empresa basada en principios
@@ -73,11 +73,13 @@
       <div class="about-us__beginning-grid__item" *ngFor="let item of beginning">
         <span class="material-icons">
           {{ item.icon }}
-        </span> <span>{{item.text}}</span>
+        </span> 
+        <span class="about-us__beginning-grid__item-text">{{item.text}}</span>
       </div>
     </div>
   </section>
-  <section class="about-us__recognitions">
+
+  <section class="about-us__recognitions" #elementsParallax>
     <div class="about-us__recognitions-content">
       <h2 class="about-us__recognitions-content-title">Resultados y reconocimientos BIC </h2>
       <p class="about-us__recognitions-content-description">Primera Sociedad de Beneficio e Interés Colectivo en el

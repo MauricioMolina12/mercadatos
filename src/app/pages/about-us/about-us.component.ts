@@ -1,5 +1,16 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  OnInit,
+  QueryList,
+  Renderer2,
+  ViewChildren,
+} from '@angular/core';
 import { ThemeService } from '../../shared/services/theme.service';
+import { UtilsService } from '../../shared/services/utils.service';
+import { SeoService } from '../../shared/services/seo.service';
+import { SeoData } from '../../shared/models/SEO';
 
 @Component({
   selector: 'app-about-us',
@@ -8,81 +19,101 @@ import { ThemeService } from '../../shared/services/theme.service';
   styleUrls: ['./about-us.component.scss'],
   standalone: false,
 })
-export class AboutUsComponent {
+export class AboutUsComponent implements OnInit{
   isDark: boolean = false;
-  constructor(private themeService: ThemeService) {
+  @ViewChildren('elementsParallax') elementsParallax!: QueryList<ElementRef>;
+
+  constructor(
+    private themeService: ThemeService,
+    private utilsService: UtilsService,
+    private renderer: Renderer2,
+    private seoService: SeoService
+  ) {
     this.themeService.darkMode$.subscribe((isDark) => {
       this.isDark = isDark;
     });
   }
 
-  bicResults: {image: string; name: string;}[] = [
-    {
-      image: 'https://mercadatos.com.co/wp-content/uploads/2023/09/BIC2023-5-640x640.jpg',
-      name: 'Reconocimiento Cámara de Comercio y Confecamaras 2023'
-    },
-    {
-      image: 'https://mercadatos.com.co/wp-content/uploads/2023/09/BIC2023-1-640x640.jpg',
-      name: 'Reconocimiento Cámara de Comercio y Confecamaras 2023'
-    },
-    {
-      image: 'https://mercadatos.com.co/wp-content/uploads/2023/09/BIC2023-4-640x640.jpg',
-      name: 'Reconocimiento Cámara de Comercio y Confecamaras 2023'
-    },
-    {
-      image: 'https://mercadatos.com.co/wp-content/uploads/2023/04/DSC0134-640x640.jpg',
-      name: 'Reconocimiento ExpoBIC 2022'
-    },
-    {
-      image: 'https://mercadatos.com.co/wp-content/uploads/2022/04/3516e3e7-085d-4987-9b17-cd8491078d2c-640x640.jpg',
-      name: 'Stand ExpoBIC 2022'
-    },
-    {
-      image:'https://mercadatos.com.co/wp-content/uploads/2022/04/6EE00082-3E8B-4B59-83D9-A0519959B108-1-640x640.jpg',
-      name: 'Reconocimiento ExpoBIC 2022'
-    },
-    {
-      image: 'https://mercadatos.com.co/wp-content/uploads/2022/04/AnyConv.com__IMG_0325-640x640.jpg',
-      name: 'Vivencias ExpoBIC 2022'
-    },
-    {
-      image:'https://mercadatos.com.co/wp-content/uploads/2022/04/AnyConv.com__IMG_0257-1-640x640.jpg',
-      name: 'Vivencias ExpoBIC 2022'
-    },
-    {
-      image: 'https://mercadatos.com.co/wp-content/uploads/2022/04/AnyConv.com__IMG_0324-640x640.jpg',
-      name: 'Vivencias ExpoBIC 2022'
-    }
+  ngOnInit(): void {
+    const dataSeo: SeoData = {title: 'NOSOTROS - MERCADATOS SAS', description: 'Somos una empresa fundada en Barranquilla en 1986, líder en ofrecer Soluciones Integrales, prestándole un servicio óptimo, seguro, rápido, en calidad y cumplimiento; apoyados en procedimientos, herramientas y modelos innovadores y eficaces, claves para el éxito.'}
+    this.seoService.updateSeoTags(dataSeo);
+  }
 
+  ngAfterViewInit(): void {
+    if (this.elementsParallax.length) {
+      this.utilsService.parallaxEffect(this.elementsParallax, 0.2);
+    } else {
+      this.elementsParallax.toArray().forEach((elementRef: ElementRef) => {
+        this.renderer.addClass(elementRef.nativeElement, 'active');
+      });
+    }
+  }
+
+  bicResults: { image: string; name: string }[] = [
+    {
+      image: 'assets/awards1.jpg',
+      name: 'Reconocimiento Cámara de Comercio y Confecamaras 2023',
+    },
+    {
+      image: 'assets/awards2.jpg',
+      name: 'Reconocimiento Cámara de Comercio y Confecamaras 2023',
+    },
+    {
+      image: 'assets/awards3.jpg',
+      name: 'Reconocimiento Cámara de Comercio y Confecamaras 2023',
+    },
+    {
+      image: 'assets/awards4.jpg',
+      name: 'Reconocimiento ExpoBIC 2022',
+    },
+    {
+      image: 'assets/awards5.jpg',
+      name: 'Stand ExpoBIC 2022',
+    },
+    {
+      image: 'assets/awards6.jpg',
+      name: 'Reconocimiento ExpoBIC 2022',
+    },
+    {
+      image: 'assets/awards7.jpg',
+      name: 'Vivencias ExpoBIC 2022',
+    },
+    {
+      image: 'assets/awards8.jpg',
+      name: 'Vivencias ExpoBIC 2022',
+    },
+    {
+      image: 'assets/awards9.jpg',
+      name: 'Vivencias ExpoBIC 2022',
+    },
   ];
 
   beginning = [
     {
       text: 'Compromiso con la calidad',
-      icon: 'verified' // verificado o calidad certificada
+      icon: 'verified', // verificado o calidad certificada
     },
     {
       text: 'Visión estratégica y objetivos claros',
-      icon: 'visibility' // visión
+      icon: 'visibility', // visión
     },
     {
       text: 'Aprendizaje y formación continua',
-      icon: 'school' // educación, formación
+      icon: 'school', // educación, formación
     },
     {
       text: 'Constancia y dedicación',
-      icon: 'schedule' // constancia, tiempo, esfuerzo
+      icon: 'schedule', // constancia, tiempo, esfuerzo
     },
     {
       text: 'Identidad y buen clima organizacional',
-      icon: 'diversity_3' // trabajo en equipo, cultura
+      icon: 'diversity_3', // trabajo en equipo, cultura
     },
     {
       text: 'Responsabilidad Social y Empresarial',
-      icon: 'public' // compromiso con el entorno
-    }
+      icon: 'public', // compromiso con el entorno
+    },
   ];
-  
 
   currentSlide = 0;
 

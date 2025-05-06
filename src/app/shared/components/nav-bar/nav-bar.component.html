@@ -6,12 +6,12 @@
                 alt="Logo del sitio" loading="lazy">
         </a>
 
-        <ul class="nav-list" [ngClass]="{'active': menuActive, 'dark': isDarkTheme}">
+        <ul #navList class="nav-list" [ngClass]="{'active': menuActive, 'dark': isDarkTheme}">
 
-            <li class="nav-list__item" *ngFor="let item of navItems" (click)="clicItemNav(item.label)">
+            <li class="nav-list__item" *ngFor="let item of navItems" (click)="clicItemNav(item.label)" >
 
                 <a  
-                    [attr.href]="item.href" 
+                    [attr.href]="item.href"     
                     [attr.aria-label]="item.ariaLabel" 
                     [routerLink]="item.routerLink"
                     [routerLinkActive]="['active']"
@@ -34,8 +34,8 @@
                     [class.hidden]="activeDropdown !== item.label">
                     
                     <ul class="dropdown-list">
-                        <li *ngFor="let item of contentDropdown">
-                            <a  [ngClass]="{'dark' : isDarkTheme}" [attr.aria-label]="item.ariaLabel">{{item.label}}</a>
+                        <li *ngFor="let content of contentDropdown">
+                            <a [routerLink]="item.label === 'Servicios' ? ['/services', content.slug] : null" [ngClass]="{'dark' : isDarkTheme}" [attr.aria-label]="content.ariaLabel">{{content.label}}</a>
                         </li>
                     </ul>
                 </div>
