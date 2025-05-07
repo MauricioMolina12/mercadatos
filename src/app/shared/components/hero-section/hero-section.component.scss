@@ -97,6 +97,27 @@
   }
 }
 
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+  .hero {
+    .hero-image {
+      display: none;
+    }
+
+    .hero-description {
+      .hero-description__paragraph {
+        font-size: 0.8rem;
+        line-height: 24px;
+      }
+
+      .hero-description__button-callaction {
+        font-size: 1rem;
+        box-sizing: border-box;
+        padding-block: 10px;
+      }
+    }
+  }
+}
+
 @media (max-width: 320px) {
   .hero {
     height: auto;

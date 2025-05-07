@@ -11,6 +11,7 @@
             <li class="nav-list__item" *ngFor="let item of navItems" (click)="clicItemNav(item.label)" >
 
                 <a  
+                    class="nav-list__item-link"
                     [attr.href]="item.href"     
                     [attr.aria-label]="item.ariaLabel" 
                     [routerLink]="item.routerLink"
@@ -34,8 +35,8 @@
                     [class.hidden]="activeDropdown !== item.label">
                     
                     <ul class="dropdown-list">
-                        <li *ngFor="let content of contentDropdown">
-                            <a [routerLink]="item.label === 'Servicios' ? ['/services', content.slug] : null" [ngClass]="{'dark' : isDarkTheme}" [attr.aria-label]="content.ariaLabel">{{content.label}}</a>
+                        <li *ngFor="let content of contentDropdown" (click)="redirectItem(content.slug, 'services')">
+                            <a [ngClass]="{'dark' : isDarkTheme, 'active' : content.slug === itemActive}" [attr.aria-label]="content.ariaLabel">{{content.label}}</a>
                         </li>
                     </ul>
                 </div>

@@ -1,4 +1,16 @@
 <section class="hero">
-    <!-- <video src="assets/videos-services/gestionDocumental.mp4" autoplay muted style="width: 100%; height: auto;"></video> -->
-    <h1 class="hero-title">{{info?.name}}</h1>
-</section>
+    <div class="hero-layer"></div>
+    <video
+      #videoPlayer
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="none"
+    >
+      <source [src]="url_video" type="video/mp4" />
+    </video>
+    <h1 #heroTitle class="hero-title">{{ info?.name }}</h1>
+    <p  #heroDescription class="hero-description">{{info?.description}}</p>
+  </section>
+  

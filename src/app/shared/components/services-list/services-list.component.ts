@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, ElementRef, QueryList, Renderer2, ViewChildren } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  QueryList,
+  Renderer2,
+  ViewChildren,
+} from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
 import { UtilsService } from '../../services/utils.service';
 
@@ -12,7 +19,6 @@ import { UtilsService } from '../../services/utils.service';
 export class ServicesListComponent {
   isDark: boolean = false;
   @ViewChildren('elementsParallax') elementsParallax!: QueryList<ElementRef>;
-
 
   constructor(
     private themeService: ThemeService,
@@ -33,6 +39,7 @@ export class ServicesListComponent {
       color: '#A2C6F5',
       description:
         'Organizamos, digitalizamos y gestionamos tu documentación para asegurar acceso eficiente y cumplimiento normativo.',
+      slug: 'gestion-documental',
     },
     {
       label: 'Investigación y estudios de mercado',
@@ -43,6 +50,7 @@ export class ServicesListComponent {
       color: '#C5B4E3',
       description:
         'Brindamos análisis detallados del mercado y comportamiento del consumidor para apoyar tus decisiones estratégicas.',
+      slug: 'investigacion-y-estudios-de-mercado',
     },
     {
       label: 'Impresos gráficos',
@@ -52,6 +60,7 @@ export class ServicesListComponent {
       color: '#F5B4CF',
       description:
         'Diseñamos y producimos material impreso de alta calidad, desde folletos hasta papelería corporativa personalizada.',
+      slug: 'impresos-graficos',
     },
     {
       label: 'Representación legal, asesorías y consultorías jurídicas',
@@ -62,6 +71,7 @@ export class ServicesListComponent {
       color: '#B8E3C1',
       description:
         'Asesoramos y representamos legalmente a tu organización con soluciones jurídicas a la medida de tus necesidades.',
+      slug: 'representacion-legal-asesorias-y-consultorias-juridicas',
     },
   ];
 

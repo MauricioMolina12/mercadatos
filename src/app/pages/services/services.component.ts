@@ -14,8 +14,9 @@ import { ServicesService } from '../../shared/services/services.service';
 export class ServicesComponent implements OnInit {
   isDark: boolean = false;
   slug: any;
-  service: { name: string; url: string; slug: string } = {
+  service: { name: string; description: string; url: string; slug: string } = {
     name: '',
+    description: '',
     url: '',
     slug: '',
   };
@@ -37,7 +38,6 @@ export class ServicesComponent implements OnInit {
       const service = this.servicesService.getServiceBySlug(this.slug);
       if (service) {
         this.service = service;
-        console.log(this.service);
       }
     });
     const dataSeo: SeoData = {

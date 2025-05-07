@@ -86,7 +86,7 @@ nav {
       z-index: -2;
       left: 0;
       width: 100%;
-      min-height: 75vh;
+      min-height: 86vh;
       box-sizing: border-box;
       background-color: var(--background-color);
       list-style: none;
@@ -97,7 +97,9 @@ nav {
       align-items: start;
       gap: 10px;
       transition: 0.5s ease;
-      border-radius: 0 0 30px 30px;
+      // border-radius: 0 0 30px 30px;
+      padding: 0;
+      padding-left: 22px;
 
       .nav-list__item {
         cursor: pointer;
@@ -105,7 +107,7 @@ nav {
         flex-direction: column;
         align-items: start;
 
-        a {
+        &-link {
           text-decoration: none;
           font-size: 1rem;
           color: var(--color-dark-gray);
@@ -203,20 +205,22 @@ nav {
         }
 
         .nav-dropdown {
-          width: 300px;
+          width: 100%;
           height: 0;
           max-height: 0;
-          background-color: var(--color-white-tint);
-          border-radius: 8px;
+          // background-color: var(--color-white-tint);
           max-height: 0;
           overflow: hidden;
+          transform: translateY(-5px);
           transition: all 0.3s ease;
+          position: relative;
 
           &.visible {
             min-height: min-content;
             max-height: max-content;
             margin-top: 10px;
-            padding: 15px 10px;
+            padding-block: 15px;
+            transform: translateY(0);
           }
 
           &.hidden {
@@ -227,6 +231,16 @@ nav {
             background-color: rgb(27, 27, 27);
           }
 
+          &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10%;
+            width: 2px;
+            height: 80%;
+            background-color: var(--color-medium);
+          }
+
           .dropdown-list {
             height: 100%;
             padding: 0;
@@ -235,23 +249,45 @@ nav {
             flex-direction: column;
             align-items: start;
             justify-content: center;
-            gap: 40px;
             list-style: none;
 
-            li a {
-              text-decoration: none;
-              font-size: 1.2rem;
-              color: var(--color-dark-gray);
-              position: relative;
-              font-weight: 400;
-              position: relative;
-              gap: 4px;
-              user-select: none;
-              font-size: 0.68rem;
+            li {
+              width: 100%;
+              padding-block: 15px;
 
-              &.dark {
-                color: var(--color-white);
-                // font-weight: 100;
+              a {
+                display: flex;
+                justify-content: start;
+                text-decoration: none;
+                font-size: 1.2rem;
+                color: var(--color-dark-gray);
+                position: relative;
+                font-weight: 400;
+                position: relative;
+                gap: 4px;
+                user-select: none;
+                font-size: 0.68rem;
+                position: relative;
+
+                &.active {
+                  margin-left: 10px;
+                  font-weight: 600;
+
+                  &::after {
+                    content: "";
+                    position: absolute;
+                    left: -8px;
+                    top: 40%;
+                    width: 6px;
+                    height: 2px;
+                    background-color: var(--color-medium);
+                  }
+                }
+
+                &.dark {
+                  color: var(--color-white);
+                  // font-weight: 100;
+                }
               }
             }
           }

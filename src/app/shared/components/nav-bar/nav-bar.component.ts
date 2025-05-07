@@ -9,9 +9,8 @@ import {
   ElementRef,
   ViewChild,
 } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ThemeService } from '../../services/theme.service';
-import { SlugPipe } from '../../pipes/slug.pipe';
 
 interface NavItem {
   label: string;
@@ -56,8 +55,8 @@ export class NavBarComponent implements OnInit {
       label: 'Servicios',
       href: '#services',
       isDropdown: true,
-      routerLink: ['/services'],
-      routerLinkActive: 'active',
+      // routerLink: ['/services'],
+      // routerLinkActive: 'active',
       ariaLabel: 'Ir a la sección de servicios',
     },
     {
@@ -92,7 +91,8 @@ export class NavBarComponent implements OnInit {
   constructor(
     private themeService: ThemeService,
     @Inject(DOCUMENT) private document: Document,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -104,6 +104,11 @@ export class NavBarComponent implements OnInit {
       const isDark = localStorage.getItem('theme') === 'dark';
       this.isDarkTheme = isDark;
       this.themeService.setTheme(isDark);
+    }
+
+    const url = this.router.url;
+    if (url.includes('/services')) {
+      this.itemActive = '';
     }
   }
 
@@ -140,18 +145,7 @@ export class NavBarComponent implements OnInit {
 
     if (isDropdown) {
       const isSameDropdown = this.activeDropdown === label;
-
-      // Alternar el dropdown activo
       this.activeDropdown = isSameDropdown ? null : label;
-
-      // Manejo del layer visual
-      // if (!isSameDropdown) {
-      //   document.body.classList.add('layer');
-      // } else {
-      //   document.body.classList.remove('layer');
-      // }
-
-      // Contenido dinámico
       this.contentDropdown =
         label === 'Servicios'
           ? [
@@ -197,8 +191,19 @@ export class NavBarComponent implements OnInit {
             ];
 
       return;
+    } else {
+      this.menuActive = false;
     }
+  }
 
+  itemActive: string = '';
+  redirectItem(label: string, item: 'services' | 'news') {
+    switch (item) {
+      case 'services':
+        this.router.navigate(['/services', label]);
+        this.itemActive = label;
+        break;
+    }
     this.menuActive = false;
   }
 

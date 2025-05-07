@@ -3,7 +3,7 @@
         Nuestros servicios
     </h1>
     <div class="services-grid">
-        <div class="services-grid-item" #elementsParallax *ngFor="let service of services" [ngClass]="{'dark': isDark}">
+        <div class="services-grid-item" [routerLink]="['/services', service.slug]" #elementsParallax *ngFor="let service of services" [ngClass]="{'dark': isDark}">
             <div class="services-grid-item-inner">
                 <div class="services-grid-item-front">
                     <div class="services-grid-item-image">

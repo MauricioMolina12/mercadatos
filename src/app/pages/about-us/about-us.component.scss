@@ -1,4 +1,4 @@
-@import url('../../shared/styles/animations.scss');
+@import url("../../shared/styles/animations.scss");
 
 .about-us__wrapper {
   width: 100%;
@@ -300,7 +300,13 @@
       &-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         &__item {
-          font-size: 1.2rem;
+          span {
+            font-size: 2rem;
+          }
+
+          &-text{
+            font-size: 1.2rem !important;
+          }
         }
       }
     }
@@ -544,4 +550,3 @@
 /* Big screens */
 @media (min-width: 1920px) {
 }
-
