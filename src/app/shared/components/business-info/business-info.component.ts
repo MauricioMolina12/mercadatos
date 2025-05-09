@@ -45,7 +45,7 @@ export class BusinessInfoComponent {
       icon: 'person',
       title: 'Compromiso con el Cliente',
       subtitle:
-        'UBrindamos un servicio cercano, ágil y personalizado, orientado a satisfacer las necesidades específicas de cada organización. Nuestra prioridad es generar confianza, eficiencia y seguridad en cada etapa del proceso documental.',
+        'Brindamos un servicio cercano, ágil y personalizado, orientado a satisfacer las necesidades específicas de cada organización. Nuestra prioridad es generar confianza, eficiencia y seguridad en cada etapa del proceso documental.',
       hexColor: 'rgb(177, 17, 158)',
     },
     {
