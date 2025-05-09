@@ -1,7 +1,7 @@
 import { Component, ElementRef } from '@angular/core';
 import { SeoService } from '../../shared/services/seo.service';
 import { ThemeService } from '../../shared/services/theme.service';
-import { SeoData } from '../../shared/models/SEO';
+import { SeoData } from '../../shared/models/seo';
 
 @Component({
   selector: 'app-contact',

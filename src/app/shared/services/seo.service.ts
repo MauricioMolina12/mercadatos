@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { SeoData } from '../models/SEO';
+import { SeoData } from '../models/seo';
 
 
 @Injectable({

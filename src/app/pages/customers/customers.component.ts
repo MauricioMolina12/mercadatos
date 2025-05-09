@@ -5,7 +5,7 @@ import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs';
 import { Entity } from '../../shared/models/customers';
 import { SeoService } from '../../shared/services/seo.service';
-import { SeoData } from '../../shared/models/SEO';
+import { SeoData } from '../../shared/models/seo';
 
 @Component({
   selector: 'app-customers',

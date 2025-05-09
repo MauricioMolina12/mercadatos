@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from '../../shared/services/theme.service';
 import { SeoService } from '../../shared/services/seo.service';
-import { SeoData } from '../../shared/models/SEO';
+import { SeoData } from '../../shared/models/seo';
 import { ActivatedRoute } from '@angular/router';
 import { ServicesService } from '../../shared/services/services.service';
 

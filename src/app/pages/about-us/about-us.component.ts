@@ -10,7 +10,7 @@ import {
 import { ThemeService } from '../../shared/services/theme.service';
 import { UtilsService } from '../../shared/services/utils.service';
 import { SeoService } from '../../shared/services/seo.service';
-import { SeoData } from '../../shared/models/SEO';
+import { SeoData } from '../../shared/models/seo';
 
 @Component({
   selector: 'app-about-us',

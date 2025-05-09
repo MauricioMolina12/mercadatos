@@ -22,44 +22,44 @@ export class BusinessInfoComponent {
   whatSetsUsApart = [
     {
       icon: 'history',
-      title: '+39 años de experiencia',
+      title: 'Experiencia y Trayectoria',
       subtitle:
-        'Hemos acompañado a empresas y organizaciones por más de una década, brindando soluciones con resultados reales.',
+        'Contamos con más de 35 años de experiencia ofreciendo soluciones integrales en organización, custodia y conservación documental, lo que nos convierte en pioneros y referentes en la región.',
       hexColor: '#00BCD4',
     },
     {
-      icon: 'build',
-      title: 'Soluciones a medida',
-      subtitle:
-        'Nos enfocamos en entender tus necesidades específicas para ofrecerte un servicio completamente personalizado.',
-      hexColor: '#4CAF50',
-    },
-    {
-      icon: 'group',
-      title: 'Equipo multidisciplinario',
-      subtitle:
-        'Contamos con profesionales de diversas áreas que trabajan en conjunto para ofrecer una visión integral.',
-      hexColor: '#FF9800',
-    },
-    {
       icon: 'memory',
-      title: 'Tecnología de vanguardia',
+      title: 'Infraestructura Especializada',
       subtitle:
-        'Utilizamos herramientas modernas para garantizar eficiencia, seguridad y calidad en todos nuestros procesos.',
+        'Disponemos de bodegas especialmente acondicionadas para la custodia de archivos, que cumplen con los requisitos técnicos en materia de seguridad, control ambiental y acceso restringido, garantizando la integridad y preservación de los documentos.',
       hexColor: '#673AB7',
     },
     {
-      icon: 'star',
-      title: 'Compromiso con la excelencia',
+      icon: 'group',
+      title: 'Talento Humano Calificado',
       subtitle:
-        'No solo cumplimos, buscamos superar tus expectativas en cada proyecto.',
+        'Nuestro equipo está conformado por profesionales capacitados en procesos archivísticos y en constante formación, lo que nos permite ofrecer un servicio altamente especializado y actualizado según las mejores prácticas del sector.',
+      hexColor: '#FF9800',
+    },
+    {
+      icon: 'person',
+      title: 'Compromiso con el Cliente',
+      subtitle:
+        'UBrindamos un servicio cercano, ágil y personalizado, orientado a satisfacer las necesidades específicas de cada organización. Nuestra prioridad es generar confianza, eficiencia y seguridad en cada etapa del proceso documental.',
+      hexColor: 'rgb(177, 17, 158)',
+    },
+    {
+      icon: 'star',
+      title: 'Cumplimiento Normativo',
+      subtitle:
+        'Nuestros procesos están alineados con los lineamientos establecidos por la Ley 594 de 2000 del Archivo General de la Nación, asegurando la correcta administración de la información documental de nuestros clientes, con estándares de calidad y legalidad.',
       hexColor: '#FFC107',
     },
     {
       icon: 'eco',
-      title: 'Responsabilidad social y ambiental',
+      title: 'Cultura de Mejora Continua',
       subtitle:
-        'Implementamos prácticas sostenibles y apoyamos iniciativas que generan impacto positivo en la comunidad.',
+        'Implementamos programas permanentes de capacitación y actualización tecnológica, lo que nos permite adaptarnos a los cambios normativos y a las nuevas necesidades del mercado, fortaleciendo así nuestra propuesta de valor.',
       hexColor: '#8BC34A',
     },
   ];
