@@ -18,7 +18,9 @@ export class HeroVideoComponent implements OnInit, OnChanges {
   @Input() info: any;
   url_video: string = '';
 
-  ngOnInit(): void {}
+  ngOnInit(): void { 
+    console.log(this.url_video);
+  }
 
   @ViewChild('videoPlayer', { static: false })
   videoPlayer!: ElementRef<HTMLVideoElement>;
@@ -27,29 +29,36 @@ export class HeroVideoComponent implements OnInit, OnChanges {
   @ViewChild('heroDescription') heroDescription!: ElementRef;
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['info'] && changes['info'].currentValue) {
-      const newUrl = changes['info'].currentValue.url;
+    const infoChange = changes['info'];
+
+    if (infoChange?.currentValue) {
+      const newUrl = infoChange.currentValue.url;
+
       if (newUrl && newUrl !== this.url_video) {
         this.url_video = newUrl;
 
-        const title = this.heroTitle?.nativeElement;
-        const description = this.heroDescription?.nativeElement
-        const videoEl = this.videoPlayer?.nativeElement;
-        if (videoEl) {
-          videoEl.load();
-          videoEl.play();
-        }
-
-        if (title && description) {
-          title.classList.remove('animation');
-          void title.offsetWidth;
-          title.classList.add('animation');
-
-          description.classList.remove('animation');
-          void description.offsetWidth;
-          description.classList.add('animation');
-        }
+        console.log(this.url_video);
+        this.reloadVideo();
+        this.restartAnimation(this.heroTitle);
+        this.restartAnimation(this.heroDescription);
       }
+    }
+  }
+
+  private reloadVideo(): void {
+    const videoEl = this.videoPlayer?.nativeElement;
+    if (videoEl) {
+      videoEl.load();
+      videoEl.play();
+    }
+  }
+
+  private restartAnimation(elementRef: ElementRef): void {
+    const el = elementRef?.nativeElement;
+    if (el) {
+      el.classList.remove('animation');
+      void el.offsetWidth;
+      el.classList.add('animation');
     }
   }
 }

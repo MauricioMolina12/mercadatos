@@ -140,7 +140,7 @@ export const services: ServiceData[] = [
     description: 'Realizamos estudios cuantitativos y cualitativos para entender las dinámicas del mercado, identificar oportunidades, analizar la competencia y conocer a profundidad el comportamiento del consumidor, con el fin de apoyar la toma de decisiones estratégicas en tu organización.'
   },
   {
-    name: 'REPRESENTACIÓN LEGAL',
+    name: 'REPRESENTACIÓN LEGAL, ASESORÍAS Y CONSULTORÍAS JURÍDICAS',
     url: 'assets/videos-services/representacionLegal.mp4',
     slug: 'representacion-legal-asesorias-y-consultorias-juridicas',
     description: 'Brindamos acompañamiento legal especializado en distintas áreas del derecho, ofreciendo representación jurídica, asesorías estratégicas y consultoría normativa, enfocadas en proteger los intereses de nuestros clientes y garantizar el cumplimiento de la legislación vigente.'

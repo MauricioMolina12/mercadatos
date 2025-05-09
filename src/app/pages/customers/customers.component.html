@@ -11,6 +11,8 @@
         <button class="customers-filter-type__category" (click)="switchfilter = 1"
             [ngClass]="{'active' : switchfilter === 1}">Tipo de
             entidad</button>
+        <button class="customers-filter-type__providers" (click)="switchfilter = 3"
+            [ngClass]="{'active' : switchfilter === 3}">Nuestros aliados y proveedores</button>
         <button class="customers-filter-type__department" (click)="switchfilter = 2"
             [ngClass]="{'active' : switchfilter === 2}">Departamentos</button>
     </div>
@@ -55,20 +57,23 @@
     <ng-container *ngIf="switchfilter === 2">
         <div class="customers-filter-department">
             <select id="select-departments" (change)="filterEntityByDepartment($event)">
-                <option [value]="department.name" *ngFor="let department of customersService.departments">{{department.name}}
+                <option [value]="department.name" *ngFor="let department of customersService.departments">
+                    {{department.name}}
                 </option>
             </select>
         </div>
 
 
-        
-        <figure class="customers-filter-department__image">
-            <img [src]="departmentSelected[nameDepartmentSelected].image" [alt]="departmentSelected[nameDepartmentSelected].name">
-        </figure>
-        
 
-        <h2 class="customers-filter-department__name">Clientes en {{ departmentSelected[nameDepartmentSelected].name }}</h2>
-        
+        <figure class="customers-filter-department__image">
+            <img [src]="departmentSelected[nameDepartmentSelected].image"
+                [alt]="departmentSelected[nameDepartmentSelected].name">
+        </figure>
+
+
+        <h2 class="customers-filter-department__name">Clientes en {{ departmentSelected[nameDepartmentSelected].name }}
+        </h2>
+
         <ul class="customers-filter-departments__grid">
             <li class="customers-filter-departments__grid-item" *ngFor="let customer of customersByDepartments">
                 <span *ngFor="let entity of customer.customers">

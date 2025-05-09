@@ -129,7 +129,7 @@ export class NavBarComponent implements OnInit {
 
     setTimeout(() => {
       this.menuActive = false;
-    }, 200);
+    }, 1000);
   }
 
   @HostListener('document:click', ['$event'])
