@@ -1,0 +1,21 @@
+<div class="stack-container">
+    <div class="card" *ngFor="let file of files; let i = index" [ngStyle]="{
+        'z-index': files.length - i,
+        'transform': 'translateY(' + (i - currentIndex) * 10 + 'px) scale(' + (1 - (i - currentIndex) * 0.02) + ')',
+        'opacity': i < currentIndex ? 0 : 1
+        }">
+        <img class="lazo" src="assets/lazo.webp" alt="lazo">
+        <div class="card__header">
+            <h5>{{ file.name }}</h5>
+            <h3>{{file.year}}</h3>
+        </div>
+        <div class="card__button">
+            <a [href]="file.path" target="_blank" download>Descargar</a>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button (click)="prevCard()" [disabled]="currentIndex === 0">‹</button>
+        <button (click)="nextCard()" [disabled]="currentIndex >= files.length - 1">›</button>
+    </div>
+</div>

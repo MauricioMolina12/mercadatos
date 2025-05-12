@@ -1,4 +1,4 @@
-import { NgClass, NgFor } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -13,12 +13,12 @@ import {
 @Component({
   selector: 'app-slider-images',
   standalone: true,
-  imports: [NgFor, NgClass],
+  imports: [NgFor, NgClass, NgIf],
   templateUrl: './slider-images.component.html',
   styleUrl: './slider-images.component.scss',
 })
 export class SliderImagesComponent implements OnChanges, OnInit, AfterViewInit {
-  @Input() images: { image: string; name: string }[] = [];
+  @Input() images: { image: string; name: string; description?: string }[] = [];
   @ViewChild('carousel', { static: true }) carousel!: ElementRef;
   isAtStart = true;
   isAtEnd = false;
@@ -27,14 +27,18 @@ export class SliderImagesComponent implements OnChanges, OnInit, AfterViewInit {
   currentSlide = 0;
 
   ngOnInit(): void {
-    this.setActiveItem(0);
+    // this.setActiveItem(0);
   }
 
   ngOnChanges() {
     this.groupImages();
   }
 
-  ngAfterViewInit(): void {}
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.setActiveItem(0);
+    }, 1000);
+  }
 
   groupImages() {
     this.groupedImages = [];
@@ -64,9 +68,10 @@ export class SliderImagesComponent implements OnChanges, OnInit, AfterViewInit {
     const el = this.carousel.nativeElement;
     const scrollLeft = el.scrollLeft;
     const maxScrollLeft = el.scrollWidth - el.clientWidth;
+    const tolerance = 10;
 
-    this.isAtStart = scrollLeft <= 0;
-    this.isAtEnd = scrollLeft >= maxScrollLeft;
+    this.isAtStart = scrollLeft <= tolerance;
+    this.isAtEnd = scrollLeft + tolerance >= maxScrollLeft;
   }
 
   highlightCenteredItem() {
@@ -89,17 +94,34 @@ export class SliderImagesComponent implements OnChanges, OnInit, AfterViewInit {
       item.classList.remove('active');
     });
 
+    const scrollLeft = carouselEl.scrollLeft;
+    const scrollWidth = carouselEl.scrollWidth;
+    const clientWidth = carouselEl.clientWidth;
+
+    const atStart = scrollLeft <= 1;
+    const atEnd = scrollLeft + clientWidth >= scrollWidth - 1;
+
+    if (atStart) {
+      closestItemIndex = 0;
+    } else if (atEnd) {
+      closestItemIndex = items.length - 1;
+    }
+
     items[closestItemIndex]?.classList.add('active');
   }
 
   highlightIndexItem(index: number) {
-    const item = this.carousel.nativeElement.querySelectorAll('.carousel-item')[index];
+    const item =
+      this.carousel.nativeElement.querySelectorAll('.carousel-item')[index];
     if (item) {
-      item.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      item.scrollIntoView({
+        behavior: 'smooth',
+        inline: 'center',
+        block: 'nearest',
+      });
       this.setActiveItem(index);
     }
   }
-  
 
   setActiveItem(index: number) {
     const items =

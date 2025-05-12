@@ -21,14 +21,14 @@ export class BusinessInfoComponent {
   @ViewChildren('elementsParallax') elementsParallax!: QueryList<ElementRef>;
   whatSetsUsApart = [
     {
-      icon: 'history',
+      icon: 'event',
       title: 'Experiencia y Trayectoria',
       subtitle:
         'Contamos con más de 35 años de experiencia ofreciendo soluciones integrales en organización, custodia y conservación documental, lo que nos convierte en pioneros y referentes en la región.',
       hexColor: '#00BCD4',
     },
     {
-      icon: 'memory',
+      icon: 'warehouse',
       title: 'Infraestructura Especializada',
       subtitle:
         'Disponemos de bodegas especialmente acondicionadas para la custodia de archivos, que cumplen con los requisitos técnicos en materia de seguridad, control ambiental y acceso restringido, garantizando la integridad y preservación de los documentos.',
@@ -49,14 +49,14 @@ export class BusinessInfoComponent {
       hexColor: 'rgb(177, 17, 158)',
     },
     {
-      icon: 'star',
+      icon: 'gavel',
       title: 'Cumplimiento Normativo',
       subtitle:
         'Nuestros procesos están alineados con los lineamientos establecidos por la Ley 594 de 2000 del Archivo General de la Nación, asegurando la correcta administración de la información documental de nuestros clientes, con estándares de calidad y legalidad.',
       hexColor: '#FFC107',
     },
     {
-      icon: 'eco',
+      icon: 'trending_up',
       title: 'Cultura de Mejora Continua',
       subtitle:
         'Implementamos programas permanentes de capacitación y actualización tecnológica, lo que nos permite adaptarnos a los cambios normativos y a las nuevas necesidades del mercado, fortaleciendo así nuestra propuesta de valor.',
@@ -85,6 +85,7 @@ export class BusinessInfoComponent {
     }
   }
 
+  moreYearExperience: number = 0;
   private updateExperienceYears(): void {
     const today = new Date();
     const baseYear = 1986; 
@@ -99,10 +100,13 @@ export class BusinessInfoComponent {
     const totalExperience = yearsDiff;
 
     const historyItem = this.whatSetsUsApart.find(
-      (item) => item.icon === 'history'
+      (item) => item.icon === 'event'
     );
+    this.moreYearExperience = totalExperience - 2
     if (historyItem) {
       historyItem.title = `+${totalExperience} años de experiencia`;
+      historyItem.subtitle = `Contamos con más de ${this.moreYearExperience} años de experiencia ofreciendo soluciones integrales en organización, custodia y conservación documental, lo que nos convierte en pioneros y referentes en la región.`
     }
+
   }
 }

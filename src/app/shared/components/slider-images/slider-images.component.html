@@ -13,6 +13,7 @@
     <figure class="carousel-item" *ngFor="let img of images; let i = index" (click)="highlightIndexItem(i)">
       <img [src]="img.image" [alt]="img.name || 'Imagen'" loading="lazy" />
       <figcaption>{{ img.name }}</figcaption>
+      <span *ngIf="img.description">{{img.description}}</span>
     </figure>
   </div>
 

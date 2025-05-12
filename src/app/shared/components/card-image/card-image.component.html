@@ -1,0 +1,7 @@
+<div class="card" (click)="handlerClic()">
+    <figure class="carousel-item">
+        <img [src]="item?.image" [alt]="item?.name || 'Imagen'" loading="lazy" />
+        <figcaption>{{ item?.name }}</figcaption>
+        <span *ngIf="item?.description">{{item?.description}}</span>
+    </figure>
+</div>

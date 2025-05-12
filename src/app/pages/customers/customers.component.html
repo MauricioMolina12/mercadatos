@@ -71,7 +71,7 @@
         </figure>
 
 
-        <h2 class="customers-filter-department__name">Clientes en {{ departmentSelected[nameDepartmentSelected].name }}
+        <h2 class="customers-filter-department__name">Clientes en {{departmentSelected[nameDepartmentSelected].name === 'GUAJIRA' ? 'la' : 'el'}}  {{ departmentSelected[nameDepartmentSelected].name }}
         </h2>
 
         <ul class="customers-filter-departments__grid">

@@ -1,0 +1,33 @@
+<section class="hero">
+    <div class="hero-buttons">
+        <button class="hero-button" (click)="prevSlide()">
+            <span class="material-icons">
+                navigate_before
+            </span>
+        </button>
+        <button class="hero-button" (click)="nextSlide()">
+            <span class="material-icons">
+                navigate_next
+            </span>
+        </button>
+    </div>
+    <div class="hero-titles">
+        <h1 class="hero__title">{{ currentTitle() }}</h1>
+        <span class="hero__description">{{currentDescription() }}</span>
+        <div class="hero-call-action">
+            <button class="hero-call-action-button">
+                <span class="hero-call-action-text">Ver noticia</span>
+                <span class="material-icons icon">
+                    navigate_next
+                </span>
+            </button>
+        </div>
+    </div>
+
+    <ng-container>
+        <div class="hero-slider">
+            <div class="hero-slider__option" *ngFor="let ad of sliderAds; let i = index">
+            </div>
+        </div>
+    </ng-container>
+</section>

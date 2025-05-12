@@ -1,6 +1,6 @@
 import { Entity } from "../models/customers";
 
-export const customers: Entity[] = [
+export const customers: Entity[] = [  
     {
       name: 'GOBERNACIÓN DEL DEPARTAMENTO DEL ATLÁNTICO',
       department: 'Atlántico',

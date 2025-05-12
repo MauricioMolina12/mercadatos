@@ -8,7 +8,7 @@
 
         <ul #navList class="nav-list" [ngClass]="{'active': menuActive, 'dark': isDarkTheme}">
 
-            <li class="nav-list__item" *ngFor="let item of navItems" (click)="clicItemNav(item.label)" >
+            <li class="nav-list__item" *ngFor="let item of navItems" (click)="activeItemNav(item.label, 'clic')" (mouseenter)="activeItemNav(item.label, 'hover')" (mouseleave)="desactiveItemNav()">
 
                 <a  
                     class="nav-list__item-link"
@@ -35,7 +35,7 @@
                     [class.hidden]="activeDropdown !== item.label">
                     
                     <ul class="dropdown-list">
-                        <li *ngFor="let content of contentDropdown" (click)="redirectItem(content.slug, 'services')">
+                        <li *ngFor="let content of contentDropdown" (click)="redirectItem(content.slug, content.href === 'service' ? 'services' : 'news') ">
                             <a [ngClass]="{'dark' : isDarkTheme, 'active' : content.slug === itemActive}" [attr.aria-label]="content.ariaLabel">{{content.label}}</a>
                         </li>
                     </ul>

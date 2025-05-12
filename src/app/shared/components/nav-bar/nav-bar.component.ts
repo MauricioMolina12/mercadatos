@@ -140,7 +140,7 @@ export class NavBarComponent implements OnInit {
   }
 
   activeDropdown: string | null = null;
-  clicItemNav(label: string) {
+  activeItemNav(label: string, event: 'clic' | 'hover') {
     const isDropdown = label === 'Servicios' || label === 'Actualidad';
 
     if (isDropdown) {
@@ -152,27 +152,27 @@ export class NavBarComponent implements OnInit {
               {
                 label: 'SERVICIOS EN GESTIÓN DOCUMENTAL',
                 slug: 'gestion-documental',
-                href: '#service1',
+                href: 'service',
                 ariaLabel: 'Ir a la sección de servicios en gestión documental',
               },
               {
                 label: 'INVESTIGACIÓN Y ESTUDIOS DE MERCADO',
                 slug: 'investigacion-y-estudios-de-mercado',
-                href: '#service2',
+                href: 'service',
                 ariaLabel:
                   'Ir a la sección de servicio de investigación y estudios de mercado',
               },
               {
                 label: 'IMPRESOS GRÁFICOS',
                 slug: 'impresos-graficos',
-                href: '#service2',
+                href: 'service',
                 ariaLabel: 'Ir a la sección de servicio de impresos gráficos',
               },
               {
                 label:
                   'REPRESENTACIÓN LEGAL, ASESORÍAS Y CONSULTORÍAS JURÍDICAS',
                 slug: 'representacion-legal-asesorias-y-consultorias-juridicas',
-                href: '#service2',
+                href: 'service',
                 ariaLabel:
                   'Ir a la sección de servicio de representación legal, asesorías y consultorías jurídicas',
               },
@@ -180,6 +180,7 @@ export class NavBarComponent implements OnInit {
           : [
               {
                 label: 'NOTICIAS',
+                slug: 'news',
                 href: '#actuality1',
                 ariaLabel: 'Ir a la sección de actualidad 1',
               },
@@ -189,11 +190,17 @@ export class NavBarComponent implements OnInit {
                 ariaLabel: 'Ir a la sección de actualidad 2',
               },
             ];
-
       return;
-    } else {
+    } else if (event === 'clic') {
       this.menuActive = false;
+    } else {
+      return;
     }
+  }
+
+  desactiveItemNav() {
+    this.menuActive = false;
+    this.activeDropdown = null;
   }
 
   itemActive: string = '';
@@ -203,6 +210,8 @@ export class NavBarComponent implements OnInit {
         this.router.navigate(['/services', label]);
         this.itemActive = label;
         break;
+      case 'news':
+        this.router.navigate(['/news']);
     }
     this.menuActive = false;
   }

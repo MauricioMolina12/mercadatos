@@ -38,7 +38,7 @@
       </p>
     </div>
     <figure class="about-us__mission-figure">
-      <img src="assets/foto-mission.jpg" alt="mission">
+      <img src="assets/_DSC0776.jpg" alt="mission">
     </figure>
   </section>
 
@@ -55,7 +55,7 @@
       </p>
     </div>
     <figure class="about-us__vision-figure">
-      <img src="assets/foto-vission.jpg" alt="mission">
+      <img src="assets/_DSC0787.jpg" alt="mission">
     </figure>
   </section>
 
@@ -73,11 +73,11 @@
       <div class="about-us__beginning-grid__item" *ngFor="let item of beginning">
         <span class="material-icons">
           {{ item.icon }}
-        </span> 
+        </span>
         <span class="about-us__beginning-grid__item-text">{{item.text}}</span>
       </div>
     </div>
-  </section>
+  </section> 
 
   <section class="about-us__recognitions" #elementsParallax>
     <div class="about-us__recognitions-content">
@@ -97,7 +97,35 @@
       </p>
     </div>
     <div class="about-us__recognitions-slider-wrapper">
-      <app-slider-images [images]="bicResults"></app-slider-images>
+      <div class="about-us__recognitions-wrapper">
+        <app-slider-images [images]="bicResults"></app-slider-images>
+      </div>
+      <div class="about-us__recognitions__PDF-wrapper">
+        <app-pdf-carousel [files]="files"></app-pdf-carousel>
+      </div>
     </div>
   </section>
+
+  <!-- <section class="about-us__team" #elementsParallax>
+    <div class="about-us__team-content">
+      <h2 class="about-us__team-content-title">Conoce nuestro equipo</h2>
+      <p class="about-us__team-content-description">Un grupo de profesionales comprometidos, creativos y apasionados que
+        trabajan juntos para hacer realidad cada proyecto.</p>
+    </div>
+    <div class="about-us__team-grid">
+      <div class="about-us__team-grid__item" 
+        *ngFor="let person of ourTeam" 
+        #aboutUsTeamGridItem
+        (mouseenter)="handleHover($event)"
+        (mouseleave)="resetHover()">
+        <figure class="about-us__team-grid__item-figure">
+          <img class="about-us__team-grid__item-figure-image" [src]="person.image" [alt]="person.name">
+        </figure>
+        <div class="about-us__team-grid__item-content">
+          <h2 class="about-us__team-grid__item-content-name">{{person.name}}</h2>
+          <p class="about-us__team-grid__item-content-description">{{person.description}}</p>
+        </div>
+      </div>
+    </div>
+  </section> -->
 </div>

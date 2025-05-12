@@ -86,7 +86,7 @@ nav {
       z-index: -2;
       left: 0;
       width: 100%;
-      min-height: 86vh;
+      min-height: 80vh;
       box-sizing: border-box;
       background-color: var(--background-color);
       list-style: none;
@@ -218,7 +218,7 @@ nav {
           &.visible {
             min-height: min-content;
             max-height: max-content;
-            margin-top: 10px;
+            // margin-top: 10px;
             padding-block: 15px;
             transform: translateY(0);
           }
