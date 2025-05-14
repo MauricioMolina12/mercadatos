@@ -38,15 +38,12 @@
       }
 
       .about-us__header-description-title {
-        background: var(--gradient-primary);
+        background: var(--text-gradient);
         -webkit-background-clip: text;
+        background-clip: text;
         color: transparent;
         font-size: 3rem;
         animation: topToBottom 1.2s ease-in-out;
-
-        &.dark {
-          color: var(--color-white);
-        }
       }
 
       .about-us__header-description-text {
@@ -95,7 +92,10 @@
       width: 100%;
 
       &-title {
-        color: var(--color-primary);
+        background: var(--text-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
         text-align: center;
       }
 
@@ -253,7 +253,10 @@
 
       &-title {
         text-align: center;
-        color: var(--color-primary);
+        background: var(--text-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
         max-width: 90%;
       }
 
@@ -524,11 +527,7 @@
         }
 
         .about-us__header-description-title {
-          background: var(--gradient-primary);
-          -webkit-background-clip: text;
-          color: transparent;
-          font-size: 3rem;
-          animation: topToBottom 1.2s ease-in-out;
+          font-size: 2.5rem;
         }
 
         .about-us__header-description-text {
@@ -572,15 +571,18 @@
       justify-content: space-between;
       padding: 0;
       position: relative;
+      width: 70%;
 
       &-content {
         width: 60%;
+        margin-left: 15px;
+
         &-title {
           font-size: 2.5rem;
         }
 
         &-description {
-          font-size: 1.4rem;
+          font-size: 1.2rem;
           max-width: 80%;
           text-align: justify;
         }
@@ -588,7 +590,7 @@
 
       &-figure {
         height: 70%;
-        width: 35%;
+        width: 40%;
         display: flex;
         justify-content: end;
         transition: transform 1s ease;

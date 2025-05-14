@@ -1,0 +1,218 @@
+.news {
+  width: 100%;
+  min-height: 100vh;
+  max-height: max-content;
+  box-sizing: border-box;
+  padding: 15px;
+  padding-top: 40px;
+
+  &-header {
+    width: 100%;
+    height: 20%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+
+    span {
+      color: var(--color-dark-gray);
+      p {
+        font-size: 2.5rem;
+        margin: 0;
+        background: var(--text-gradient);
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+    }
+
+    .material-icons {
+      position: absolute;
+      font-size: 2.8rem;
+
+      &:first-of-type {
+        left: 10px;
+        top: 50%;
+        transform: translateY(-150%) scaleX(-1);
+      }
+
+      &:last-of-type {
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  .news-title-last {
+    margin-block: 20px;
+    font-weight: 500;
+    color: var(--color-dark-gray);
+    font-size: 1.2rem;
+    border-bottom: 1px solid var(--color-medium);
+    padding-bottom: 10px;
+
+    &.dark {
+      color: var(--color-white);
+    }
+  }
+
+  &-last {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &__figure {
+      width: 100%;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+
+      img {
+        border-radius: inherit;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__content {
+      width: 100%;
+      height: max-content;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: justify;
+      padding-block: 20px;
+
+      h2 {
+        font-weight: 600;
+        color: var(--color-dark-gray);
+
+        &.dark {
+          color: var(--color-white);
+        }
+      }
+
+      p {
+        font-weight: 300;
+        letter-spacing: 1.8px;
+        color: var(--color-gray);
+      }
+    }
+  }
+
+  &-grid {
+    width: 100%;
+    max-height: max-content;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+
+    &__item {
+      width: 100%;
+      height: 250px;
+      background-color: var(--color-dark-contrast);
+      box-shadow: 2px 2px 20px var(--color-light);
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+
+      &-figure {
+        width: 100%;
+        height: 70%;
+        border-radius: inherit;
+
+        img {
+          border-radius: inherit;
+          height: 100%;
+          width: 100%;
+          max-width: 100%;
+          object-fit: cover;
+        }
+      }
+
+      &-content {
+        width: 100%;
+        height: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      h4 {
+        text-align: center;
+        max-width: 95%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 0.7rem;
+      }
+
+      p {
+        text-align: center;
+        font-size: 0.6rem;
+        font-weight: 300;
+        max-width: 95%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: var(--color-dark-gray);
+      }
+
+      &.dark {
+        background-color: var(--color-dark-gray);
+        box-shadow: none;
+
+        p {
+          color: var(--color-white);
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1280px) {
+  .news {
+    width: 60%;
+    margin: 0 auto;
+
+    &-header {
+      width: 50%;
+      margin: 0 auto;
+    }
+
+    &-last {
+      flex-direction: row;
+      align-items: center;
+      margin-block: 15px;
+      gap: 10px;
+
+      &__figure {
+        height: 80%;
+      }
+    }
+
+    &-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+      &__item {
+        p {
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+}

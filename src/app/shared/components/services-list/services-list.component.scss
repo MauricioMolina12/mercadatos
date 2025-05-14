@@ -7,15 +7,13 @@
   box-sizing: border-box;
 
   .services-title {
-    background: var(--gradient-primary);
+    background: var(--text-gradient);
     -webkit-background-clip: text;
     color: transparent;
     font-size: 1.8rem;
     animation: topToBottom 1.2s ease-in-out;
+    margin-bottom: 10px;
 
-    &.isDark {
-      color: white;
-    }
   }
 
   .services-grid {
@@ -119,7 +117,7 @@
         max-width: 100%;
       }
 
-      figcaption{
+      figcaption {
         padding-top: 12px;
         text-align: center;
       }
@@ -199,6 +197,10 @@
 /* Medium screens */
 @media (min-width: 1280px) {
   .services {
+    .services-title {
+      font-size: 2.5rem;
+    }
+
     .services-grid {
       width: 55%;
       min-height: 70vh;

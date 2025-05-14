@@ -9,6 +9,10 @@
     var(--color-secondary)
   );
 
+  --text-gradient: linear-gradient(
+    #04e5b4,
+    #13869b
+  );
   /** primary **/
   --color-primary: #04e5b4;
   --color-primary-rgb: 4, 229, 180;

@@ -1,3 +1,33 @@
 <div class="news">
-    <app-hero-news [sliderAds]="news"></app-hero-news>
+    <header class="news-header">
+        <span class="material-icons" [ngStyle]="{'color' : isDark ? 'white' : 'initial'}">format_quote</span>
+        <span>Historias que mueven nuestros <p>Datos</p></span>
+        <span class="material-icons" [ngStyle]="{'color' : isDark ? 'white' : 'initial'}">format_quote</span>
+    </header>
+    <div class="news-last">
+        <figure class="news-last__figure">
+            <img src="assets/clean-browser-mockup.png" alt="mockup page">
+        </figure>
+        <div class="news-last__content">
+            <h2 [ngClass]="{'dark': isDark}">¡Estrenamos página web!</h2>
+            <p>Nos complace anunciar el lanzamiento de nuestro nuevo sitio web. Hemos renovado nuestra plataforma para
+                ofrecerte una experiencia más intuitiva, rápida y accesible. Con un diseño moderno, navegación
+                optimizada y nuevas funcionalidades, podrás encontrar la información que necesitas de forma más ágil.
+                ¡Te invitamos a explorarla y descubrir todas las novedades que tenemos para ti!</p>
+        </div>
+    </div>
+    <h2 class="news-title-last" [ngClass]="{'dark' : isDark}">Ultimas noticias</h2>
+    <div class="news-grid">
+        <div class="news-grid__item" *ngFor="let new of news" [ngClass]="{'dark': isDark}">
+            <figure class="news-grid__item-figure">
+                <img [src]="new.image" [alt]="new.title">
+            </figure>
+            <div class="news-grid__item-content">
+                <h4>{{new.title}}</h4>
+                <p>{{new.description}}</p>
+
+            </div>
+        </div>
+    </div>
+    <!-- <app-hero-news [sliderAds]="news"></app-hero-news> -->
 </div>

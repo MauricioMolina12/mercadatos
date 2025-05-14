@@ -1,5 +1,5 @@
 <section class="section container-wrapper">
-    <h1 class="section__title"  #elementsParallax [ngClass]="{'dark': isDark}">¿Qué nos distingue?</h1>
+    <h1 class="section__title"  #elementsParallax>¿Qué nos distingue?</h1>
     <!-- <p class="section__subtitle"#elementsParallax >Desde 1986, en MERCADATOS S.A.S BIC, nos hemos consolidado como una empresa líder en la gestión documental en la ciudad de Barranquilla, Colombia. Nuestro compromiso con la excelencia, el cumplimiento normativo y la satisfacción del cliente nos ha permitido construir una trayectoria sólida y confiable en el sector.</p> -->
     <div class="section__grid">
         <div class="item" #elementsParallax *ngFor="let item of whatSetsUsApart" [ngClass]="{'dark': isDark}">

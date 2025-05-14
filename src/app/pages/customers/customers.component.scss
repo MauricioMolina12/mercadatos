@@ -1,5 +1,4 @@
-@import url('../../shared/styles/animations.scss');
-
+@import url("../../shared/styles/animations.scss");
 
 .customers {
   width: 100%;
@@ -12,41 +11,6 @@
   animation: fadeIn 1s ease;
   // justify-content: center;
 
-  &.dark {
-    .customers-title,
-    .customers-subtitle,
-    .customers-filter-text,
-    .customers-category__list-grid .customers-category-group .letter-title {
-      color: white;
-    }
-
-    .customers-subtitle {
-      font-weight: 300;
-    }
-
-    .customers-category__items {
-      .customers-category__item {
-        background-color: var(--color-gray);
-
-        &.active {
-          background-color: var(--color-primary);
-        }
-
-        span {
-          color: var(--color-white);
-        }
-      }
-    }
-
-    .pagination {
-      .pagination-indicator {
-        span {
-          color: var(--color-white);
-        }
-      }
-    }
-  }
-
   &-title,
   &-subtitle {
     max-width: 90%;
@@ -55,14 +19,16 @@
 
   &-title {
     margin-bottom: 10px;
-    background: var(--gradient-primary);
+    background: var(--text-gradient);
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
     font-size: 1.8rem;
     animation: topToBottom 1.2s ease-in-out;
   }
 
   &-subtitle {
+    color: var(--color-gray);
     font-weight: 400;
   }
 
@@ -93,17 +59,16 @@
       outline: none;
       background-color: transparent;
       font-weight: 300;
-      color: var(--color-gray);
       transition: all 0.5s ease;
+      color: var(--color-gray);
 
       &.active {
-        border-bottom: 2px solid var(--color-primary);
-        color: var(--color-primary);
+        border-bottom: 2px solid #04e5b4;
+        color: #04e5b4;
         font-weight: 700;
       }
     }
   }
-
 
   &-filter-department {
     width: 80%;
@@ -192,7 +157,7 @@
     }
   }
 
-  &-filter-department__name{
+  &-filter-department__name {
     font-size: 1.2rem;
     color: var(--color-dark-gray);
     font-weight: 600;
@@ -214,6 +179,7 @@
   &-filter-text {
     display: inline-block;
     margin-block: 40px;
+    color: var(--color-gray);
   }
 
   &-category__items {
@@ -236,7 +202,7 @@
 
       &.active {
         font-weight: 600;
-        background-color: var(--color-primary);
+        background-color: #04e5b4;
       }
 
       &:hover {
@@ -254,7 +220,7 @@
       margin-block: 30px;
       padding-block: 30px;
       .letter-title {
-        color: var(--color-primary);
+        color: #04e5b4;
       }
     }
 
@@ -373,7 +339,7 @@
 @media (min-width: 1280px) {
   .customers {
     &-title {
-      font-size: 3rem;  
+      font-size: 3rem;
     }
 
     &-subtitle {
