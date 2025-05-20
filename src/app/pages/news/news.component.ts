@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ThemeService } from '../../shared/services/theme.service';
+import { SeoService } from '../../shared/services/seo.service';
+import { SeoData } from '../../shared/models/seo';
 
 @Component({
   selector: 'app-news',
@@ -7,12 +9,24 @@ import { ThemeService } from '../../shared/services/theme.service';
   templateUrl: './news.component.html',
   styleUrl: './news.component.scss',
 })
-export class NewsComponent {
+export class NewsComponent implements OnInit {
   isDark: boolean = false;
-  constructor(public themeService: ThemeService) {
+  constructor(
+    public themeService: ThemeService,
+    private seoService: SeoService
+  ) {
     this.themeService.darkMode$.subscribe((theme) => {
       this.isDark = theme;
     });
+  }
+
+  ngOnInit(): void {
+    const dataSeo: SeoData = {
+      title: 'NOTICIAS - MERCADATOS SAS',
+      description:
+        'En MERCADATOS S.A.S BIC compartimos noticias y novedades propias que reflejan nuestro compromiso con la innovación, la tecnología y la estrategia aplicada a la gestión de entidades públicas, privadas y del sector solidario. Mantente al día con nuestros avances, proyectos y análisis exclusivos diseñados para apoyar la toma de decisiones y el cumplimiento de objetivos institucionales.',
+    };
+    this.seoService.updateSeoTags(dataSeo);
   }
 
   news: { image: string; title: string; description: string }[] = [

@@ -12,6 +12,7 @@ import { VideoPlayerComponent } from "./shared/components/video-player/video-pla
 import { BusinessInfoComponent } from './shared/components/business-info/business-info.component';
 import { ServicesListComponent } from './shared/components/services-list/services-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -30,7 +31,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     VideoPlayerComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
 ],
   providers: [
     provideClientHydration(withEventReplay())

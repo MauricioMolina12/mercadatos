@@ -37,6 +37,7 @@
       max-width: 100%;
       height: auto;
       user-select: none;
+      animation: fadeIn 1s ease;
       // filter: drop-shadow(-30px 30px 40px var(--color-dark));
     }
   }
@@ -58,9 +59,9 @@
     }
 
     .hero-description__paragraph {
-      font-weight: 300;
+      font-weight: 400;
       max-width: 80%;
-      font-size: 0.8rem;
+      font-size: 1rem;
       line-height: 24px;
     }
 
@@ -165,14 +166,14 @@
       align-items: end;
 
       img {
-        max-width: 50%;
+        max-width: 80%;
       }
     }
 
     .hero-description {
       .hero-description__title {
         max-width: 60%;
-        font-size: 2.4rem;
+        font-size: 2.5rem;
       }
 
       .hero-description__paragraph {
@@ -241,20 +242,20 @@
       text-align: start;
 
       .hero-description__title {
-        font-size: 3.2rem;
+        font-size: 3.4rem;
         max-width: 75%;
       }
 
       .hero-description__paragraph {
-        max-width: 60%;
-        font-size: 0.9rem;
-        line-height: 25px;
+        max-width: 70%;
+        font-size: 1.3rem;
+        line-height: 28px;
       }
 
       .hero-description__button-callaction {
         width: 20%;
-        height: 14%;
-        padding-block: 12px;
+        height: 16%;
+        padding-block: 18px;
         font-size: 0.9rem;
       }
     }
@@ -287,5 +288,15 @@
         font-size: 1.2rem;
       }
     }
+  }
+}
+
+@keyframes fadeIn {
+  0%{
+    transform: translateX(80%);
+  }
+
+  100%{
+    transform: translateX(0);
   }
 }

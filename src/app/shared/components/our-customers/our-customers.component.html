@@ -3,14 +3,24 @@
         Nuestros clientes
     </h1>
     <span class="customers__description" #elementsParallax>
-        Contamos con 120 clientes del sector publico y 70 del sector privado
+        Contamos con {{ publicCustomers.length }} clientes del sector publico y {{ privateCustomers.length }} del sector privado
     </span>
-    <div class="slider-container" #elementsParallax (mouseover)="pauseSlider()" (mouseout)="resumeSlider()">
+    <div class="slider-container" #elementsParallax (mouseover)="pauseSlider('first')" (mouseout)="resumeSlider('first')">
         <div class="slider" [ngStyle]="{'animation-play-state': isPaused ? 'paused' : 'running',}">
-            <div class="slide" *ngFor="let customer of customers">
+            <div class="slide" *ngFor="let customer of customers.slice(0,24)">
                 <span>{{customer.name}}</span>
             </div>
-            <div class="slide" *ngFor="let customer of customers">
+            <div class="slide" *ngFor="let customer of customers.slice(0,24)">
+                <span>{{customer.name}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="slider-container slider-container-right-move" #elementsParallax (mouseover)="pauseSlider('second')" (mouseout)="resumeSlider('second')">
+        <div class="slider" [ngStyle]="{'animation-play-state': isPausedSecond ? 'paused' : 'running',}">
+            <div class="slide" *ngFor="let customer of customers.slice(24,47)">
+                <span>{{customer.name}}</span>
+            </div>
+            <div class="slide" *ngFor="let customer of customers.slice(24,47)">
                 <span>{{customer.name}}</span>
             </div>
         </div>

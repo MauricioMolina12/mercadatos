@@ -3,7 +3,12 @@
     <div class="layout-content">
       <app-nav-bar></app-nav-bar>
       <router-outlet></router-outlet>
-      <button *ngIf="showButton" class="scroll-to-top" (click)="scrollToTop()">&uarr;</button>      
+      <button [ngClass]="{'visibility': showButton}" class="scroll-to-top" (click)="scrollToTop()">&uarr;</button>      
+      <button class="scroll-to-top whatsapp-button" (click)="scrollToTop()">
+        <a href="https://wa.me/3008236761" target="_blank">
+          <img src="assets/whatsapp.webp" alt="whatsapp-logo">
+        </a>
+      </button>      
       <app-footer></app-footer>
     </div>
   </div>

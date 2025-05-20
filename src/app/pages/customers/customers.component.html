@@ -11,10 +11,10 @@
         <button class="customers-filter-type__category" (click)="switchfilter = 1"
             [ngClass]="{'active' : switchfilter === 1}">Tipo de
             entidad</button>
-        <button class="customers-filter-type__providers" (click)="switchfilter = 3"
-            [ngClass]="{'active' : switchfilter === 3}">Nuestros aliados y proveedores</button>
         <button class="customers-filter-type__department" (click)="switchfilter = 2"
             [ngClass]="{'active' : switchfilter === 2}">Departamentos</button>
+        <button class="customers-filter-type__providers" (click)="switchfilter = 3"
+            [ngClass]="{'active' : switchfilter === 3}">Nuestros aliados y proveedores</button>
     </div>
 
 
@@ -71,13 +71,14 @@
         </figure>
 
 
-        <h2 class="customers-filter-department__name">Clientes en {{departmentSelected[nameDepartmentSelected].name === 'GUAJIRA' ? 'la' : 'el'}}  {{ departmentSelected[nameDepartmentSelected].name }}
+        <h2 class="customers-filter-department__name">Clientes en {{departmentSelected[nameDepartmentSelected].name ===
+            'GUAJIRA' ? 'la' : 'el'}} {{ departmentSelected[nameDepartmentSelected].name }}
         </h2>
 
         <ul class="customers-filter-departments__grid">
             <li class="customers-filter-departments__grid-item" *ngFor="let customer of customersByDepartments">
                 <span *ngFor="let entity of customer.customers">
-                    <small [ngStyle]="{'background-color': entity.type === 'PÚBLICA' ? '#28a745' : '#6c757d'}">
+                    <small [ngStyle]="{'background-color': entity.type === 'PÚBLICA' ? '#28a745' : '#09B5E4'}">
                         <span class="material-icons">{{ entity.type === 'PÚBLICA' ? 'public' : 'lock' }}</span>
                         {{entity.type}}
                     </small>
@@ -86,6 +87,19 @@
             </li>
         </ul>
     </ng-container>
+
+    <ng-container *ngIf="switchfilter === 3">
+        <div class="customers-category__list-grid">
+            <ul class="customers-category__list">
+                <li class="customers-category__list-grid__item" *ngFor="let provider of providers">
+                    <span>{{ provider | uppercase }}</span>
+                </li>
+            </ul>
+        </div>
+    </ng-container>
+
+    <span style="text-align: center; color: gray;" *ngIf="currentPageItems.length === 0">No hay resultados para esa
+        busqueda, intente con otro nombre.</span>
 
 
 </section>

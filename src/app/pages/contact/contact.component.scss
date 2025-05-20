@@ -24,10 +24,12 @@
     background: linear-gradient(var(--color-primary), var(--color-secondary));
 
     &__title {
-      color: var(--color-primary);
+      background: var(--text-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       margin-block: 15px;
       animation: topToBottom 1.2s ease-in-out;
-
     }
 
     &__form {
@@ -38,6 +40,10 @@
       &-message {
         width: 100%;
         display: flex;
+
+        label {
+          color: var(--color-white);
+        }
       }
 
       &-user {
@@ -134,7 +140,10 @@
   &-title {
     max-width: 95%;
     text-align: center;
-    color: var(--color-primary);
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   &-information {
@@ -143,7 +152,7 @@
     min-height: 0;
     display: grid;
     justify-items: center;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 2rem;
     margin-block: 2rem;
 
@@ -216,6 +225,7 @@
           font-size: 0.9rem;
           font-weight: 600;
           margin-bottom: 0.5rem;
+          text-align: center;
         }
 
         &-description {
@@ -242,6 +252,13 @@
 
   .emails-title {
     margin-top: 40px;
+  }
+
+  iframe{
+    height: 500px;
+    margin-block: 40px;
+    box-sizing: border-box;
+    border-radius: 10px;
   }
 
   .select-emails-filter {
@@ -324,7 +341,6 @@
     align-items: center;
     padding: 0;
 
-
     &-header {
       width: 100%;
       flex-direction: row-reverse;
@@ -361,7 +377,7 @@
 
     &-information {
       width: 45%;
-      
+
       &__card {
         width: 100%;
         height: 100%;
@@ -372,7 +388,7 @@
 
         &-content {
           &-title {
-            font-size: 0.8rem;
+            font-size: 1rem;
           }
 
           &-description {
@@ -391,6 +407,11 @@
           }
         }
       }
+    }
+
+    &-title {
+      max-width: 80%;
+      font-size: 2rem;
     }
 
     .emails {

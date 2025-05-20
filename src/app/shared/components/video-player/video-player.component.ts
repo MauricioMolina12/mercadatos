@@ -18,12 +18,44 @@ export class VideoPlayerComponent implements OnInit {
   isPlaying: boolean = false;
   isMuted: boolean = false;
   isViewButtons: boolean = false;
+  video!: HTMLVideoElement;
+  currentTime: number = 0;
+  duration: number = 0;
 
   ngOnInit(): void {
     this.isViewButtons = true;
     setTimeout(() => {
       this.isViewButtons = false;
     }, 8000);
+  }
+
+  ngAfterViewInit() {
+    this.video = this.videoPlayer.nativeElement;
+
+    this.setDuration();
+
+    this.video.addEventListener('timeupdate', () => {
+      this.currentTime = this.video.currentTime;
+    });
+  }
+
+  setDuration() {
+    const video = this.videoPlayer.nativeElement;
+    this.duration = video.duration || 0;
+  }
+
+  formatTime(seconds: number): string {
+    if (isNaN(seconds)) return '00:00';
+
+    const hrs = Math.floor(seconds / 3600);
+    const mins = Math.floor((seconds % 3600) / 60);
+    const secs = Math.floor(seconds % 60);
+
+    const hDisplay = hrs > 0 ? String(hrs).padStart(2, '0') + ':' : '';
+    const mDisplay = String(mins).padStart(2, '0') + ':';
+    const sDisplay = String(secs).padStart(2, '0');
+
+    return hDisplay + mDisplay + sDisplay;
   }
 
   togglePlay(e: Event) {
@@ -128,7 +160,7 @@ export class VideoPlayerComponent implements OnInit {
   }
 
   updateProgress() {
-    if (this.isDragging) return; 
+    if (this.isDragging) return;
     const video = this.videoPlayer.nativeElement;
     this.progress = (video.currentTime / video.duration) * 100;
   }

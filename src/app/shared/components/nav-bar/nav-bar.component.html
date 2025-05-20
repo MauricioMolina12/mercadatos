@@ -46,13 +46,13 @@
 
             <li>
                 <div class="toggle-container">
-                    <span class="material-icons light" [ngClass]="{'size-large' : !isDarkTheme}"
+                    <span class="material-icons light" [ngClass]="{'active' : !isDarkTheme, 'light-color': !isDarkTheme}"
                         [style.color]="isDarkTheme ? 'white' : 'black'">light_mode</span>
                     <label class="switch">
                         <input type="checkbox" (change)="toggleTheme()" [checked]="isDarkTheme" />
                         <span class="slider"></span>
                     </label>
-                    <span class="material-icons dark" [ngClass]="{'size-large' : isDarkTheme}"
+                    <span class="material-icons dark" [ngClass]="{'active' : isDarkTheme, 'dark-color': isDarkTheme}"
                         [style.color]="isDarkTheme ? 'white' : 'black'">dark_mode</span>
                 </div>
             </li>

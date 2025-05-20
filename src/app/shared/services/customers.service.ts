@@ -13,72 +13,81 @@ export class CustomersService {
   categoriesCustomers: String[] = [];
   departments = departments;
 
-
   getCustomers() {
     return of(customers);
   }
 
-  getDepartments(){
+  getDepartments() {
     return of(departments);
   }
 
   getCategoriesCustomers(): Observable<{ [key: string]: Entity[] }> {
-    const keyWords: string[] = ['GOBERNACIÓN', 'ALCALDÍA', 'HOSPITAL', 'SECRETARÍA', 'INSTITUTO', 'FUNDACIÓN', 'CAJA'];
-  
+    const keyWords: { name: string; pattern: string[] }[] = [
+      { name: 'GOBERNACIONES', pattern: ['GOBERNA'] },
+      { name: 'ALCALDÍAS', pattern: ['ALCALD', 'SECRETA'] },
+      { name: 'HOSPITALES', pattern: ['HOSPI'] },
+      { name: 'INSTITUTOS', pattern: ['INSTIT'] },
+      { name: 'FUNDACIONES', pattern: ['FUNDAC'] },
+      { name: 'CAJAS DE COMPENSACIONES', pattern: ['CAJA'] },
+    ];
+
     return this.getCustomers().pipe(
       map((customers) => {
         const categories: { [key: string]: Entity[] } = {};
-        keyWords.forEach((keyword) => {
-          categories[keyword] = customers.filter((c) =>
-            c.name.toUpperCase().includes(keyword)
+
+        keyWords.forEach(({ name, pattern }) => {
+          categories[name] = customers.filter((c) =>
+            pattern.some((p) => c.name.toUpperCase().includes(p.toUpperCase()))
           );
         });
-  
+
         const allCategorized = Object.values(categories).flat();
         categories['OTROS'] = customers.filter(
           (customer) => !allCategorized.includes(customer)
         );
-  
+
         return categories;
       })
     );
   }
 
-  getEntitiesByDepartment(): Observable<{ [department: string]: { image: string, customers: Entity[] } }> {
+  getEntitiesByDepartment(): Observable<{
+    [department: string]: { image: string; customers: Entity[] };
+  }> {
     return forkJoin({
       departments: this.getDepartments(),
-      entities: this.getCustomers() 
+      entities: this.getCustomers(),
     }).pipe(
-      map(({ departments, entities }) => {        
-        const result: { [key: string]: { name: string, image: string, customers: Entity[] } } = {};
+      map(({ departments, entities }) => {
+        const result: {
+          [key: string]: { name: string; image: string; customers: Entity[] };
+        } = {};
         departments.forEach((dept) => {
-          const deptEntities = entities.filter(entity => entity.department.toUpperCase() === dept.name);
+          const deptEntities = entities.filter(
+            (entity) => entity.department.toUpperCase() === dept.name
+          );
           result[dept.name] = {
             name: dept.name,
             image: dept.image,
-            customers: deptEntities
+            customers: deptEntities,
           };
         });
-  
+
         return result;
       })
     );
   }
 
-
-getEntityByDepartment(department: string): Observable<{ [department: string]: { image: string, customers: Entity[] } }> {
-  return this.getEntitiesByDepartment().pipe(
-    map((entitiesByDepartment) => {
-      const deptData = entitiesByDepartment[department];
-      return deptData ? { [department]: deptData } : {};
-    })
-  );
-}
-
-
-  
-  
-  
+  getEntityByDepartment(department: string): Observable<{
+    [department: string]: { image: string; customers: Entity[] };
+  }> {
+    return this.getEntitiesByDepartment().pipe(
+      map((entitiesByDepartment) => {
+        const deptData = entitiesByDepartment[department];
+        return deptData ? { [department]: deptData } : {};
+      })
+    );
+  }
 
   // getEntitiesByDepartment(): Observable<{ [department: string]: Entity[] }> {
   //   const publicKeywords = [

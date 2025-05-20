@@ -21,18 +21,20 @@ import { Entity } from '../../models/customers';
   styleUrl: './our-customers.component.scss',
 })
 export class OurCustomersComponent implements OnInit, OnDestroy {
-
   isPaused = false;
+  isPausedSecond = false;
   isDark: boolean = false;
   private observer!: any;
   customers: Entity[] = [];
   @ViewChildren('elementsParallax') elementsParallax!: QueryList<ElementRef>;
+  privateCustomers: Entity[] = [];
+  publicCustomers: Entity[] = [];
 
   constructor(
     private themeService: ThemeService,
     private utilsService: UtilsService,
     private customersService: CustomersService,
-    private renderer: Renderer2,
+    private renderer: Renderer2
   ) {
     this.themeService.darkMode$.subscribe((isDark) => {
       this.isDark = isDark;
@@ -50,9 +52,11 @@ export class OurCustomersComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.customersService.getCustomers().subscribe((customers)=>{
-      this.customers = customers
-    })
+    this.customersService.getCustomers().subscribe((customers) => {
+      this.customers = customers;
+      this.publicCustomers = this.customers.filter(c=>c.type === 'PÚBLICA');
+      this.privateCustomers = this.customers.filter(c=> c.type === 'PRIVADA');
+    });
   }
 
   ngOnDestroy(): void {
@@ -61,11 +65,25 @@ export class OurCustomersComponent implements OnInit, OnDestroy {
     }
   }
 
-  pauseSlider(): void {
-    this.isPaused = true;
+  pauseSlider(slider: string): void {
+    switch (slider) {
+      case 'first':
+        this.isPaused = true;
+        break;
+      case 'second':
+        this.isPausedSecond = true;
+        break;
+    }
   }
 
-  resumeSlider(): void {
-    this.isPaused = false;
+  resumeSlider(slider: string): void {
+    switch (slider) {
+      case 'first':
+        this.isPaused = false;
+        break;
+      case 'second':
+        this.isPausedSecond = false;
+        break;
+    }
   }
 }

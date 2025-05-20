@@ -52,10 +52,10 @@
     <h2 class="contact-title emails-title">Correos eléctronicos por área</h2>
     <select class="select-emails-filter" (change)="filterByEmail($event)">
         <option *ngFor="let email of emailsFlattened" [value]="email" [selected]="email === defaultEmail">
-          {{ email }}
+            {{ email }}
         </option>
-      </select>
-      
+    </select>
+
     <div class="contact-information emails">
         <div class="contact-information__card" *ngFor="let email of emailsForArea">
             <button class="contact-information__card-button-copy" (click)="copyToClipboard(email.value)">
@@ -73,7 +73,15 @@
             </div>
         </div>
     </div>
+
+    <h2 class="contact-title emails-title">Ubicación</h2>
+    <iframe zp
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7975.126850402736!2d-74.80388660825325!3d11.025506783493507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses-419!2sco!4v1747672836515!5m2!1ses-419!2sco"
+        width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+
     <div *ngIf="isTextCopied">
-        <app-modal-confirmation [message]="'Texto copiado: ' + `${textCopied}`" (newItemEvent)="isTextCopied = false"></app-modal-confirmation>
+        <app-modal-confirmation [message]="'Texto copiado: ' + `${textCopied}`"
+            (newItemEvent)="isTextCopied = false"></app-modal-confirmation>
     </div>
 </section>

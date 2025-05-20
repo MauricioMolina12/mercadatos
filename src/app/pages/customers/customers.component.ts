@@ -6,6 +6,7 @@ import { debounceTime, distinctUntilChanged, map, startWith } from 'rxjs';
 import { Entity } from '../../shared/models/customers';
 import { SeoService } from '../../shared/services/seo.service';
 import { SeoData } from '../../shared/models/seo';
+import { providers } from '../../shared/data/customers';
 
 @Component({
   selector: 'app-customers',
@@ -37,12 +38,14 @@ export class CustomersComponent implements OnInit {
   searchCustomer = new FormControl('');
   switchfilter: number = 1;
   departmentSelected: { [key: string]: { name: string; image: string } } = {};
+  providers: string[] = providers;
   nameDepartmentSelected: string = '';
 
   ngOnInit(): void {
     const dataSeo: SeoData = {
       title: 'CLIENTES - MERCADATOS SAS',
-      description:'En MERCADATOS S.A.S BIC trabajamos de la mano con organizaciones públicas, privadas y del sector solidario, ofreciendo soluciones integrales que fortalecen sus procesos y mejoran su toma de decisiones. Nuestro compromiso con la excelencia, la innovación y el cumplimiento nos ha convertido en un aliado estratégico para clientes que buscan calidad, transparencia y resultados medibles. Gracias a nuestro enfoque multidisciplinario y experiencia en investigación de mercados, gestión documental, asesoría jurídica y servicios tecnológicos, aportamos valor real a cada proyecto, adaptándonos a las necesidades específicas de cada cliente.'
+      description:
+        'En MERCADATOS S.A.S BIC trabajamos de la mano con organizaciones públicas, privadas y del sector solidario, ofreciendo soluciones integrales que fortalecen sus procesos y mejoran su toma de decisiones. Nuestro compromiso con la excelencia, la innovación y el cumplimiento nos ha convertido en un aliado estratégico para clientes que buscan calidad, transparencia y resultados medibles. Gracias a nuestro enfoque multidisciplinario y experiencia en investigación de mercados, gestión documental, asesoría jurídica y servicios tecnológicos, aportamos valor real a cada proyecto, adaptándonos a las necesidades específicas de cada cliente.',
     };
     this.seoService.updateSeoTags(dataSeo);
     this.activeCategory = 'all';
@@ -75,14 +78,9 @@ export class CustomersComponent implements OnInit {
 
   filterCategory(key: string) {
     this.activeCategory = key;
-
     const categoryFound = this.categoriesCustomers.find(
       (category) => category.name === key
     );
-
-    console.log(key);
-    console.log(categoryFound);
-
     if (key === 'all') {
       this.updatePagination();
     } else if (categoryFound) {
@@ -133,20 +131,19 @@ export class CustomersComponent implements OnInit {
 
     this.searchCustomer.valueChanges
       .pipe(
-        // startWith(''),
-        debounceTime(200),
-        distinctUntilChanged(),
+        debounceTime(300),
         map((query) => query?.trim() || '')
       )
       .subscribe((query) => {
-        if (query === '') {
+        if (!query) {
           this.filterCategory('all');
-        } else {
-          this.activeCategory = '';
-          this.currentPageItems = allCustomers.filter((customer) =>
-            customer.name.toLowerCase().includes(query.toLowerCase())
-          );
+          return;
         }
+
+        this.activeCategory = '';
+        this.currentPageItems = allCustomers.filter((customer) =>
+          customer.name.toLowerCase().includes(query.toLowerCase())
+        );
       });
   }
 

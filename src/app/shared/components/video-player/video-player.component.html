@@ -26,4 +26,9 @@
     <button class="video-btn-sound" (click)="toggleSound($event)">
         <span class="material-icons">{{ isMuted ? 'volume_off' : 'volume_up'}}</span>
     </button>
+
+    <h5 class="video-progress-time">
+        {{ formatTime(currentTime) }} / {{ formatTime(duration) }}
+    </h5>
+
 </div>

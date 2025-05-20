@@ -11,6 +11,7 @@ nav {
   display: flex;
   align-items: center;
   transition: none;
+  border-radius: 0;
 
   .container {
     width: 100%;
@@ -185,21 +186,20 @@ nav {
         }
 
         // Button 'a la mano'
-        &:nth-last-of-type(1) {
+        &:nth-last-of-type(2) {
           width: auto;
           border-radius: 10px;
           justify-content: start;
+          background-color: #04e5b4;
+          padding: 10px;
+          box-sizing: border-box;
 
           a {
             font-weight: 700;
-            color: var(--color-primary);
+            color: var(--color-white);
 
             &::after {
               content: none;
-            }
-
-            &.dark {
-              color: var(--color-white);
             }
           }
         }
@@ -321,7 +321,6 @@ nav {
         .light,
         .dark {
           position: absolute;
-          color: var(--color-gray) !important;
         }
 
         .light {
@@ -389,9 +388,18 @@ nav {
           top: 25%;
           font-size: 18px;
           transition: all 1s ease;
+          color: var(--color-gray) !important;
 
-          &.size-large {
+          &.active {
             transform: scale(1.8);
+          }
+
+          &.light-color {
+            color: #e6e617 !important;
+          }
+
+          &.dark-color {
+            color: rgb(137, 137, 236) !important;
           }
         }
       }
@@ -463,6 +471,8 @@ nav {
 /* Medium screens */
 @media (min-width: 1280px) {
   nav {
+    border-radius: 0 0 20px 20px;
+
     padding: 0;
     .container {
       .logo {
