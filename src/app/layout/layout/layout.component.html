@@ -3,12 +3,19 @@
     <div class="layout-content">
       <app-nav-bar></app-nav-bar>
       <router-outlet></router-outlet>
-      <button [ngClass]="{'visibility': showButton}" class="scroll-to-top" (click)="scrollToTop()">&uarr;</button>      
-      <button class="scroll-to-top whatsapp-button" (click)="scrollToTop()">
-        <a href="https://wa.me/3008236761" target="_blank">
-          <img src="assets/whatsapp.webp" alt="whatsapp-logo">
-        </a>
-      </button>      
+      <button [ngClass]="{'visibility': showButton}" class="scroll-to-top" (click)="scrollToTop()">&uarr;</button>
+      <div class="networks">
+        <button class="whatsapp-button">
+          <a href="https://wa.me/3008236761" target="_blank">
+            <img src="assets/whatsapp.webp" alt="whatsapp-logo">
+          </a>
+        </button>
+        <button class="instagram-button">
+          <a href="https://www.instagram.com/mercadatos_/" target="_blank">
+            <img src="assets/instagram-logo.svg" alt="instagram-logo">
+          </a>
+        </button>
+      </div>
       <app-footer></app-footer>
     </div>
   </div>
