@@ -1,29 +1,61 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, computed, effect, OnInit, signal } from '@angular/core';
+import { NetworkService } from '../../shared/services/network.service';
 
 @Component({
   selector: 'app-layout',
-  standalone: false,
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
+  standalone: false,
 })
 export class LayoutComponent implements OnInit {
-  time: number = 3000;
-  isSplashPage: boolean = true;
-
+  time = 3000;
+  isSplashPage = true;
   showButton = false;
+  viewAnniversary: boolean = true;
 
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    this.showButton = window.pageYOffset > 300;
-  }
+  network = signal(true);
+  showNetworkMessage = signal(false);
+  statusNetwork = computed(() =>
+    this.network()
+      ? 'Vuelves a tener conexión'
+      : 'No tienes conexión a internet'
+  );
 
-  ngOnInit(): void {
+  constructor() {
+    // this.network = this.networkService.isOnline();
+
+    effect(() => {
+      // document.body.style.overflow = !this.network() ? 'hidden' : 'auto';
+      this.showNetworkMessage.set(true);
+      setTimeout(() => this.showNetworkMessage.set(false), 3000);
+    });
+
     setTimeout(() => {
-      this.isSplashPage = false;
-    }, this.time);
+      this.viewAnniversary = false;
+    }, 5000);
   }
 
   scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  ngOnInit(): void {
+    this.updateYearsOfExperience();
+  }
+
+  years: number = 0;
+  isAnniversary: boolean = false;
+
+  updateYearsOfExperience() {
+    const foundingYear = 1986;
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    const anniversaryDate = new Date(currentYear, 0, 10);
+
+    this.isAnniversary =
+      today.getDate() === anniversaryDate.getDate() &&
+      today.getMonth() === anniversaryDate.getMonth();
+    const hasAnniversaryPassed = today >= anniversaryDate;
+    this.years = currentYear - foundingYear - (hasAnniversaryPassed ? 0 : 1);
   }
 }

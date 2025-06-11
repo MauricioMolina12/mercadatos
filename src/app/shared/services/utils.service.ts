@@ -39,6 +39,7 @@ export class UtilsService {
 
     return observer; // Returns the observer so that it can be disconnected if necessary
   }
+  
 
   setTitle(title: string) {
     this.title.setTitle(title);

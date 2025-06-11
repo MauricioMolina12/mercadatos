@@ -3,7 +3,7 @@ export interface ServiceData {
   url: string;
   slug: string;
   description: string;
-  information?: any[];
+  content: { title: string; content: string }[];
 }
 
 export const services: ServiceData[] = [
@@ -11,125 +11,36 @@ export const services: ServiceData[] = [
     name: 'GESTIÓN DOCUMENTAL',
     url: 'assets/videos-services/gestionDocumental.mp4',
     slug: 'gestion-documental',
-    description: 'Servicio integral que abarca desde la organización, digitalización y custodia de documentos hasta la asesoría técnica especializada en políticas archivísticas, garantizando el cumplimiento normativo, la conservación física de la información y la eficiencia en su administración.',
-    information: [
+    description:
+      'Servicio integral que abarca desde la organización, digitalización y custodia de documentos hasta la asesoría técnica especializada en políticas archivísticas, garantizando el cumplimiento normativo, la conservación física de la información y la eficiencia en su administración.',
+    content: [
       {
-        title: 'Marco Jurídico',
-        items: [
-          'Ley 80 de 1989 (Artículo 2, Parágrafo. Modificado por el Artículo 49 de la Ley 594 de 2000).',
-          'Ley 594 de 2000, Ley General de Archivos y decretos reglamentarios.',
-          'Ley 1581 de 2012.',
-          'Decreto 2609 de 2012.',
-          'Ley 1712 de 2014, Ley de Transparencia y del derecho de acceso a la información pública.',
-          'Demás Decretos, Circulares y Directrices expedidas por las entidades competentes en relación con la Gestión Documental.',
-        ],
-        image: 'assets/marco-juridico.jpg',
+        title: 'Gestión integral de documentos físicos y digitales',
+        content: `Brindamos un servicio completo de gestión documental que abarca desde la producción hasta la disposición final de los documentos, tanto físicos como digitales. Esto incluye la creación de instrumentos archivísticos, la organización de archivos, la digitalización e indexación de documentos, y el diseño e implementación de políticas archivísticas alineadas con la normativa vigente.`,
       },
       {
-        title: 'Metodología',
-        'Nuestros servicios en Gestión Documental son:': [
-          'Creación de Tablas de Retención',
-          'Documental y de Valoración Documental.',
-          'Creación de Manuales y Procedimientos.',
-          'Organización del Comité de Archivos.',
-          'Asesorías de Implementación de Políticas de Archivo.',
-          'Asesorías de Implementación de Gestión de Calidad.',
-          'Capacitación.',
-        ],
-        image: 'assets/metodologia.jpg',
+        title: 'Cumplimiento normativo y asesoría especializada',
+        content: `Aseguramos el cumplimiento de la Ley 594 de 2000 (Ley General de Archivos), la Ley 1581 de 2012 sobre protección de datos personales, y otras disposiciones legales aplicables. Nuestro equipo de expertos ofrece asesoría técnica especializada para garantizar que cada organización implemente una gestión documental responsable, eficiente y legalmente válida.`,
       },
       {
-        title: 'Digitalización',
-        subtitle:
-          'Dentro del proceso de Gestión Documental se realizan las actividades de clasificación, ordenación, digitalización e indexación de documentos.',
-        items: [
-          'Creación de Tablas de Retención',
-          'Documental y de Valoración Documental.',
-          'Creación de Manuales y Procedimientos.',
-          'Organización del Comité de Archivos.',
-          'Asesorías de Implementación de Políticas de Archivo.',
-          'Asesorías de Implementación de Gestión de Calidad.',
-          'Capacitación.',
-        ],
-        image: 'assets/metodologia.jpg',
+        title: 'Digitalización y acceso electrónico',
+        content: `Transformamos documentos físicos en archivos digitales mediante procesos de escaneo, indexación y clasificación, permitiendo un acceso rápido, seguro y estructurado a la información. Implementamos herramientas tecnológicas que optimizan la consulta, recuperación y distribución de documentos, impulsando así la eficiencia operativa y la sostenibilidad.`,
       },
       {
-        title: 'Custodia',
-        items: [
-          'Atención de consultas.',
-          'Solicitud.',
-          'Recepción.',
-          'Búsquedas físicas ya través de medios electrónicos.',
-          'Almacenamiento de la documentación.',
-          'Ubicación Física y estantería.',
-          'Atención a solicitudes de consultas.',
-          'Búsqueda en el Software.',
-          'Locaciones bioseguras.',
-          'Sistema Integrado de Conservación implementado.',
-          'Organización de la información física.',
-          'Codificación de la información custodiada.',
-          'Desinfección y depuración de archivos físicos.',
-        ],
-        image: 'assets/custodia.jpg',
+        title: 'Custodia física segura y conservación',
+        content: `Contamos con locaciones bioseguras para la custodia documental, donde aplicamos protocolos rigurosos de organización, desinfección, codificación y almacenamiento físico. Garantizamos la trazabilidad y el acceso controlado a la documentación, preservando su integridad y confidencialidad en todo momento.`,
       },
       {
-        title: 'Asesoría Técnica Especializada',
-        items: [
-          'Orientar a las entidades en el desarrollo de los procesos que conllevan a laconstrucción de instrumentos archivísticos.',
-          'Apropiación de nuestros clientes del conocimiento de los procesos encaminados al cumplimiento de la función archivística.',
-        ],
-        image: 'assets/asesoriaTecnica.jpg',
+        title: 'Inventario y diagnóstico documental',
+        content: `Elaboramos inventarios detallados de fondos documentales y realizamos diagnósticos que permiten evaluar el estado actual de la gestión documental de una entidad. Identificamos riesgos, brechas normativas y oportunidades de mejora, generando recomendaciones prácticas para optimizar el manejo de la información.`,
       },
       {
-        title: 'Diagnóstico Integral de Archivo',
-        items: [
-          'Proceso de verificación de los estados actuales de la gestión documental de entidades públicas y privadas.',
-          'Análisis de hallazgos administrativos, archivísticos, conservación, infraestructura y tecnología.',
-          'Validación del cumplimiento normativo de la entidad en materia de gestión documental, identificación de aspectos críticos, debilidades, fortalezas, oportunidades y amenazas de la entidad entorno al cumplimiento de la función archivística.',
-        ],
-        image: 'assets/diagnostico.jpg',
+        title: 'Soluciones tecnológicas y administración de la información',
+        content: `Ofrecemos plataformas de software especializadas para la administración documental, que integran funcionalidades como gestión de archivos, correspondencia, digitalización y trazabilidad. Nuestras soluciones son compatibles con sistemas operativos y bases de datos ampliamente utilizados, y están diseñadas para integrarse con los procesos de tu organización.`,
       },
       {
-        title: 'Administración de la información',
-        subtitle:
-          'Presentamos un software desarrollado para la administración integral de toda la documentación generada por la mediana y gran empresa de hoy. Cubriendoprocesos como manejo de archivo, correspondencia, digitalización de documentos y el tratamiento de la Información electrónica todo bajo una mismaherramienta. Trabaja en Sistemas Operativos Windows: M3, XP, 2000, Vista, NT SERVER 2000 Y 2003, con bases de datos: SQL u ORACLE 9i o superior, y con cualquier navegador de Internet que trabaje en ambientes Windows. Desarrollamos actividades de clasificación, ordenación y descripción de los fondos documentales de las entidades, respetando el principio de procedencia y orden original de los documentos de archivo.',
-        subtitle2:
-          'Nuestro sub-proceso tecnológico de digitalización consiste en convertir un documento en soporte análogo (papel, video, casettes, cinta, película, microfilm) en uno o varios archivos digitales que contienen la imagen codificada, íntegra del documento.',
-        keywords: [
-          'Sistemas Operativos Windows: M3, XP, 2000, Vista, NT SERVER 2000 Y 2003',
-          'SQL u ORACLE 9i o superior',
-        ],
-        image: 'assets/administracion.jpg',
-      },
-      {
-        title: 'Inventario documental',
-        items: [
-          'Elaboración y codificación de documentos.',
-          'Recuperación de la información de manera exacta y precisa.',
-          'Organización en series o asuntos de un fondo documental.',
-        ],
-        image: 'assets/inventario.jpg',
-      },
-      {
-        title:
-          'Gestión de consulta y préstamo de documentos de manera electrónica, telefónica y/o física',
-        items: [
-          'Garantizar equipos y personal que realice la copia escaneada de la documentación requerida por los funcionarios de nuestros clientes.',
-          'Garantizar la disponibilidad de los canales de comunicación entre funcionarios de la entidad contratante y la MERCADATOS S.A. con el objetivo de suplir de manera oportuna la documentación que se requiera.',
-          'Garantizar equipos y personal encargado de las labores de control y gestión de la información con el objetivo de contar con un sistema de archivocompleto y actualizado que sustente la toma efectiva de decisiones y garantice los derechos de conservación y acceso a la misma, consagrados para los usuarios de la entidad contratante.',
-          'Garantizar personal, equipos, vehículos y condiciones idóneas y seguras en los cuales se trasporte la documentación hasta las instalaciones de la entidad contratante., con la frecuencia que se requiera.',
-          'Recogida de documentos como labor que comprende actualizar los fondos documentales a medida que se adelantan los trámites correspondientes a la labor administrativa, legal o financiera de la entidad contratante, esto proporciona un archivo actualizado y ordenado acorde con la gestión pública de los recursos.',
-          'Labores de coordinación y control estadístico.',
-        ],
-        image: 'assets/gestion-consulta.jpg',
-      },
-      {
-        title: 'Conservación y almacenamiento de documentos',
-        items: [
-          'Garantizar el espacio y el control de las condiciones medio ambientales y administrativas, que garanticen la conservación del papel.',
-          'Proveer los elementos en cantidad y tipo suficientes e idóneos que permitan la adecuada conservación de los documentos (Cajas, Ganchos, Carpetas, Legajos, Elementos de Agrupación, Cintas, Bolsas Plásticas o dePapel).'
-        ],
-        image: 'assets/conservacion.jpg',
+        title: 'Capacitación y fortalecimiento institucional',
+        content: `Realizamos programas de capacitación para funcionarios, orientados a fortalecer sus competencias en la gestión documental. Promovemos la apropiación del conocimiento archivístico y fomentamos una cultura organizacional orientada a la protección, acceso y conservación de la información como activo estratégico.`,
       },
     ],
   },
@@ -137,18 +48,102 @@ export const services: ServiceData[] = [
     name: 'INVESTIGACIÓN Y ESTUDIOS DE MERCADO',
     url: 'assets/videos-services/investigacionMercado.mp4',
     slug: 'investigacion-y-estudios-de-mercado',
-    description: 'Realizamos estudios cuantitativos y cualitativos para entender las dinámicas del mercado, identificar oportunidades, analizar la competencia y conocer a profundidad el comportamiento del consumidor, con el fin de apoyar la toma de decisiones estratégicas en tu organización.'
+    description:
+      'Realizamos estudios cuantitativos y cualitativos para entender las dinámicas del mercado, identificar oportunidades, analizar la competencia y conocer a profundidad el comportamiento del consumidor, con el fin de apoyar la toma de decisiones estratégicas en tu organización.',
+    content: [
+      {
+        title: 'Tipos de Estudios',
+        content:
+          'Realizamos estudios cuantitativos como encuestas y análisis estadísticos, y cualitativos como grupos focales y entrevistas en profundidad, para recopilar datos relevantes del mercado.',
+      },
+      {
+        title: 'Análisis de Competencia',
+        content:
+          'Identificamos fortalezas, debilidades, estrategias y posicionamiento de tus principales competidores para definir ventajas competitivas sostenibles.',
+      },
+      {
+        title: 'Segmentación y Perfilamiento',
+        content:
+          'Determinamos los diferentes tipos de consumidores, sus características, comportamientos y preferencias para crear estrategias enfocadas y efectivas.',
+      },
+      {
+        title: 'Estudios de Satisfacción',
+        content:
+          'Evaluamos la percepción y el nivel de satisfacción de los clientes sobre productos, servicios o marcas, para mejorar la experiencia del usuario.',
+      },
+      {
+        title: 'Tendencias del Mercado',
+        content:
+          'Monitoreamos y analizamos las tendencias del mercado en diferentes sectores para anticipar cambios y proponer acciones estratégicas.',
+      },
+    ],
   },
   {
     name: 'REPRESENTACIÓN LEGAL, ASESORÍAS Y CONSULTORÍAS JURÍDICAS',
     url: 'assets/videos-services/representacionLegal.mp4',
     slug: 'representacion-legal-asesorias-y-consultorias-juridicas',
-    description: 'Brindamos acompañamiento legal especializado en distintas áreas del derecho, ofreciendo representación jurídica, asesorías estratégicas y consultoría normativa, enfocadas en proteger los intereses de nuestros clientes y garantizar el cumplimiento de la legislación vigente.'
+    description:
+      'Brindamos acompañamiento legal especializado en distintas áreas del derecho, ofreciendo representación jurídica, asesorías estratégicas y consultoría normativa, enfocadas en proteger los intereses de nuestros clientes y garantizar el cumplimiento de la legislación vigente.',
+    content: [
+      {
+        title: 'Áreas del Derecho',
+        content:
+          'Ofrecemos servicios en derecho laboral, civil, comercial, administrativo, penal y constitucional, según las necesidades de nuestros clientes.',
+      },
+      {
+        title: 'Asesoría Preventiva',
+        content:
+          'Acompañamos a personas y organizaciones para mitigar riesgos jurídicos y tomar decisiones informadas desde el punto de vista legal.',
+      },
+      {
+        title: 'Consultoría Normativa',
+        content:
+          'Brindamos análisis y aplicación de normativas vigentes, elaboración de conceptos jurídicos y cumplimiento regulatorio.',
+      },
+      {
+        title: 'Representación Legal',
+        content:
+          'Asumimos la defensa jurídica en procesos judiciales o administrativos, actuando como apoderados ante diferentes instancias.',
+      },
+      {
+        title: 'Gestión de Contratos',
+        content:
+          'Redactamos, revisamos y negociamos contratos de diversa índole para asegurar claridad, legalidad y seguridad jurídica.',
+      },
+    ],
   },
   {
     name: 'IMPRESOS GRÁFICOS',
     url: 'assets/videos-services/impresosGraficos.mp4',
     slug: 'impresos-graficos',
-    description: 'Ofrecemos soluciones de impresión gráfica de alta calidad, incluyendo diseño y producción de materiales promocionales, corporativos e informativos, adaptados a las necesidades visuales y comunicacionales de tu marca o institución.'
+    description:
+      'Ofrecemos soluciones de impresión gráfica de alta calidad, incluyendo diseño y producción de materiales promocionales, corporativos e informativos, adaptados a las necesidades visuales y comunicacionales de tu marca o institución.',
+    content: [
+      {
+        title: 'Diseño Gráfico',
+        content:
+          'Creamos piezas gráficas originales y profesionales que reflejan la identidad visual de tu marca o proyecto.',
+      },
+      {
+        title: 'Producción de Material Publicitario',
+        content:
+          'Ofrecemos impresión de folletos, volantes, catálogos, pendones, etiquetas, material POP y más.',
+      },
+      {
+        title: 'Impresión Corporativa',
+        content:
+          'Producimos papelería institucional como carpetas, hojas membreteadas, tarjetas de presentación y cuadernos personalizados.',
+      },
+      {
+        title: 'Impresión a Gran Formato',
+        content:
+          'Contamos con equipos de alta tecnología para impresión en formatos grandes como vallas, banners y adhesivos.',
+      },
+      {
+        title: 'Acabados Especiales',
+        content:
+          'Aplicamos acabados como plastificado, troquelado, barniz UV, laminado mate o brillante para dar un toque profesional a cada pieza.',
+      },
+    ],
   },
 ];

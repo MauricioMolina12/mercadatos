@@ -38,7 +38,7 @@
       </p>
     </div>
     <figure class="about-us__mission-figure">
-      <img src="assets/_DSC0776.jpg" alt="mission">
+      <img src="assets/team-pictures/mision.webp" alt="mission">
     </figure>
   </section>
 
@@ -55,7 +55,7 @@
       </p>
     </div>
     <figure class="about-us__vision-figure">
-      <img src="assets/_DSC0787.jpg" alt="mission">
+      <img src="assets/team-pictures/vision.webp" alt="mission">
     </figure>
   </section>
 
@@ -106,6 +106,14 @@
     </div>
   </section>
 
+
+  <section class="about-us__history-timeline" #elementsParallax>
+    <div class="about-us__history-timeline-content">
+      <h2 class="about-us__history-timeline-content-title">Nuestra historia</h2>
+      <app-timeline [startYear]="1986" [endYear]="2025" [step]="5" ></app-timeline>
+    </div>
+  </section>
+  <!-- 
   <section class="about-us__recognitions" #elementsParallax>
     <div class="about-us__recognitions-content">
       <h2 class="about-us__recognitions-content-title">Reconocimientos destacados</h2>
@@ -152,20 +160,17 @@
         <img src="assets/proteccion.png" alt="protección">
       </figure>
     </div>
-  </section>
+  </section> -->
 
-  <!-- <section class="about-us__team" #elementsParallax>
+  <section class="about-us__team" #elementsParallax>
     <div class="about-us__team-content">
       <h2 class="about-us__team-content-title">Conoce nuestro equipo</h2>
       <p class="about-us__team-content-description">Un grupo de profesionales comprometidos, creativos y apasionados que
         trabajan juntos para hacer realidad cada proyecto.</p>
     </div>
     <div class="about-us__team-grid">
-      <div class="about-us__team-grid__item" 
-        *ngFor="let person of ourTeam" 
-        #aboutUsTeamGridItem
-        (mouseenter)="handleHover($event)"
-        (mouseleave)="resetHover()">
+      <div class="about-us__team-grid__item" *ngFor="let person of ourTeam" #aboutUsTeamGridItem
+        (mouseenter)="handleHover($event)" (mouseleave)="resetHover()">
         <figure class="about-us__team-grid__item-figure">
           <img class="about-us__team-grid__item-figure-image" [src]="person.image" [alt]="person.name">
         </figure>
@@ -175,5 +180,5 @@
         </div>
       </div>
     </div>
-  </section> -->
+  </section>
 </div>

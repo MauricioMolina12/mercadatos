@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, QueryList, Renderer2, ViewChildren } from '@angular/core';
 import { CustomersService } from '../../shared/services/customers.service';
 import { ThemeService } from '../../shared/services/theme.service';
 import { FormControl } from '@angular/forms';
@@ -7,6 +7,7 @@ import { Entity } from '../../shared/models/customers';
 import { SeoService } from '../../shared/services/seo.service';
 import { SeoData } from '../../shared/models/seo';
 import { providers } from '../../shared/data/customers';
+import { UtilsService } from '../../shared/services/utils.service';
 
 @Component({
   selector: 'app-customers',
@@ -19,7 +20,9 @@ export class CustomersComponent implements OnInit {
   constructor(
     public customersService: CustomersService,
     private themeService: ThemeService,
-    private seoService: SeoService
+    private seoService: SeoService,
+    private utilsService: UtilsService,
+    private renderer: Renderer2
   ) {}
 
   categoriesCustomers: { name: string; customers: Entity[] }[] = [];
@@ -40,6 +43,7 @@ export class CustomersComponent implements OnInit {
   departmentSelected: { [key: string]: { name: string; image: string } } = {};
   providers: string[] = providers;
   nameDepartmentSelected: string = '';
+  @ViewChildren('elementsParallax') elementsParallax!: QueryList<ElementRef>;
 
   ngOnInit(): void {
     const dataSeo: SeoData = {
@@ -74,6 +78,16 @@ export class CustomersComponent implements OnInit {
     this.themeService.darkMode$.subscribe((theme) => {
       this.isDark = theme;
     });
+  }
+
+  ngAfterViewInit(): void {
+    if (this.elementsParallax.length) {
+      this.utilsService.parallaxEffect(this.elementsParallax, 0.2);
+    } else {
+      this.elementsParallax.toArray().forEach((elementRef: ElementRef) => {
+        this.renderer.addClass(elementRef.nativeElement, 'active');
+      });
+    }
   }
 
   filterCategory(key: string) {

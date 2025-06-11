@@ -6,6 +6,7 @@ import { AboutUsComponent } from './about-us.component';
 import { SliderImagesComponent } from '../../shared/components/slider-images/slider-images.component';
 import { GridComponent } from '../../shared/components/grid/grid.component';
 import { PdfCarouselComponent } from "../../shared/components/pdf-carousel/pdf-carousel.component";
+import { TimelineComponent } from '../../shared/components/timeline/timeline.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { PdfCarouselComponent } from "../../shared/components/pdf-carousel/pdf-c
     AboutUsRoutingModule,
     SliderImagesComponent,
     GridComponent,
-    PdfCarouselComponent
+    PdfCarouselComponent,
+    TimelineComponent
 ]
 })
 export class AboutUsModule { }

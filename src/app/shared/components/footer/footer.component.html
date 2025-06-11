@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="footer__wrapper">
         <figure class="footer__image">
-            <img src="assets/logo-mercadatos-white.png" alt="logo-mercadatos"  loading="lazy">
+            <img src="assets/logo-mercadatos-white.png" alt="logo-mercadatos" loading="lazy">
         </figure>
         <div class="footer__description">
             <h1 class="footer__title">
@@ -17,6 +17,13 @@
                     mercadatoscolombia&#64;hotmail.com<br>
                     gerencia&#64;mercadatossa.com
                 </span>
+            </div>
+
+            <div class="footer__links">
+                <h4>Enlaces rápidos</h4>
+                <a [routerLink]="link.path" *ngFor="let link of links">
+                    {{ link.label }}
+                </a>
             </div>
 
             <hr>

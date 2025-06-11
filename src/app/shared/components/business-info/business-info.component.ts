@@ -90,14 +90,8 @@ export class BusinessInfoComponent {
     const today = new Date();
     const baseYear = 1986; 
 
-    let yearsDiff = today.getFullYear() - baseYear;
-
-    const jan10 = new Date(today.getFullYear(), 0, 10); 
-    if (today < jan10) {
-      yearsDiff -= 1;
-    }
-
-    const totalExperience = yearsDiff;
+    const totalExperience = today.getFullYear() - baseYear;
+    this.moreYearExperience = totalExperience - 2;
 
     const historyItem = this.whatSetsUsApart.find(
       (item) => item.icon === 'event'

@@ -33,13 +33,12 @@ export class CustomersService {
 
     return this.getCustomers().pipe(
       map((customers) => {
-        const categories: { [key: string]: Entity[] } = {};
-
-        keyWords.forEach(({ name, pattern }) => {
-          categories[name] = customers.filter((c) =>
+        const categories = keyWords.reduce((acc, { name, pattern }) => {
+          acc[name] = customers.filter((c) =>
             pattern.some((p) => c.name.toUpperCase().includes(p.toUpperCase()))
           );
-        });
+          return acc;
+        }, {} as Record<string, Entity[]>);
 
         const allCategorized = Object.values(categories).flat();
         categories['OTROS'] = customers.filter(

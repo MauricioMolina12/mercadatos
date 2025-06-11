@@ -54,13 +54,26 @@
         background-color: var(--color-medium);
       }
 
-      .footer__email {
+      .footer__email,
+      .footer__links {
+        display: flex;
+        flex-direction: column;
         margin-top: 15px;
         h4 {
           font-size: 1rem;
-          font-weight: 500;
+          font-weight: 600;
+        }
+        
+        a{
+          font-size: .85rem;
+          display: block;
+          margin-top: 10px;
+          font-weight: 300;
+          color: var(--color-white);
+          text-decoration: none;
         }
       }
+      
     }
 
     .footer__all-rights-reserved {

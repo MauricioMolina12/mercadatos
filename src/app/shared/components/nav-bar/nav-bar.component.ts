@@ -73,17 +73,17 @@ export class NavBarComponent implements OnInit {
       ariaLabel: 'Ir a la sección de clientes',
     },
     {
-      label: 'Contacto',
+      label: 'Cotiza ahora',
       href: '#contact',
       routerLink: ['/contact'],
       ariaLabel: 'Ir a la sección de contacto',
     },
-    {
-      label: 'A la mano',
-      href: '#contact',
-      ariaLabel: 'Ir a la sección de a la mano',
-      ngClass: { 'last-item-active': true },
-    },
+    // {
+    //   label: 'A la mano',
+    //   href: '#contact',
+    //   ariaLabel: 'Ir a la sección de a la mano',
+    //   ngClass: { 'last-item-active': true },
+    // },
   ];
 
   contentDropdown: any[] = [];

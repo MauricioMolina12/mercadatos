@@ -2,5 +2,14 @@
     <div class="services-video__wrapper">
         <app-hero-video [info]="service"></app-hero-video>
     </div>
-    <div class="services-information"></div>
+    <div class="services-information">
+        <section class="service-section" *ngFor="let info of service.content; let i = index" [ngClass]="{ 'odd': i % 2 !== 0 }">
+            <h2 class="service-section__title">
+                {{ info.title }}
+            </h2>
+            <p class="service-section__description">
+                {{ info.content }}
+            </p>
+        </section>
+    </div>
 </section>

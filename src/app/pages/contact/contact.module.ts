@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ContactRoutingModule } from './contact-routing.module';
 import { ContactComponent } from './contact.component';
 import { ModalConfirmationComponent } from "../../shared/components/modal-confirmation/modal-confirmation.component";
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ModalConfirmationComponent } from "../../shared/components/modal-confir
   imports: [
     CommonModule,
     ContactRoutingModule,
-    ModalConfirmationComponent
+    ModalConfirmationComponent,
+    ReactiveFormsModule
 ]
 })
 export class ContactModule { }

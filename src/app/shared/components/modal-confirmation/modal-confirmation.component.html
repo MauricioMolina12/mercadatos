@@ -1,4 +1,4 @@
-<div class="modal">
+<div class="modal" [ngClass]="{'success': typeMessage === 'success', 'error': typeMessage === 'error'}">
     <div class="modal-body">
         <p>{{ message }}</p>
     </div>

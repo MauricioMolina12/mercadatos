@@ -14,13 +14,19 @@ import { ServicesService } from '../../shared/services/services.service';
 export class ServicesComponent implements OnInit {
   isDark: boolean = false;
   slug: any;
-  service: { name: string; description: string; url: string; slug: string } = {
+  service: {
+    name: string;
+    description: string;
+    url: string;
+    slug: string;
+    content: { title: string; content: string }[];
+  } = {
     name: '',
     description: '',
     url: '',
     slug: '',
+    content: [],
   };
-
   constructor(
     private themeService: ThemeService,
     private seoService: SeoService,
@@ -38,6 +44,8 @@ export class ServicesComponent implements OnInit {
       const service = this.servicesService.getServiceBySlug(this.slug);
       if (service) {
         this.service = service;
+        console.log(this.service);
+        
       }
     });
     const dataSeo: SeoData = {

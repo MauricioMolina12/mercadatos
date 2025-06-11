@@ -29,4 +29,5 @@ export class HomeComponent implements OnInit {
     };
     this.seoService.updateSeoTags(dataSeo);
   }
+
 }

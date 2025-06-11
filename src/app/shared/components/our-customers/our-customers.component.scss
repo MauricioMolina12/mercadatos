@@ -2,7 +2,7 @@
 
 .customers {
   width: 100%;
-  height: 80vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,6 +12,7 @@
   .customers__title {
     background: var(--text-gradient);
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
     font-size: 1.8rem;
     animation: topToBottom 1.2s ease-in-out;
@@ -27,7 +28,35 @@
   .customers__description {
     color: var(--color-gray);
     text-align: center;
-    max-width: 80%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    .customers-public,
+    .customers-private {
+      width: 100%;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+
+      h2{
+        font-size: 2.8rem;
+        color: #04e5b4;
+      }
+
+      span{
+        color: var(--color-dark-gray);
+      }
+
+      
+    }
+
 
     &.visible {
       opacity: 1;
@@ -174,10 +203,6 @@
       font-size: 2.8rem;
     }
 
-    .customers__description {
-      font-size: 1.4rem;
-    }
-
     .customers__call-action {
       span {
         font-size: 1.4rem;
@@ -196,6 +221,12 @@
     .slider-container {
       width: 50vw;
     }
+
+    .customers__description{
+      width: 30%;
+      flex-direction: row;
+    }
+    
   }
 }
 

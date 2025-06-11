@@ -1,0 +1,14 @@
+<section class="timeline">
+    <div class="line"></div>
+    <div class="card" *ngFor="let card of timelineHistory; let i = index" [class.right]="i%2===0" #elementsParallax>
+        <div class="card-content">
+            <h2 class="card-content--year">{{card.year}}</h2>
+            <p class="card-content--description">{{card.description}}</p>
+        </div>
+        <div class="card-image">
+            <figure>
+                <img [src]="card.image" [alt]="card.description">
+            </figure>
+        </div>
+    </div>
+</section>

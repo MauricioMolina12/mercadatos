@@ -11,6 +11,7 @@ import { ThemeService } from '../../shared/services/theme.service';
 import { UtilsService } from '../../shared/services/utils.service';
 import { SeoService } from '../../shared/services/seo.service';
 import { SeoData } from '../../shared/models/seo';
+import { fromEvent, Subscription, throttleTime } from 'rxjs';
 
 @Component({
   selector: 'app-about-us',
@@ -22,6 +23,8 @@ import { SeoData } from '../../shared/models/seo';
 export class AboutUsComponent implements OnInit {
   isDark: boolean = false;
   @ViewChildren('elementsParallax') elementsParallax!: QueryList<ElementRef>;
+  private scrollSub?: Subscription;
+
   @ViewChildren('aboutUsTeamGridItem')
   elementsGrid!: QueryList<ElementRef>;
 
@@ -47,12 +50,29 @@ export class AboutUsComponent implements OnInit {
 
   ngAfterViewInit(): void {
     if (this.elementsParallax.length) {
-      this.utilsService.parallaxEffect(this.elementsParallax, 0.2);
-    } else {
-      this.elementsParallax.toArray().forEach((elementRef: ElementRef) => {
-        this.renderer.addClass(elementRef.nativeElement, 'active');
-      });
+      this.checkElementsVisibility();
+      this.scrollSub = fromEvent(window, 'scroll')
+        .pipe(throttleTime(100))
+        .subscribe(() => {
+          this.checkElementsVisibility();
+        });
     }
+  }
+
+  private checkElementsVisibility() {
+    this.elementsParallax.forEach((elementRef: ElementRef) => {
+      const rect = elementRef.nativeElement.getBoundingClientRect();
+      const windowHeight =
+        window.innerHeight || document.documentElement.clientHeight;
+
+      const visibleHeight =
+        Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
+      const elementHeight = rect.height;
+
+      if (visibleHeight > elementHeight * 0.2) {
+        this.renderer.addClass(elementRef.nativeElement, 'visible');
+      }
+    });
   }
 
   bicResults: { image: string; name: string }[] = [
@@ -96,63 +116,43 @@ export class AboutUsComponent implements OnInit {
 
   ourTeam: { image: string; name: string; description: string }[] = [
     {
-      image: 'assets/_DSC0391.jpg',
+      image: 'assets/team-pictures/elvis-ruiz.webp',
+      name: 'Elvis Ruiz',
+      description: 'Gerente',
+    },
+    {
+      image: 'assets/team-pictures/johana-ruiz.webp',
+      name: 'Johana Ruiz',
+      description: 'Gerente administrativa y financiera',
+    },
+    {
+      image: 'assets/team-pictures/steven-ruiz.webp',
       name: 'Steven Ruiz',
-      description: 'Ingeniero de sistemas',
+      description: 'Líder de infrastructura y tecnología',
     },
     {
-      image: 'assets/_DSC0434.jpg',
-      name: 'Marta',
-      description: 'Psicóloga',
+      image: 'assets/team-pictures/elvis-andres.webp',
+      name: 'Elvis Andrés Ruíz',
+      description: 'Gerente y Jefe de oficina jurídica',
     },
     {
-      image: 'assets/_DSC0525.jpg',
-      name: 'Elvis Andrés',
-      description: 'Jefe Junior',
-    },
-    {
-      image: 'assets/_DSC0457.jpg',
-      name: 'María Fernanda',
+      image: 'assets/team-pictures/maria-fernanda-martinez.webp',
+      name: 'María Martínez',
       description: 'Gerente de proyectos',
     },
     {
-      image: 'assets/_DSC0450.jpg',
-      name: 'Ana Ruíz',
-      description: 'Directora de Recursos Humanos',
+      image: 'assets/team-pictures/marta-ariza.webp',
+      name: 'Marta Ariza',
+      description: 'Líder de proyectos',
     },
     {
-      image: 'assets/_DSC0426.jpg',
-      name: 'Melissa',
-      description: 'Recepcionista',
+      image: 'assets/team-pictures/lina-mejia.webp',
+      name: 'Lina Mejía',
+      description: 'Líder de talento humano',
     },
     {
-      image: 'assets/_DSC0458.jpg',
-      name: 'Not caption',
-      description: 'Analista financiero',
-    },
-    {
-      image: 'assets/_DSC0489.jpg',
-      name: 'Laura Gómez',
-      description: 'Diseñadora UX/UI',
-    },
-    {
-      image: 'assets/_DSC0561.jpg',
-      name: 'Carlos Méndez',
-      description: 'Especialista en marketing digital',
-    },
-    {
-      image: 'assets/_DSC0416.jpg',
-      name: 'María',
-      description: 'Coordinadora de comunicaciones',
-    },
-    {
-      image: 'assets/_DSC0401.jpg',
-      name: 'Hillary',
-      description: 'Administrador de bases de datos',
-    },
-    {
-      image: 'assets/_DSC0384.jpg',
-      name: 'Kevin Ruiz',
+      image: 'assets/team-pictures/melisa-escolar.webp',
+      name: 'Melisa Escolar',
       description: 'Asistente administrativa',
     },
   ];

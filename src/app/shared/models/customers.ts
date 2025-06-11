@@ -2,6 +2,7 @@ export interface Entity {
   name: string;
   department: string;
   type: 'PÚBLICA' | 'PRIVADA';
+  image?: string;
 }
 
 export interface service {

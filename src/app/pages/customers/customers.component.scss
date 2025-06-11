@@ -16,6 +16,7 @@
   // background: linear-gradient(#0000009f, #0000009f),
   //   url("../../../../public/assets/background-customers.png");
 
+  
   &-title,
   &-subtitle {
     max-width: 90%;
@@ -165,7 +166,7 @@
 
   &-filter-department__name {
     font-size: 1.2rem;
-    color: var(--color-dark-gray);
+    color: var(--color-font-gray);
     font-weight: 600;
     margin-block: 15px;
   }
