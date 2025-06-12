@@ -50,12 +50,15 @@ export class LayoutComponent implements OnInit {
     const foundingYear = 1986;
     const today = new Date();
     const currentYear = today.getFullYear();
-    const anniversaryDate = new Date(currentYear, 0, 10);
+    const anniversaryDate = new Date(currentYear, 5, 11);
 
     this.isAnniversary =
       today.getDate() === anniversaryDate.getDate() &&
       today.getMonth() === anniversaryDate.getMonth();
     const hasAnniversaryPassed = today >= anniversaryDate;
     this.years = currentYear - foundingYear - (hasAnniversaryPassed ? 0 : 1);
+    setTimeout(() => {
+      this.isAnniversary = false;
+    }, 9000);
   }
 }

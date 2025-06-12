@@ -6,6 +6,9 @@
         <div class="loader"></div>
       </div> -->
       <app-nav-bar></app-nav-bar>
+      <ng-container *ngIf="isAnniversary">
+        <app-anniversary [years]="years"></app-anniversary>
+      </ng-container>
       <router-outlet></router-outlet>
       <button [ngClass]="{'visibility': showButton}" class="scroll-to-top" (click)="scrollToTop()">&uarr;</button>
       <app-footer></app-footer>

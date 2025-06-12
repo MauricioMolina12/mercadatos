@@ -6,6 +6,7 @@ import { LayoutComponent } from './layout.component';
 import { NavBarComponent } from '../../shared/components/nav-bar/nav-bar.component';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { SplashPageComponent } from '../../shared/components/splash-page/splash-page.component';
+import { AnniversaryComponent } from '../../shared/components/anniversary/anniversary.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { SplashPageComponent } from '../../shared/components/splash-page/splash-
     NavBarComponent,
     FooterComponent,
     SplashPageComponent,
+    AnniversaryComponent
   ]
 })
 export class LayoutModule { }

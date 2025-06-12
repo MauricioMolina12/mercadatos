@@ -13,6 +13,7 @@ import { BusinessInfoComponent } from './shared/components/business-info/busines
 import { ServicesListComponent } from './shared/components/services-list/services-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AnniversaryComponent } from './shared/components/anniversary/anniversary.component';
 
 
 
@@ -32,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     VideoPlayerComponent,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AnniversaryComponent
 ],
   providers: [
     provideClientHydration(withEventReplay())

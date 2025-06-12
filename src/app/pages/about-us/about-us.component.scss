@@ -131,27 +131,6 @@
       justify-content: center;
       position: relative;
       // border-radius: 10px;
-
-      .points {
-        position: absolute;
-        left: -15px;
-        bottom: -40px;
-        width: 100px;
-        height: 100px;
-        padding: 4px;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(4, 1fr);
-        z-index: 10;
-
-        .point {
-          width: 3px;
-          height: 3px;
-          border-radius: 50%;
-          background-color: var(--color-white);
-        }
-      }
-
       img {
         border-radius: inherit;
         max-width: 100%;
@@ -160,6 +139,7 @@
         position: relative;
         z-index: 1;
         object-fit: cover;
+        object-position: top 10%;
         aspect-ratio: 16/9;
       }
 

@@ -1,8 +1,12 @@
-import { NgFor } from '@angular/common';
+import { isPlatformBrowser, NgFor } from '@angular/common';
 import {
+  AfterViewInit,
   Component,
   ElementRef,
+  Inject,
   Input,
+  OnDestroy,
+  PLATFORM_ID,
   QueryList,
   Renderer2,
   ViewChildren,
@@ -16,15 +20,18 @@ import { fromEvent, Subscription, throttleTime } from 'rxjs';
   templateUrl: './timeline.component.html',
   styleUrl: './timeline.component.scss',
 })
-export class TimelineComponent {
+export class TimelineComponent implements AfterViewInit, OnDestroy {
   @Input() startYear = 2000;
   @Input() endYear = new Date().getFullYear();
   @Input() step = 5;
   @ViewChildren('elementsParallax') elementsParallax!: QueryList<ElementRef>;
 
-  constructor(private renderer: Renderer2){}
+  constructor(
+    private renderer: Renderer2,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
-  timelineHistory = [
+  timelineHistory: { year: number; description: string; image: string }[] = [
     {
       year: 1986,
       description:
@@ -51,14 +58,6 @@ export class TimelineComponent {
     },
   ];
 
-  get years(): number[] {
-    const years: number[] = [];
-    for (let y = this.startYear; y <= this.endYear; y += this.step) {
-      years.push(y);
-    }
-    return years;
-  }
-
   private scrollSub?: Subscription;
   ngAfterViewInit(): void {
     if (this.elementsParallax.length) {
@@ -71,19 +70,26 @@ export class TimelineComponent {
     }
   }
 
+  ngOnDestroy(): void {
+    if (this.scrollSub) {
+      this.scrollSub.unsubscribe();
+    }
+  }
+
   private checkElementsVisibility() {
-    this.elementsParallax.forEach((elementRef: ElementRef) => {
-      const rect = elementRef.nativeElement.getBoundingClientRect();
-      const windowHeight =
-        window.innerHeight || document.documentElement.clientHeight;
+    if (isPlatformBrowser(this.platformId)) {
+      this.elementsParallax.forEach((elementRef: ElementRef) => {
+        const rect = elementRef.nativeElement.getBoundingClientRect();        
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
 
-      const visibleHeight =
-        Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
-      const elementHeight = rect.height;
+        const visibleHeight =
+          Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
+        const elementHeight = rect.height;
 
-      if (visibleHeight > elementHeight * 0.2) {
-        this.renderer.addClass(elementRef.nativeElement, 'visible');
-      }
-    });
+        if (visibleHeight > elementHeight * 0.2) {
+          this.renderer.addClass(elementRef.nativeElement, 'visible');
+        }
+      });
+    }
   }
 }
