@@ -32,27 +32,23 @@ export class FaqComponent {
 
   faqs = [
     {
-      question: '¿Cómo puedo contactarlos?',
-      answer:
-        'Puedes contactarnos a través de nuestro correo electrónico o número de teléfono.',
+      question: '¿Cómo inicio un proyecto con ustedes?',
+      answer: 'Puedes contactarnos por teléfono, correo o a través del formulario web. Enviaremos un equipo calificado para diagnosticar tus necesidades y proponer una solución adaptada.',
       isOpen: false,
     },
     {
-      question: '¿Cuáles son sus horarios de atención?',
-      answer:
-        'Nuestros horarios de atención son de lunes a viernes de 9:00 AM a 6:00 PM.',
+      question: '¿A qué tipo de empresas prestan servicio? ¿Tienen experiencia certificada?',
+      answer: 'Atendemos a entidades tanto públicas como privadas en sectores como salud, educación, administración pública, corporativo, etc. Estamos certificados bajo ISO 9001 y reconocidos por Icontec/IQNet .',
       isOpen: false,
     },
     {
-      question: '¿Dónde están ubicados?',
-      answer:
-        'Nos encontramos en la calle principal, en el centro de la ciudad.',
+      question: '¿Tienen proyectos de responsabilidad social o innovación?',
+      answer: 'Como empresa BIC, promovemos prácticas de beneficio colectivo. Tenemos documentos y artículos en nuestra sección “Opinión & RSE” que reflejan nuestro compromiso social e institucional ',
       isOpen: false,
     },
     {
-      question: '¿Puedo hacer compras en línea?',
-      answer:
-        'Sí, contamos con una plataforma de compras en línea. Visita nuestra tienda en línea para más detalles.',
+      question: '¿Qué garantías ofrecen en seguridad y confidencialidad?',
+      answer: 'Contamos con protocolos certificados bajo ISO 9001, procesos auditados regularmente y cumplimiento estricto de leyes como la Ley 1581 de protección de datos personales. Además, nuestros sistemas están diseñados para garantizar la integridad y acceso controlado a la información.',
       isOpen: false,
     },
   ];

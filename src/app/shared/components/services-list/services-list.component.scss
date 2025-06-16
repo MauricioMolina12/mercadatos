@@ -57,7 +57,7 @@
 
     .services-grid-item {
       cursor: pointer;
-      transform: translateY(30px);
+      transform: translateY(60px) scale(.9);
       opacity: 0;
       width: 95%;
       height: 100%;
@@ -71,7 +71,7 @@
       z-index: 10;
 
       &.visible {
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
         opacity: 1;
         transition: transform 1s ease, opacity 1s ease;
       }

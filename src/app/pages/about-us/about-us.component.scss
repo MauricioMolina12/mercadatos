@@ -11,12 +11,12 @@
   .about-us__recognitions,
   .about-us__history-timeline,
   .about-us__team {
-    transform: translateY(30px);
+    transform: translateY(60px) scale(.8);
     opacity: 0;
 
     &.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
       transition: transform 1s ease, opacity 1s ease;
     }
   }

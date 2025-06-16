@@ -17,12 +17,6 @@
     font-size: 1.8rem;
     animation: topToBottom 1.2s ease-in-out;
     margin-bottom: 10px;
-
-    &.visible {
-      transform: translateY(-50px);
-      opacity: 1;
-      transition: transform 1s ease, opacity 1s ease;
-    }
   }
 
   .customers__description {
@@ -45,23 +39,14 @@
       justify-content: center;
       gap: 15px;
 
-      h2{
+      h2 {
         font-size: 2.8rem;
         color: #04e5b4;
       }
 
-      span{
+      span {
         color: var(--color-dark-gray);
       }
-
-      
-    }
-
-
-    &.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: transform 1s ease, opacity 1s ease;
     }
   }
 
@@ -72,12 +57,6 @@
     max-width: 1200px;
     overflow: hidden;
     width: 90vw;
-
-    &.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: transform 1s ease, opacity 1s ease;
-    }
 
     .slider {
       animation: slide-animation 40s infinite linear 2s;
@@ -152,19 +131,19 @@
     }
   }
 
+  .customers__title,
+  .customers__description,
+  .slider-container {
+    transform: translateY(60px) scale(0.9);
+    opacity: 0;
+  }
+
   .customers__title.visible,
   .customers__description.visible,
   .slider-container.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     transition: transform 1s ease, opacity 1s ease;
-  }
-
-  .customers__title,
-  .customers__description,
-  .slider-container {
-    transform: translateY(30px);
-    opacity: 0;
   }
 
   @keyframes slide-animation {
@@ -219,14 +198,13 @@
     }
 
     .slider-container {
-      width: 50vw;
+      width: 80vw;
     }
 
-    .customers__description{
+    .customers__description {
       width: 30%;
       flex-direction: row;
     }
-    
   }
 }
 
