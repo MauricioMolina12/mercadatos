@@ -1,10 +1,13 @@
-<section class="hero">
-    <div class="hero-description">
-        <h1 class="hero-description__title">Servicio en gestión documental</h1>
-        <p class="hero-description__paragraph">Ofrecemos soluciones especializadas para la gestión eficiente de tu
-            información mejorando los procesos, optimizando procedimientos personalizados y ajustados a tus necesidades
-            misionales y legales.</p>
+<section class="hero" [ngStyle]="{ 'background-image': 'url(' + banners[currentBanner].image + ')' }">
+    <div class="hero-description" [ngClass]="{ animate: animateIndex === currentBanner }">
+        <h1 class="hero-description__title">{{ banners[currentBanner].title }}</h1>
+        <p class="hero-description__paragraph">{{ banners[currentBanner].description }}</p>
         <button class="hero-description__button-callaction"
             [routerLink]="['/services/gestion-documental']">Empezar</button>
+    </div>
+    <div class="buttons">
+        <button (click)="toogleBanner()"> 
+            <span class="material-icons">{{ isPaused ? 'play_arrow' : 'paused'  }}</span>
+        </button>
     </div>
 </section>
