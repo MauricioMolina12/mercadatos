@@ -35,7 +35,7 @@
                     [class.hidden]="activeDropdown !== item.label">
                     
                     <ul class="dropdown-list">
-                        <li *ngFor="let content of contentDropdown" (click)="redirectItem(content.slug, content.href === 'service' ? 'services' : 'news') ">
+                        <li *ngFor="let content of contentDropdown" (click)="redirectItem(content.slug, 'services') ">
                             <a [ngClass]="{'dark' : isDarkTheme, 'active' : content.slug === itemActive}" [attr.aria-label]="content.ariaLabel">{{content.label}}</a>
                         </li>
                     </ul>

@@ -1,12 +1,12 @@
 <div class="news">
     <header class="news-header">
-        <!-- <span class="material-icons" [ngStyle]="{'color' : isDark ? 'white' : 'initial'}">format_quote</span> -->
+        <span class="material-icons" [ngStyle]="{'color' : isDark ? 'white' : 'initial'}">format_quote</span>
         <span>Historias que mueven nuestros <p>Datos</p></span>
-        <!-- <span class="material-icons" [ngStyle]="{'color' : isDark ? 'white' : 'initial'}">format_quote</span> -->
+        <span class="material-icons" [ngStyle]="{'color' : isDark ? 'white' : 'initial'}">format_quote</span>
     </header>
     <div class="news-last">
         <figure class="news-last__figure">
-            <img src="assets/clean-browser-mockup.png" alt="mockup page">
+            <img src="assets/team-pictures/clean-browser-mockup.png" alt="mockup page">
         </figure>
         <div class="news-last__content">
             <h2 [ngClass]="{'dark': isDark}">¡Estrenamos página web!</h2>
@@ -18,7 +18,7 @@
     </div>
     <h2 class="news-title-last" [ngClass]="{'dark' : isDark}">Ultimas noticias</h2>
     <div class="news-grid">
-        <div class="news-grid__item" *ngFor="let new of news" [ngClass]="{'dark': isDark}">
+        <div class="news-grid__item" *ngFor="let new of news; let i = index" [ngClass]="{'dark': isDark}" [routerLink]="['/news', i]">
             <figure class="news-grid__item-figure">
                 <img [src]="new.image" [alt]="new.title">
             </figure>
@@ -29,5 +29,7 @@
             </div>
         </div>
     </div>
-    <!-- <app-hero-news [sliderAds]="news"></app-hero-news> -->
+    <div class="news-pagination">
+        
+    </div>
 </div>

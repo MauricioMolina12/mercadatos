@@ -60,11 +60,21 @@ export class NavBarComponent implements OnInit {
       ariaLabel: 'Ir a la sección de servicios',
     },
     {
-      label: 'Actualidad',
+      label: 'Noticias',
+      href: '#news',
+      ariaLabel: 'Ir a la sección de noticias',
+      routerLink: ['/news'],
+      routerLinkActive: 'active',
+      // isDropdown: true,
+    },
+    {
+      label: 'Blog',
       href: '#contact',
       ariaLabel: 'Ir a la sección de actualidad',
-      isDropdown: true,
+      routerLink: ['/blog'],
+      routerLinkActive: 'active',
     },
+
     {
       label: 'Clientes',
       href: '#contact',
@@ -141,55 +151,40 @@ export class NavBarComponent implements OnInit {
 
   activeDropdown: string | null = null;
   activeItemNav(label: string, event: 'clic' | 'hover') {
-    const isDropdown = label === 'Servicios' || label === 'Actualidad';
+    const isDropdown = label === 'Servicios';
 
     if (isDropdown) {
       const isSameDropdown = this.activeDropdown === label;
       this.activeDropdown = isSameDropdown ? null : label;
-      this.contentDropdown =
-        label === 'Servicios'
-          ? [
-              {
-                label: 'SERVICIOS EN GESTIÓN DOCUMENTAL',
-                slug: 'gestion-documental',
-                href: 'service',
-                ariaLabel: 'Ir a la sección de servicios en gestión documental',
-              },
-              {
-                label: 'INVESTIGACIÓN Y ESTUDIOS DE MERCADO',
-                slug: 'investigacion-y-estudios-de-mercado',
-                href: 'service',
-                ariaLabel:
-                  'Ir a la sección de servicio de investigación y estudios de mercado',
-              },
-              {
-                label: 'IMPRESOS GRÁFICOS',
-                slug: 'impresos-graficos',
-                href: 'service',
-                ariaLabel: 'Ir a la sección de servicio de impresos gráficos',
-              },
-              {
-                label:
-                  'REPRESENTACIÓN LEGAL, ASESORÍAS Y CONSULTORÍAS JURÍDICAS',
-                slug: 'representacion-legal-asesorias-y-consultorias-juridicas',
-                href: 'service',
-                ariaLabel:
-                  'Ir a la sección de servicio de representación legal, asesorías y consultorías jurídicas',
-              },
-            ]
-          : [
-              {
-                label: 'NOTICIAS',
-                slug: 'news',
-                href: '#actuality1',
-                ariaLabel: 'Ir a la sección de actualidad 1',
-              },
-              {
-                label: 'OPINIÓN & RSE',
-                href: '#actuality2',
-                ariaLabel: 'Ir a la sección de actualidad 2',
-              },
-            ];
+      this.contentDropdown = [
+        {
+          label: 'SERVICIOS EN GESTIÓN DOCUMENTAL',
+          slug: 'gestion-documental',
+          href: 'service',
+          ariaLabel: 'Ir a la sección de servicios en gestión documental',
+        },
+        {
+          label: 'INVESTIGACIÓN Y ESTUDIOS DE MERCADO',
+          slug: 'investigacion-y-estudios-de-mercado',
+          href: 'service',
+          ariaLabel:
+            'Ir a la sección de servicio de investigación y estudios de mercado',
+        },
+        {
+          label: 'IMPRESOS GRÁFICOS',
+          slug: 'impresos-graficos',
+          href: 'service',
+          ariaLabel: 'Ir a la sección de servicio de impresos gráficos',
+        },
+        {
+          label: 'REPRESENTACIÓN LEGAL, ASESORÍAS Y CONSULTORÍAS JURÍDICAS',
+          slug: 'representacion-legal-asesorias-y-consultorias-juridicas',
+          href: 'service',
+          ariaLabel:
+            'Ir a la sección de servicio de representación legal, asesorías y consultorías jurídicas',
+        },
+      ];
+
       return;
     } else if (event === 'clic') {
       this.menuActive = false;
