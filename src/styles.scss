@@ -44,6 +44,14 @@ input {
   transition: filter 0.3s ease;
 }
 
+.inverse{
+  flex-direction: row-reverse !important;
+}
+
+.justify-end{
+  justify-content: end !important;
+}
+
 * {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
 }

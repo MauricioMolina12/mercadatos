@@ -1,15 +1,13 @@
-<section class="services">
+<section class="services" [ngClass]="{'dark': isDark}">
     <div class="services-video__wrapper">
         <app-hero-video [info]="service"></app-hero-video>
     </div>
-    <div class="services-information">
-        <section class="service-section" *ngFor="let info of service.content; let i = index" [ngClass]="{ 'odd': i % 2 !== 0 }">
-            <h2 class="service-section__title">
-                {{ info.title }}
-            </h2>
-            <p class="service-section__description">
-                {{ info.content }}
-            </p>
-        </section>
+    <div class="service-markdown" *ngIf="!error; else fallback">
+        <div [innerHTML]="content"></div>
     </div>
+
+    <ng-template #fallback>
+        <p>No se pudo cargar el contenido del servicio.</p>
+    </ng-template>
+
 </section>

@@ -20,7 +20,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(
     private themeService: ThemeService,
     @Inject(DOCUMENT) private document: Document,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
   ) {}
 
   ngOnInit(): void {

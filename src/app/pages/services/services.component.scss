@@ -3,6 +3,7 @@
   width: 100%;
   box-sizing: border-box;
   gap: 10px;
+  background-color: var(--background-color);
 
   &-video__wrapper {
     position: relative;
@@ -47,6 +48,7 @@
       border: 1px solid white;
       display: flex;
       flex-direction: column;
+      align-items: start;
       padding: 10px;
       box-sizing: border-box;
 
@@ -55,7 +57,7 @@
       }
 
       &__title {
-        color: #04e5b4;
+        color: var(--color-dark-contrast);
         padding-block: 40px;
       }
 
@@ -69,12 +71,203 @@
   }
 }
 
-@media (min-width: 1280px) {
-  .services {
-    &-information {
-      .service-section {
-        width: 70%;
+// .dark {
+//   .service-markdown {
+//     :host ::ng-deep .service-markdown .gestion-documental {
+//       &--section {
+//         ul li {
+//           color: var(--color-font-gray);
+//         }
+
+//         .information {
+//           .title {
+//             color: white;
+//           }
+
+//           .description {
+//             color: var(--color-font-gray);
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+.service-markdown {
+  box-sizing: border-box;
+}
+
+/* MarkDowns */
+
+/* Gestión documental */
+:host ::ng-deep .service-markdown .gestion-documental {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  margin-block: 40px;
+
+  &--section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    ul {
+      padding: 0;
+      padding-left: 16px;
+      line-height: 30px;
+      display: flex;
+      flex-direction: column;
+
+      li {
+        color: var(--color-dark-contrast);
       }
+    }
+
+    .information {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 15px;
+      width: 100%;
+
+      small {
+        font-size: 1rem;
+        background-color: var(--color-primary);
+        color: var(--color-white);
+        max-width: max-content;
+        padding: 10px;
+        font-weight: 700;
+        border-radius: 10px;
+      }
+
+      .title {
+        font-size: 2.6rem;
+        font-weight: 700;
+        color: var(--color-dark-contrast);
+      }
+
+      .description {
+        color: var(--color-dark-contrast);
+        font-size: 1.1rem;
+        max-width: 100%;
+        font-weight: 300;
+        margin: 0;
+      }
+    }
+
+    .image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 360px;
+        object-fit: cover;
+        aspect-ratio: 16/9;
+        transition: all 1s ease;
+        border-radius: 10px;
+
+        &:hover {
+          transform: scale(1.5);
+        }
+      }
+    }
+  }
+}
+
+:host ::ng-deep .service-markdown .gestion-meeting {
+  width: 100%;
+  height: 15vh;
+  background-color: var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-sizing: border-box;
+  width: 90%;
+  margin: 10px auto;
+  padding: 12px;
+  border-radius: 10px;
+  align-items: start;
+
+  h2 {
+    color: white;
+  }
+
+  a {
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 6px;
+    outline: none;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+@media (min-width: 1280px) {
+  .service-markdown {
+    margin: 20px;
+  }
+
+  :host ::ng-deep .service-markdown .gestion-documental {
+    &--section {
+      max-width: 70%;
+      margin: 0 auto;
+      gap: 20px;
+      flex-direction: row;
+      .information {
+        width: 50%;
+        .description {
+          font-size: 1.2rem;
+          max-width: 90%;
+        }
+      }
+
+      .image {
+        width: 50%;
+      }
+
+      &.reverse {
+        flex-direction: row-reverse;
+
+        .information {
+          align-items: end;
+
+          .title {
+            text-align: end;
+          }
+
+          ul {
+            align-items: end;
+          }
+        }
+      }
+    }
+  }
+
+  :host ::ng-deep .service-markdown .gestion-meeting {
+    width: 70%;
+    margin: 0 auto;
+    border-radius: 10px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 20px;
+
+    h2{
+      max-width: 70%;
     }
   }
 }

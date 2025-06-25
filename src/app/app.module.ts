@@ -14,6 +14,9 @@ import { ServicesListComponent } from './shared/components/services-list/service
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AnniversaryComponent } from './shared/components/anniversary/anniversary.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { environment } from '../environments/environment';
 
 
 
@@ -34,8 +37,10 @@ import { AnniversaryComponent } from './shared/components/anniversary/anniversar
     VideoPlayerComponent,
     ReactiveFormsModule,
     HttpClientModule,
-    AnniversaryComponent
-],
+    AnniversaryComponent,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+  ],
   providers: [
     provideClientHydration(withEventReplay())
   ],

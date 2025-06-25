@@ -10,7 +10,10 @@ import { RouterLink } from '@angular/router';
   styleUrl: './footer.component.scss',
 })
 export class FooterComponent {
-  constructor() {}
+  year: number = 0
+  constructor() {
+    this.year = new Date().getFullYear()
+  }
 
   links: { label: string; path: string }[] = [
     {

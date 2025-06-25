@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ThemeService } from '../../shared/services/theme.service';
 import { SeoService } from '../../shared/services/seo.service';
 import { SeoData } from '../../shared/models/seo';
+import { NewsService } from '../news/news.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private themeService: ThemeService,
-    private seoService: SeoService
+    private seoService: SeoService,
+    private newsService: NewsService
   ) {
     this.themeService.darkMode$.subscribe((isDark) => {
       this.isDark = isDark;

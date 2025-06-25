@@ -18,7 +18,7 @@ export class HeroVideoComponent implements OnInit, OnChanges {
   @Input() info: any;
   url_video: string = '';
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     console.log(this.url_video);
   }
 
@@ -43,6 +43,11 @@ export class HeroVideoComponent implements OnInit, OnChanges {
         this.restartAnimation(this.heroDescription);
       }
     }
+  }
+
+  videoReady = false;
+  onVideoReady() {
+    this.videoReady = true;
   }
 
   private reloadVideo(): void {

@@ -2,11 +2,14 @@
     <div class="hero-layer"></div>
     <video
       #videoPlayer
+      [class.fade-in]="videoReady"
       autoplay
       muted
       loop
       playsinline
-      preload="none"
+      preload="auto" 
+      decoding="async"
+      loading="lazy"
     >
       <source [src]="url_video" type="video/mp4" />
     </video>
