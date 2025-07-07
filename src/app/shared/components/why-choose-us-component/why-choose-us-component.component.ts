@@ -45,12 +45,12 @@ export class WhyChooseUsComponentComponent implements OnInit {
     this.updateVisibleItems();
   }
 
-  items = [
-    'Sus documentos se acumulan sin ningún criterio de archivo y no conoce la información que almacena.',
-    'No tiene resuelto el almacenamiento de su documentación y está empleando espacios que debería mejor utilizados.',
-    'Requiere medios alternos de conservación que garanticen el acceso a su información.',
-    'La no obtención oportuna de la información frena o retrasa los flujos de los procesos de su negocio.',
-    'Necesita distribuir documentos.',
+  items: string[] = [
+    'Sus documentos se acumulan sin un sistema de archivo definido, lo que le impide conocer la información que posee.',
+    'Carece de un sistema eficiente de almacenamiento y ocupa espacios físicos que podrían usarse de manera más productiva.',
+    'Necesita métodos alternativos de conservación que aseguren el acceso rápido y seguro a su información cuando lo requiera.',
+    'Un acceso oportuno a la información agiliza sus procesos internos y mejora la toma de decisiones en su negocio.',
+    'Requiere una solución eficaz para distribuir documentos de manera ágil, segura y acorde a sus necesidades operativas.'
   ];
 
   visibleItems: string[] = [];

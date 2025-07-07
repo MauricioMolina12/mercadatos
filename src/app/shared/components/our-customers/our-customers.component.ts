@@ -100,10 +100,12 @@ export class OurCustomersComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.customersService.getCustomers().subscribe((customers) => {
-      this.customers = customers;
+      this.customers = customers.map((c) => ({
+        ...c,
+        name: c.name ? c.name.toUpperCase() : c.name,
+      }));
       this.publicCustomers = customers.filter((c) => c.type === 'PÚBLICA');
       this.privateCustomers = customers.filter((c) => c.type === 'PRIVADA');
-      this.cdr.markForCheck();
     });
   }
 
