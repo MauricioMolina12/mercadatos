@@ -2,7 +2,7 @@
 
 .hero {
   width: 100%;
-  height: 60vh;
+  height: 100vh;
   box-sizing: border-box;
 
   display: flex;
@@ -164,7 +164,6 @@
 /* Small laptops */
 @media (min-width: 1024px) and (max-width: 1279px) {
   .hero {
-    height: 100vh;
     .hero-description {
       .hero-description__title {
         font-size: 2.8rem;
@@ -188,7 +187,6 @@
 /* Medium screens */
 @media (min-width: 1280px) {
   .hero {
-    height: 100vh;
     flex-direction: row-reverse;
     background-position: top;
 
