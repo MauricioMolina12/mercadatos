@@ -114,6 +114,10 @@ export class AboutUsComponent implements OnInit {
       image: 'assets/awards9.jpg',
       name: 'Vivencias ExpoBIC 2022',
     },
+    {
+      image: 'assets/awards10.jpg',
+      name: 'Vivencias ExpoBIC 2022',
+    },
   ];
 
   ourTeam: { image: string; name: string; description: string }[] = [

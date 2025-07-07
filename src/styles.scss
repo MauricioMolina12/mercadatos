@@ -59,12 +59,20 @@ input {
   justify-content: end !important;
 }
 
-.hidden{
+.hidden {
   overflow: hidden !important;
 }
 
 * {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 8px;
+  font-size: 16px;
 }
 
 h1,
