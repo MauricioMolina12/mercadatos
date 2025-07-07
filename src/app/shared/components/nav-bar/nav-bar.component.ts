@@ -59,14 +59,14 @@ export class NavBarComponent implements OnInit {
       // routerLinkActive: 'active',
       ariaLabel: 'Ir a la sección de servicios',
     },
-    {
-      label: 'Noticias',
-      href: '#news',
-      ariaLabel: 'Ir a la sección de noticias',
-      routerLink: ['/news'],
-      routerLinkActive: 'active',
-      // isDropdown: true,
-    },
+    // {
+    //   label: 'Noticias',
+    //   href: '#news',
+    //   ariaLabel: 'Ir a la sección de noticias',
+    //   routerLink: ['/news'],
+    //   routerLinkActive: 'active',
+    //   isDropdown: true,
+    // },
     {
       label: 'Clientes',
       href: '#contact',

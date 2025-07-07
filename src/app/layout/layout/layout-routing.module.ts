@@ -29,10 +29,10 @@ const routes: Routes = [
         path: 'contact',
         loadChildren: ()=> import('../../pages/contact/contact.module').then(m => m.ContactModule)
       },
-      {
-        path: 'news',
-        loadChildren: ()=> import('../../pages/news/news.module').then(m=> m.NewsModule)
-      },
+      // {
+      //   path: 'news',
+      //   loadChildren: ()=> import('../../pages/news/news.module').then(m=> m.NewsModule)
+      // },
       {
         path: 'news/:id',
         loadChildren: () => import('../../pages/news-details/news-details.module').then(m=> m.NewsDetailsModule)
