@@ -60,7 +60,7 @@
     min-height: 80px;
     border: 1px solid #ddd;
     border-radius: 10px;
-    background-color: var(--gradient-primary);
+    background-color: var(--color-white);
     position: relative;
     cursor: pointer;
     display: flex;
@@ -93,9 +93,9 @@
       height: 100%;
       padding: 10px;
       font-size: 1.1rem;
-      font-weight: 500;
-      background-color: transparent;
+      font-weight: 600;
       color: var(--color-font-gray);
+      background-color: transparent;
       border: none;
       text-align: left;
       border-radius: 5px;
@@ -109,7 +109,7 @@
       opacity: 0;
       overflow: hidden;
       font-size: 1rem;
-      font-weight: 300;
+      font-weight: 400;
       color: var(--color-font-gray);
       line-height: 1.5;
       padding: 10px;
