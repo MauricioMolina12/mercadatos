@@ -8,10 +8,8 @@
   .about-us__mission,
   .about-us__vision,
   .about-us__beginning,
-  .about-us__recognitions,
-  .about-us__history-timeline,
-  .about-us__team {
-    transform: translateY(60px) scale(.8);
+  .about-us__recognitions {
+    transform: translateY(60px) scale(0.8);
     opacity: 0;
 
     &.visible {
@@ -140,19 +138,8 @@
         z-index: 1;
         object-fit: cover;
         object-position: top 10%;
-        aspect-ratio: 16/9;
-      }
-
-      &::after {
-        content: "";
-        border-radius: inherit;
-        position: absolute;
-        left: -10px;
-        bottom: -20px;
-        width: 90%;
-        height: 80%;
-        background-color: var(--color-primary);
-        z-index: 0;
+        aspect-ratio: 16/9;        
+        filter: brightness(120%);
       }
     }
   }
@@ -285,11 +272,17 @@
       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 10px;
 
+      &:hover:has(.about-us__team-grid__item:hover)
+        .about-us__team-grid__item:not(:hover) {
+        filter: grayscale(1);
+      }
+
       &__item {
         width: 100%;
         min-height: 280px;
         background-color: var(--color-white);
         border-radius: 10px;
+        transition: filter 0.3s ease;
 
         &-figure {
           width: 100%;
@@ -312,6 +305,7 @@
           flex-direction: column;
           align-items: center;
           justify-content: start;
+          gap: 10px;
           text-align: center;
           box-sizing: border-box;
           padding-block: 12px;
@@ -325,6 +319,7 @@
           p {
             font-size: 0.8rem;
             max-width: 90%;
+            margin: 0;
           }
         }
       }
@@ -578,6 +573,9 @@
 
       .about-us__header-description {
         width: 60%;
+        align-items: start;
+        padding-left: 80px;
+        box-sizing: border-box;
       }
 
       .about-us__header-image {
@@ -609,6 +607,9 @@
       &-content {
         width: 50%;
         margin-left: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
 
         &-title {
           font-size: 2.5rem;
@@ -637,6 +638,14 @@
         &:hover {
           transform: scale(1.05);
         }
+      }
+    }
+
+    .about-us__mission {
+      &-content {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
       }
     }
 

@@ -9,6 +9,13 @@ body {
   transition: all 1s ease;
 }
 
+#map {
+  height: 500px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
 button,
 a,
 input {
@@ -44,12 +51,16 @@ input {
   transition: filter 0.3s ease;
 }
 
-.inverse{
+.inverse {
   flex-direction: row-reverse !important;
 }
 
-.justify-end{
+.justify-end {
   justify-content: end !important;
+}
+
+.hidden{
+  overflow: hidden !important;
 }
 
 * {

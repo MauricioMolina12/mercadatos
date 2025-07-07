@@ -1,5 +1,11 @@
-import { isPlatformServer } from '@angular/common';
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { DOCUMENT, isPlatformBrowser, isPlatformServer } from '@angular/common';
+import {
+  Component,
+  Inject,
+  OnDestroy,
+  OnInit,
+  PLATFORM_ID,
+} from '@angular/core';
 
 @Component({
   selector: 'app-hero-section',
@@ -7,8 +13,11 @@ import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
   templateUrl: './hero-section.component.html',
   styleUrl: './hero-section.component.scss',
 })
-export class HeroSectionComponent implements OnInit {
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+export class HeroSectionComponent implements OnInit, OnDestroy {
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(DOCUMENT) private document: Document
+  ) {}
 
   banners: { title: string; description: string; image: string }[] = [
     {
@@ -39,19 +48,23 @@ export class HeroSectionComponent implements OnInit {
     }
   }
 
+  ngOnDestroy(): void {
+    this.intervalId = null;
+  }
+
   startBannerPresentation() {
     this.intervalId = setInterval(() => {
       this.currentBanner = (this.currentBanner + 1) % this.banners.length;
-      this.triggerAnimation(this.currentBanner)
+      this.triggerAnimation(this.currentBanner);
     }, 5000);
   }
 
   animateIndex: number | null = 0;
 
   triggerAnimation(index: number) {
-    this.animateIndex = null; 
+    this.animateIndex = null;
     setTimeout(() => {
-      this.animateIndex = index; 
+      this.animateIndex = index;
     }, 0);
   }
 
@@ -64,4 +77,11 @@ export class HeroSectionComponent implements OnInit {
       this.startBannerPresentation();
     }
   }
+
+  callAction() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.document.defaultView?.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    }
+  }
+  
 }

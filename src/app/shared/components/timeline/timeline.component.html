@@ -1,8 +1,9 @@
 <section class="timeline">
     <div class="line"></div>
-    <div class="card" *ngFor="let card of timelineHistory; let i = index" [class.right]="i%2===0" #elementsParallax>
+    <div (click)="emitTimeline.emit(card)" class="card" *ngFor="let card of timeline; let i = index" [class.right]="i%2===0" #elementsParallax>
         <div class="card-content">
-            <h2 class="card-content--year">{{card.year}}</h2>
+            <h2 class="card-content--name">{{card.name}}</h2>
+            <small class="card-content--year">{{card.date}}</small>
             <p class="card-content--description">{{card.description}}</p>
         </div>
         <div class="card-image">

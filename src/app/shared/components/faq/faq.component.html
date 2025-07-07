@@ -1,18 +1,16 @@
 <div class="faq-container">
     <h2 class="faq-title" #elementsParallax [ngClass]="{'isDark' : isDark}">Preguntas Frecuentes</h2>
-
-    <div *ngFor="let faq of faqs" class="faq-item" (click)="toggleAnswer(faq)" #elementsParallax>
+    <div *ngFor="let faq of faqs;" class="faq-item" (click)="toggleAnswer(faq)" #elementsParallax>
         <button class="faq-question">
             {{ faq.question }}
         </button>
-
-        <div *ngIf="faq.isOpen" class="faq-answer">
+        <div class="faq-answer" [class.open]="faq.isOpen">
             <p>{{ faq.answer }}</p>
         </div>
-
-        <button class="toggle-button" [ngClass]="{'open' : faq.isOpen}">
+        <button class="toggle-button" [class.open]="faq.isOpen">
             <span class="material-icons arrow-dropdown">
                 keyboard_arrow_down
-            </span> </button>
+            </span> 
+        </button>
     </div>
 </div>

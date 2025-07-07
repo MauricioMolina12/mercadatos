@@ -33,11 +33,22 @@
     .contact-form {
       width: 100%;
 
+      .error-message{
+        background-color: rgb(255, 231, 231);
+        border-radius: 5px;
+        padding: 5px;
+        color: var(--color-danger);
+        position: absolute;
+        bottom: -20px;
+        font-size: 70%;
+      }
+
       &-user,
-      &-email,
       &-message {
         width: 100%;
         display: flex;
+        margin-bottom: 50px;
+        position: relative;
 
         label {
           color: var(--color-font-gray);
@@ -46,11 +57,12 @@
       }
 
       &-user {
+        flex-direction: column;
         align-items: center;
-        justify-content: space-between;
-        gap: 10px;
+        // gap: 10px;
 
-        &-name {
+        &-name,
+        &-email {
           width: 100%;
           height: 100px;
           display: flex;
@@ -72,22 +84,6 @@
         }
       }
 
-      &-email {
-        flex-direction: column;
-        height: 100px;
-        gap: 10px;
-
-        input {
-          width: 100%;
-          height: 50%;
-          padding: 10px;
-          border-radius: 6px;
-          outline: none;
-          border: none;
-          box-sizing: border-box;
-          background-color: var(--color-white);
-        }
-      }
       &-message {
         height: 250px;
         flex-direction: column;
@@ -348,35 +344,7 @@
   }
 }
 
-/* Small laptops */
-@media (min-width: 1024px) and (max-width: 1279px) {
-  // .contact {
-  //   &-header {
-  //     &__form {
-  //       width: 60%;
-  //       &-user {
-  //         & > * {
-  //           width: 50%;
-  //         }
-  //       }
-  //     }
-  //   }
 
-  //   .select-emails-filter {
-  //     width: 50%;
-  //   }
-
-  //   .emails {
-  //     display: flex;
-  //     height: 180px;
-  //     justify-content: center;
-
-  //     .contact-information__card {
-  //       width: 50%;
-  //     }
-  //   }
-  // }
-}
 
 /* Medium screens */
 @media (min-width: 1280px) {
@@ -392,6 +360,12 @@
 
       .contact-form {
         width: 90%;
+
+        &-user {
+          gap: 10px;
+          flex-direction: row;
+        }
+
         &-submit {
           width: 40%;
         }

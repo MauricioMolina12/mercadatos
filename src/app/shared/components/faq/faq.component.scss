@@ -1,7 +1,6 @@
 .faq-container {
   width: 100%;
   min-height: 100vh;
-  // max-width: 800px;
   margin: 0 auto;
   padding: 20px;
   box-sizing: border-box;
@@ -37,8 +36,9 @@
   .faq-title,
   .faq-item {
     opacity: 0;
-    transform: translateY(60px) scale(.9);
+    transform: translateY(60px) scale(0.9);
     transition: transform 1s ease, opacity 1s ease;
+
     &.visible {
       opacity: 1;
       transform: translateY(0) scale(1);
@@ -48,23 +48,20 @@
   .faq-title {
     font-size: 1.8rem;
     text-align: center;
-    margin-bottom: 20px;
+    margin-block: 50px 20px;
     font-weight: 600;
     background: var(--text-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    margin-block: 50px;
   }
 
   .faq-item {
     min-height: 80px;
-    // padding: 10px;
     border: 1px solid #ddd;
     border-radius: 10px;
     background-color: var(--gradient-primary);
     position: relative;
-    transition: all 1s ease;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -81,12 +78,11 @@
       font-size: 1.8rem;
       color: var(--color-gray);
       cursor: pointer;
+      transition: all .4s ease-in;
 
       &.open {
-        top: 36%;
-
+        top: 10px;
         .arrow-dropdown {
-          transition: all 0.5s ease;
           transform: rotate(180deg);
         }
       }
@@ -109,15 +105,21 @@
     }
 
     .faq-answer {
-      margin-top: 10px;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
       font-size: 1rem;
       font-weight: 300;
       color: var(--color-font-gray);
       line-height: 1.5;
       padding: 10px;
       border-radius: 5px;
-      margin-top: 10px;
-      transition: all 1s ease;
+      transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.3s ease;
+    }
+
+    .faq-answer.open {
+      max-height: 500px;
+      opacity: 1;
     }
   }
 }
@@ -127,9 +129,6 @@
   .faq-container {
     max-width: 600px;
   }
-}
-/* Small laptops */
-@media (min-width: 1024px) and (max-width: 1279px) {
 }
 
 /* Medium screens */
@@ -144,8 +143,4 @@
       font-size: 2.5rem;
     }
   }
-}
-
-/* Big screens */
-@media (min-width: 1920px) {
 }

@@ -29,7 +29,7 @@ import { environment } from '../environments/environment';
     FaqComponent,
     WhyChooseUsComponentComponent,
     BusinessInfoComponent,
-    ServicesListComponent,
+    ServicesListComponent
   ],
   imports: [
     BrowserModule,

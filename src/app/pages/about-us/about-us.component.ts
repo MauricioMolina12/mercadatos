@@ -12,6 +12,8 @@ import { UtilsService } from '../../shared/services/utils.service';
 import { SeoService } from '../../shared/services/seo.service';
 import { SeoData } from '../../shared/models/seo';
 import { fromEvent, Subscription, throttleTime } from 'rxjs';
+import { Event } from '@angular/router';
+import { timeline } from '../../shared/models/timeline';
 
 @Component({
   selector: 'app-about-us',
@@ -221,22 +223,25 @@ export class AboutUsComponent implements OnInit {
     }
   }
 
-  handleHover(event: MouseEvent) {
-    const hovered = event.currentTarget as HTMLElement;
-
-    this.elementsGrid.forEach((elRef) => {
-      const element = elRef.nativeElement as HTMLElement;
-      if (element !== hovered) {
-        element.classList.add('grayscale');
-      } else {
-        element.classList.remove('grayscale');
-      }
-    });
-  }
-
   resetHover() {
     this.elementsGrid.forEach((elRef) => {
       elRef.nativeElement.classList.remove('grayscale');
     });
+  }
+
+  timeline: timeline = {
+    name: '',
+    description: '',
+    descriptionInternal: '',
+    image: '',
+  };
+  viewTimeline: boolean = false;
+  viewDetailTimeline(timeLine: timeline) {
+    this.timeline = timeLine;
+    this.viewTimeline = !!this.timeline && !!Object.keys(this.timeline).length;
+  }
+
+  closeViewDetail(isOpen: boolean) {
+    this.viewTimeline = isOpen;
   }
 }

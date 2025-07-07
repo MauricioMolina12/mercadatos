@@ -27,7 +27,7 @@ export class SliderImagesComponent implements OnChanges, OnInit, AfterViewInit {
   currentSlide = 0;
 
   ngOnInit(): void {
-    // this.setActiveItem(0);
+    this.setActiveItem(0);
   }
 
   ngOnChanges() {
@@ -48,19 +48,15 @@ export class SliderImagesComponent implements OnChanges, OnInit, AfterViewInit {
     this.currentSlide = 0;
   }
 
-  scrollLeft() {
-    this.carousel.nativeElement.scrollBy({ left: -220, behavior: 'smooth' });
+  isAnimated: boolean = false;
+  scrollSlider(direction: 'left' | 'right') {
+    this.isAnimated = true;
+    const left = direction === 'left' ? -220 : 200;
+    this.carousel.nativeElement.scrollBy({ left: left, behavior: 'smooth' });
     setTimeout(() => {
       this.checkScrollPosition();
       this.highlightCenteredItem();
-    }, 300);
-  }
-
-  scrollRight() {
-    this.carousel.nativeElement.scrollBy({ left: 220, behavior: 'smooth' });
-    setTimeout(() => {
-      this.checkScrollPosition();
-      this.highlightCenteredItem();
+      this.isAnimated = false;
     }, 300);
   }
 

@@ -1,29 +1,23 @@
 <div class="carousel-wrapper">
-  <button
-    tabindex="1"
-    class="slider-button__left"
-    (click)="scrollLeft()"
-    [disabled]="isAtStart"
-    [ngClass]="{'disabled': isAtStart}"
-  >
+  <button tabindex="1" class="slider-button__left" (click)="scrollSlider('left')" [disabled]="isAtStart"
+    [ngClass]="{'disabled': isAtStart, 'click': isAnimated}">
     <span class="material-icons">arrow_back</span>
   </button>
 
   <div class="carousel" #carousel (scroll)="onScrollCarousel()">
-    <figure class="carousel-item" *ngFor="let img of images; let i = index" (click)="highlightIndexItem(i)">
-      <img [src]="img.image" [alt]="img.name || 'Imagen'" loading="lazy" />
-      <figcaption>{{ img.name }}</figcaption>
-      <span *ngIf="img.description">{{img.description}}</span>
-    </figure>
+    <div class="carousel-item" *ngFor="let img of images; let i = index" (click)="highlightIndexItem(i)">
+      <figure class="carousel-item--figure">
+        <img [src]="img.image" [alt]="img.name || 'Imagen'" loading="lazy" />
+      </figure>
+      <div class="carousel-item--caption">
+        <h4>{{ img.name }}</h4>
+        <span *ngIf="img.description">{{img.description}}</span>
+      </div>
+    </div>
   </div>
 
-  <button
-    tabindex="2"
-    class="slider-button__right"
-    (click)="scrollRight()"
-    [disabled]="isAtEnd"
-    [ngClass]="{'disabled': isAtEnd}"
-  >
+  <button tabindex="2" class="slider-button__right" (click)="scrollSlider('right')" [disabled]="isAtEnd"
+    [ngClass]="{'disabled': isAtEnd, 'click': isAnimated}">
     <span class="material-icons">arrow_forward</span>
   </button>
 </div>

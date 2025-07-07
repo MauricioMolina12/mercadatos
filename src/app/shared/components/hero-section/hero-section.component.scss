@@ -187,11 +187,8 @@
 /* Medium screens */
 @media (min-width: 1280px) {
   .hero {
-    width: 98%;
-    margin: 10px;
     flex-direction: row-reverse;
     background-position: top;
-    border-radius: 10px;
 
     .hero-description {
       align-items: start;

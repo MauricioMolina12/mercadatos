@@ -1,9 +1,10 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, Inject, PLATFORM_ID } from '@angular/core';
 import { SeoService } from '../../shared/services/seo.service';
 import { ThemeService } from '../../shared/services/theme.service';
 import { SeoData } from '../../shared/models/seo';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import emailjs from 'emailjs-com';
+
 
 @Component({
   selector: 'app-contact',
@@ -106,13 +107,14 @@ export class ContactComponent {
     },
   ];
 
+
   defaultEmail = this.emailsForArea[0].value;
   originalEmailsForArea = [...this.emailsForArea];
   constructor(
     private el: ElementRef,
     private seoService: SeoService,
     private themeService: ThemeService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
   ) {
     this.emailsForArea = this.emailsForArea.filter(
       (email) => email.value === this.defaultEmail
@@ -129,7 +131,7 @@ export class ContactComponent {
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       message: ['', Validators.required],
-    });
+    });    
   }
 
   ngOnInit(): void {
@@ -178,9 +180,10 @@ export class ContactComponent {
   isLoading: boolean = false;
   isEmailSend: boolean = false;
   isSuccessMessage: boolean = false;
+
   submitMessage() {
     if (this.contactForm.valid) {
-      this.isLoading = true; 
+      this.isLoading = true;
       const { name, email, message } = this.contactForm.value;
 
       const templateParams = {
@@ -208,10 +211,13 @@ export class ContactComponent {
             'Hubo un problema al enviar el mensaje. Intenta más tarde.';
         })
         .finally(() => {
-          this.isLoading = false; 
+          this.isLoading = false;
           this.isEmailSend = true;
         });
     } else {
+      this.isEmailSend = true;
+      this.isSuccessMessage = false;
+      this.sendText = '¡Completa los campos antes de enviar!';
       this.contactForm.markAllAsTouched();
     }
   }

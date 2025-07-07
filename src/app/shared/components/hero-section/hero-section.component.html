@@ -2,7 +2,6 @@
     <div class="hero-description" [ngClass]="{ animate: animateIndex === currentBanner }">
         <h1 class="hero-description__title">{{ banners[currentBanner].title }}</h1>
         <p class="hero-description__paragraph">{{ banners[currentBanner].description }}</p>
-        <button class="hero-description__button-callaction"
-            [routerLink]="['/services/gestion-documental']">Empezar</button>
+        <button class="hero-description__button-callaction" (click)="callAction()">Empezar</button>
     </div>
 </section>

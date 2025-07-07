@@ -7,6 +7,7 @@ import { SliderImagesComponent } from '../../shared/components/slider-images/sli
 import { GridComponent } from '../../shared/components/grid/grid.component';
 import { PdfCarouselComponent } from "../../shared/components/pdf-carousel/pdf-carousel.component";
 import { TimelineComponent } from '../../shared/components/timeline/timeline.component';
+import { ViewDetailsTimelineComponent } from "../../shared/components/view-details-timeline/view-details-timeline.component";
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { TimelineComponent } from '../../shared/components/timeline/timeline.com
     SliderImagesComponent,
     GridComponent,
     PdfCarouselComponent,
-    TimelineComponent
+    TimelineComponent,
+    ViewDetailsTimelineComponent
 ]
 })
 export class AboutUsModule { }

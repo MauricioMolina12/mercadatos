@@ -27,6 +27,7 @@
     justify-content: space-between;
     gap: 10px;
     margin-bottom: 60px;
+    cursor: pointer;
 
     transform: translateY(30px);
     opacity: 0;
@@ -49,18 +50,25 @@
       flex-direction: column;
       align-items: end;
       justify-content: center;
-      gap: 10px;
       text-align: end;
 
-      &--year {
-        font-size: 2.4rem;
+      &--name {
+        font-weight: 700;
+        font-size: 1.15rem;
         color: #04e5b4;
-        font-style: italic;
+      }
+
+      &--year {
+        margin-top: 10px;
+        color: var(--color-font-gray);
+        font-weight: 600;
       }
 
       &--description {
-        color: var(--color-font-gray);
+        color: var(--color-dark-contrast);
         max-width: 80%;
+        font-weight: 300;
+        font-size: 0.8rem;
       }
     }
 
@@ -140,8 +148,20 @@
 
 @media (min-width: 1280px) {
   .timeline {
+    gap: 50px;
     .card {
       margin: 0;
+
+      &-content {
+        &--name {
+          font-size: 1.3rem;
+          max-width: 60%;
+        }
+
+        &--description {
+          font-size: 1rem;
+        }
+      }
     }
   }
 }

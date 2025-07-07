@@ -74,7 +74,6 @@ export class ServicesComponent implements OnInit {
 
       const html = await marked.parse(mdText);
       this.content = this.sanitizer.bypassSecurityTrustHtml(html);
-      console.log(this.content);
     } catch (error) {
       this.error = true;
     }

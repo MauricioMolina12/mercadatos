@@ -68,14 +68,6 @@ export class NavBarComponent implements OnInit {
       // isDropdown: true,
     },
     {
-      label: 'Blog',
-      href: '#contact',
-      ariaLabel: 'Ir a la sección de actualidad',
-      routerLink: ['/blog'],
-      routerLinkActive: 'active',
-    },
-
-    {
       label: 'Clientes',
       href: '#contact',
       routerLink: ['/customers'],

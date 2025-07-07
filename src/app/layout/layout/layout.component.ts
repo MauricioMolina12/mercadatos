@@ -1,4 +1,12 @@
-import { Component, computed, effect, OnInit, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  Host,
+  HostListener,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { NetworkService } from '../../shared/services/network.service';
 
 @Component({
@@ -50,7 +58,7 @@ export class LayoutComponent implements OnInit {
     const foundingYear = 1986;
     const today = new Date();
     const currentYear = today.getFullYear();
-    const anniversaryDate = new Date(currentYear, 5, 14);
+    const anniversaryDate = new Date(currentYear, 0, 10);
 
     this.isAnniversary =
       today.getDate() === anniversaryDate.getDate() &&
@@ -59,5 +67,11 @@ export class LayoutComponent implements OnInit {
     setTimeout(() => {
       this.isAnniversary = false;
     }, 9000);
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: Event) {
+    const scrollTop = (event.target as Document).documentElement.scrollTop;
+    this.showButton = scrollTop > window.innerHeight ? true : false;
   }
 }
