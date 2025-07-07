@@ -20,6 +20,7 @@
     height: 200px;
     background-color: #dafff75b;
     clip-path: circle();
+    z-index: 99;
   }
 
   &::before {
@@ -31,6 +32,7 @@
     height: 200px;
     background-color: #99c1c94e;
     clip-path: circle();
+    z-index: 99;
   }
 
   .faq-title,
@@ -67,6 +69,7 @@
     flex-direction: column;
     justify-content: center;
     transition: 1s ease;
+    z-index: 100;
 
     .toggle-button {
       position: absolute;
