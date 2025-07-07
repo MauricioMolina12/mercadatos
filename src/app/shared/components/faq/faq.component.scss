@@ -62,7 +62,7 @@
     min-height: 80px;
     border: 1px solid #ddd;
     border-radius: 10px;
-    background-color: var(--color-white);
+    background-color: var(--color-medium-contrast);
     position: relative;
     cursor: pointer;
     display: flex;
@@ -70,6 +70,7 @@
     justify-content: center;
     transition: 1s ease;
     z-index: 100;
+
 
     .toggle-button {
       position: absolute;
@@ -84,7 +85,7 @@
       transition: all .4s ease-in;
 
       &.open {
-        top: 10px;
+        top: 0;
         .arrow-dropdown {
           transform: rotate(180deg);
         }
