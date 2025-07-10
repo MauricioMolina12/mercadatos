@@ -5,7 +5,6 @@ import { SeoData } from '../../shared/models/seo';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import emailjs from 'emailjs-com';
 
-
 @Component({
   selector: 'app-contact',
   standalone: false,
@@ -107,14 +106,13 @@ export class ContactComponent {
     },
   ];
 
-
   defaultEmail = this.emailsForArea[0].value;
   originalEmailsForArea = [...this.emailsForArea];
   constructor(
     private el: ElementRef,
     private seoService: SeoService,
     private themeService: ThemeService,
-    private fb: FormBuilder,
+    private fb: FormBuilder
   ) {
     this.emailsForArea = this.emailsForArea.filter(
       (email) => email.value === this.defaultEmail
@@ -131,7 +129,7 @@ export class ContactComponent {
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       message: ['', Validators.required],
-    });    
+    });
   }
 
   ngOnInit(): void {
@@ -182,8 +180,8 @@ export class ContactComponent {
   isSuccessMessage: boolean = false;
 
   submitMessage() {
+    this.isLoading = true;
     if (this.contactForm.valid) {
-      this.isLoading = true;
       const { name, email, message } = this.contactForm.value;
 
       const templateParams = {
@@ -204,6 +202,7 @@ export class ContactComponent {
           this.isSuccessMessage = true;
           this.sendText = '¡Tu mensaje fue enviado correctamente!';
           this.contactForm.reset();
+          this.isLoading = false;
         })
         .catch((err) => {
           this.isSuccessMessage = false;
@@ -215,6 +214,7 @@ export class ContactComponent {
           this.isEmailSend = true;
         });
     } else {
+      this.isLoading = false;
       this.isEmailSend = true;
       this.isSuccessMessage = false;
       this.sendText = '¡Completa los campos antes de enviar!';
