@@ -17,6 +17,7 @@ import { AnniversaryComponent } from './shared/components/anniversary/anniversar
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
+import { SplashPageComponent } from "./shared/components/splash-page/splash-page.component";
 
 
 
@@ -40,7 +41,8 @@ import { environment } from '../environments/environment';
     AnniversaryComponent,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-  ],
+    SplashPageComponent
+],
   providers: [
     provideClientHydration(withEventReplay())
   ],

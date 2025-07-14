@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { ThemeService } from './shared/services/theme.service';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { UtilsService } from './shared/services/utils.service';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   constructor(
     private themeService: ThemeService,
+    public utilsService: UtilsService,
     @Inject(DOCUMENT) private document: Document,
     @Inject(PLATFORM_ID) private platformId: Object,
   ) {}

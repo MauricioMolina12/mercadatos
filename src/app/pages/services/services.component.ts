@@ -8,6 +8,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { marked } from 'marked';
 import { firstValueFrom } from 'rxjs';
+import { UtilsService } from '../../shared/services/utils.service';
 
 @Component({
   selector: 'app-services',
@@ -38,8 +39,9 @@ export class ServicesComponent implements OnInit, OnDestroy {
   constructor(
     private themeService: ThemeService,
     private seoService: SeoService,
-    private router: ActivatedRoute,
+    private utilsService: UtilsService,
     private servicesService: ServicesService,
+    private router: ActivatedRoute,
     private sanitizer: DomSanitizer,
     private http: HttpClient
   ) {
@@ -50,14 +52,12 @@ export class ServicesComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     this.router.paramMap.subscribe((param) => {
-      this.slug = param.get('id') || '';
-      this.loadMarkdown(this.slug);
-      const service = this.servicesService.getServiceBySlug(this.slug || '');
-      if (service) {
-        this.service = service;
-        this.descriptionMeeting = this.getMeetingDescription(this.slug);
-      }
+      this.utilsService.setLoaderGlobal(true);
+      const slug = param.get('id') || '';
+      this.slug = slug;
+      this.initData(slug);
     });
+
     const dataSeo: SeoData = {
       title: 'SERVICIOS - MERCADATOS SAS',
       description:
@@ -77,19 +77,31 @@ export class ServicesComponent implements OnInit, OnDestroy {
     };
   }
 
-  async loadMarkdown(slug: string) {
-    try {
-      const mdText = await firstValueFrom(
-        this.http.get(`assets/services-content/${slug}.md`, {
-          responseType: 'text',
-        })
-      );
-
-      const html = await marked.parse(mdText);
-      this.content = this.sanitizer.bypassSecurityTrustHtml(html);
-    } catch (error) {
+  initData(slug: string) {
+    this.loadMarkdown(slug);
+    const service = this.servicesService.getServiceBySlug(slug);
+    if (service) {
+      this.service = service;
+      this.descriptionMeeting = this.getMeetingDescription(slug);
+      this.utilsService.setLoaderGlobal(false);
+    } else {
       this.error = true;
+      this.utilsService.setLoaderGlobal(false);
     }
+  }
+
+  loadMarkdown(slug: string) {
+    this.http
+      .get(`assets/services-content/${slug}.md`, { responseType: 'text' })
+      .subscribe({
+        next: async (mdText) => {
+          const html = await marked.parse(mdText);
+          this.content = this.sanitizer.bypassSecurityTrustHtml(html);
+        },
+        error: () => {
+          this.error = true;
+        },
+      });
   }
 
   getMeetingDescription(slug: string): string {
@@ -108,7 +120,8 @@ export class ServicesComponent implements OnInit, OnDestroy {
           '¿Necesitas respaldo legal confiable? Conversemos y actuemos con firmeza.';
         break;
       case 'investigacion-y-estudios-de-mercado':
-        title = '¿Necesitas entender mejor tu mercado? Conversemos y tomemos decisiones con certeza.';
+        title =
+          '¿Necesitas entender mejor tu mercado? Conversemos y tomemos decisiones con certeza.';
         break;
       default:
         title = 'Title default';

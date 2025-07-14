@@ -95,7 +95,32 @@
 
 .service-markdown {
   box-sizing: border-box;
+
+  .loading{
+    margin: 0 auto;
+    width: 70%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .loader{
+      width: 50px;
+      height: 50px;
+      border: 1px solid gray;
+      border-top: 1px solid var(--color-primary);
+      border-radius: 50%;
+      border-width: 3px;
+      animation: spinner 1s ease infinite;
+    }
+  }
+
+  .content{
+    animation: fadeIn 1s ease;
+  }
 }
+
+
 
 /* MarkDowns */
 
@@ -269,5 +294,24 @@
     h2{
       max-width: 70%;
     }
+  }
+}
+
+
+@keyframes spinner {
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from{
+    transform: scale(1.2);
+    opacity: 0;
+  }
+
+  to{
+    transform: scale(1);
+    opacity: 1;
   }
 }

@@ -5,6 +5,7 @@ import { Meta, Title } from '@angular/platform-browser';
   providedIn: 'root',
 })
 export class UtilsService {
+  isLoading: boolean = false;
   constructor(private title: Title, private meta: Meta) {}
 
   /**
@@ -39,10 +40,12 @@ export class UtilsService {
 
     return observer; // Returns the observer so that it can be disconnected if necessary
   }
-  
 
   setTitle(title: string) {
     this.title.setTitle(title);
   }
 
+  setLoaderGlobal(loading: boolean) {
+    this.isLoading = loading;
+  }
 }
