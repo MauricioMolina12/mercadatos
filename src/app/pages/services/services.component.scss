@@ -100,13 +100,13 @@
 /* MarkDowns */
 
 /* Gestión documental */
-:host ::ng-deep .service-markdown .gestion-documental {
+:host ::ng-deep .service-markdown .document-section-wrapper {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
   margin-block: 40px;
 
-  &--section {
+  .document-section {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -128,7 +128,7 @@
       }
     }
 
-    .information {
+    .document-info {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -145,13 +145,13 @@
         border-radius: 10px;
       }
 
-      .title {
-        font-size: 2.6rem;
+      .document-title {
+        font-size: 2rem;
         font-weight: 700;
         color: var(--color-dark-contrast);
       }
 
-      .description {
+      .document-description {
         color: var(--color-dark-contrast);
         font-size: 1.1rem;
         max-width: 100%;
@@ -160,7 +160,7 @@
       }
     }
 
-    .image {
+    .document-image {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -221,21 +221,21 @@
     margin: 20px;
   }
 
-  :host ::ng-deep .service-markdown .gestion-documental {
-    &--section {
+  :host ::ng-deep .service-markdown .document-section-wrapper {
+    .document-section {
       max-width: 70%;
       margin: 0 auto;
       gap: 20px;
       flex-direction: row;
-      .information {
+      .document-info {
         width: 50%;
-        .description {
+        .document-description {
           font-size: 1.2rem;
           max-width: 90%;
         }
       }
 
-      .image {
+      .document-image {
         width: 50%;
       }
 

@@ -4,6 +4,10 @@
     </div>
     <div class="service-markdown" *ngIf="!error; else fallback">
         <div [innerHTML]="content"></div>
+        <div class="gestion-meeting">
+            <h2 class="title">{{descriptionMeeting}}</h2>
+            <a href="/contact">Cotizar ahora</a>
+        </div>
     </div>
 
     <ng-template #fallback>
