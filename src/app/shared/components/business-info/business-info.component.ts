@@ -98,7 +98,7 @@ export class BusinessInfoComponent {
     );
     this.moreYearExperience = totalExperience - 2
     if (historyItem) {
-      historyItem.title = `+${totalExperience} años de experiencia`;
+      historyItem.title = `${totalExperience} años de experiencia`;
       historyItem.subtitle = `Contamos con más de ${this.moreYearExperience} años de experiencia ofreciendo soluciones integrales en organización, custodia y conservación documental, lo que nos convierte en pioneros y referentes en la región.`
     }
 

@@ -1,14 +1,17 @@
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import {
+  AfterViewInit,
   Component,
+  ElementRef,
   EventEmitter,
   Inject,
-  inject,
   Input,
   OnDestroy,
   OnInit,
   Output,
   PLATFORM_ID,
+  Renderer2,
+  ViewChild,
 } from '@angular/core';
 import { timeline } from '../../models/timeline';
 
@@ -18,22 +21,48 @@ import { timeline } from '../../models/timeline';
   templateUrl: './view-details-timeline.component.html',
   styleUrl: './view-details-timeline.component.scss',
 })
-export class ViewDetailsTimelineComponent implements OnInit, OnDestroy {
+export class ViewDetailsTimelineComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() timeline: timeline = {
     name: '',
     image: '',
     description: '',
-    descriptionInternal: ''
+    descriptionInternal: '',
   };
   @Output() closeClick = new EventEmitter<boolean>();
+  @ViewChild('content') contentLine!: ElementRef;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private renderer: Renderer2
   ) {}
 
   ngOnInit(): void {
     this.setOverflow('hidden');
+  }
+  
+  ngAfterViewInit(): void {
+    this.setBgImage();
+  }
+
+  private setBgImage() {
+    if (this.contentLine) {      
+      this.renderer.setStyle(
+        this.contentLine.nativeElement,
+        'background-image',
+        `url(${this.timeline.image})`
+      );
+      this.renderer.setStyle(
+        this.contentLine.nativeElement,
+        'background-size',
+        'cover'
+      );
+      this.renderer.setStyle(
+        this.contentLine.nativeElement,
+        'background-position',
+        'center'
+      );
+    }
   }
 
   ngOnDestroy(): void {

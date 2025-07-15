@@ -61,6 +61,7 @@ export class AboutUsComponent implements OnInit {
     }
   }
 
+
   private checkElementsVisibility() {
     this.elementsParallax.forEach((elementRef: ElementRef) => {
       const rect = elementRef.nativeElement.getBoundingClientRect();
