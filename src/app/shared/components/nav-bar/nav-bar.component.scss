@@ -516,23 +516,22 @@ nav {
           a {
             font-size: 0.9rem;
             font-weight: 500;
+            padding: 0;
 
             &::after {
-              bottom: -37%;
+              bottom: -170%;
             }
           }
 
           &:last-of-type {
-            // display: none;
             margin-right: 60px;
             width: auto;
             border-radius: 10px;
             z-index: 20;
           }
 
-          &:nth-last-of-type(1) {
+          &:nth-last-of-type(2) {
             padding: 10px;
-            background: var(--gradient-primary);
 
             a {
               color: var(--color-white);
